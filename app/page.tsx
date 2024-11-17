@@ -17,9 +17,9 @@ const skills = {
 
 export default function Home() {
   useEffect(() => {
-    const letters = document.querySelectorAll('.wave-letter')
-    letters.forEach((letter, index) => {
-      letter.style.animationDelay = `${index * 0.1}s`
+    const letters: NodeListOf<Element> = document.querySelectorAll('.wave-letter')
+    letters.forEach((letter: Element, index) => {
+      (letter as HTMLElement).style.animationDelay = `${index * 0.1}s`
     })
   }, [])
 
