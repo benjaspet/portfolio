@@ -56,14 +56,14 @@ const TimelineItem = React.forwardRef<HTMLLIElement, TimelineItemProps>(
 )
 TimelineItem.displayName = "TimelineItem"
 const timelineDotVariants = cva(
-  "col-start-2 col-end-3 row-start-1 row-end-1 flex size-4 items-center justify-center rounded-full border border-current",
+  "col-start-2 col-end-3 row-start-1 row-end-1 flex size-4 items-center justify-center rounded-full border border-[#0b6db8]",
   {
     variants: {
       status: {
         default: "[&>*]:hidden",
         current:
-          "[&>*:not(.lucide-circle)]:hidden [&>.lucide-circle]:fill-current [&>.lucide-circle]:text-current",
-        done: "bg-primary [&>*:not(.lucide-check)]:hidden [&>.lucide-check]:text-background",
+          "[&>*:not(.lucide-circle)]:hidden [&>.lucide-circle]:fill-[#0b6db8] [&>.lucide-circle]:text-[#0b6db8]",
+        done: "bg-[#0b6db8] [&>*:not(.lucide-check)]:hidden [&>.lucide-check]:text-white",
         error:
           "border-destructive bg-destructive [&>*:not(.lucide-x)]:hidden [&>.lucide-x]:text-background",
         custom: "[&>*:not(:nth-child(4))]:hidden [&>*:nth-child(4)]:block",
