@@ -1,14 +1,13 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { ArrowDownNarrowWide, ArrowRightIcon, CalendarIcon, ClipboardIcon, GithubIcon, LinkedinIcon, MailIcon, MapPinHouse, Paperclip, PaperclipIcon, SlackIcon, SquareArrowDown, TwitterIcon } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { CalendarIcon, ClipboardIcon, GithubIcon, LinkedinIcon, MailIcon, MapPinHouse, SlackIcon, TwitterIcon } from "lucide-react"
 import { useEffect } from "react"
 import Image from 'next/image'
 import { Tabs, TabsTrigger } from "@/components/ui/tabs"
 import { TabsContent, TabsList } from "@/components/ui/tabs"
 import { Timeline, TimelineContent, TimelineDot, TimelineHeading, TimelineItem, TimelineLine } from "@/components/timeline"
-import { redirect } from "next/dist/server/api-utils"
 
 const skills = {
   languages: ["Go", "Java", "TypeScript", "Python", "C/C++", "SQL", "Racket"],
