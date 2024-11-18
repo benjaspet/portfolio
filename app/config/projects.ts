@@ -1,3 +1,5 @@
+import { PortfolioProject } from "../types/types";
+
 export const projects: PortfolioProject[] = [
     {
         identifier: 0,
