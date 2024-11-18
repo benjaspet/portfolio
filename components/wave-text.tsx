@@ -17,7 +17,7 @@ const WaveText: FC<WaveTextProps> = ({ text }) => {
             {text.split("").map((letter, index) => (
                 <span
                     key={index}
-                    className="wave-letter inline-block"
+                    className="wave-letter inline-block "
                     style={{ whiteSpace: letter === " " ? "pre" : "normal" }}
                 >
                     {letter === " " ? "\u00A0" : letter}
