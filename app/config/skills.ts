@@ -1,5 +1,6 @@
 export const skills = {
-    languages: ["Go", "Java", "TypeScript", "Python", "C/C++", "SQL", "Racket"],
+    languages: ["Go", "Java", "TypeScript", "JavaScript", "Python", "C", "C++", "SQL", "Racket", "ACL2 Sedan"],
     tools: ["Git", "Docker", "VS Code", "Postman", "Jira", "Git", "Docker", "VS Code", "Postman", "Jira"],
-    frameworks: ["React", "React Native", "Next.js", "Express", "Elysia", "Spring Boot", "Flask", "JUnit", "Jest"]
+    frameworks: ["React/Native", "Next.js", "Elysia", "Spring Boot", "Flask",
+        "Docker", "AWS EC2", "MySQL", "MongoDB", "PostgreSQL", "Prisma", "Supabase", "Firebase"],
 };
