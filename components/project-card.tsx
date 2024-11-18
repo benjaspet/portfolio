@@ -28,7 +28,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     <p className="text-md text-muted-foreground mb-4 font-medium flex-grow">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mt-auto">
                         {project.techStack.map((tech, index) => (
-                            <Badge key={index} variant="secondary" className="flex items-center gap-1">
+                            <Badge key={index} variant="default" className="flex items-center gap-1 px-2 py-1 hover:cursor-pointer">
                                 {tech}
                             </Badge>
                         ))}

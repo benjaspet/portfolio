@@ -3,6 +3,7 @@ import {GitHubIcon, TwitterIcon, LinkedInIcon} from "@/components/icons";
 import {motion, useInView} from "framer-motion";
 import {MutableRefObject, useRef} from "react";
 import {fadeDownVariants} from "@/app/animations/fade-down";
+import Image from "next/image";
 
 export default function Footer() {
 
@@ -18,13 +19,14 @@ export default function Footer() {
                 <div className="container mx-auto px-4 text-center">
                     <div className="flex flex-col lg:flex-row items-center text-center lg:text-left lg:justify-between">
                         <div className="mb-2 lg:mb-0 inline-flex space-x-2">
-                            <h2 className="text-2xl font-bold">Ben Petrillo</h2>
-                            <p className={"self-center"}>&copy; {new Date().getFullYear()}</p>
+                            <Image src="/signature.svg" alt="" width={100} height={100}/>
+                            {/* <h2 className="text-2xl font-bold">Ben Petrillo</h2> */}
+                            <p className={"self-center font-semibold"}>&copy; {new Date().getFullYear()}</p>
 
                         </div>
                         <nav className="mb-4 lg:mb-0">
                             <ul className="flex flex-wrap justify-center space-x-4">
-                                <li><Link href="/" className="hover:text-blue-600 transition-colors">Made with ❤ +
+                                <li><Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">Made with ❤ &
                                     Next.js, Tailwind, Shad</Link></li>
                             </ul>
                         </nav>
