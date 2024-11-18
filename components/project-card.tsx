@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React from "react"
 import {Card, CardContent} from "./ui/card";
 import {motion} from "framer-motion";
 import {fadeInFromRightVariants} from "@/app/animations/fade-in-from-right";

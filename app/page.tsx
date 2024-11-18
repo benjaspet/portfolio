@@ -2,19 +2,16 @@
 
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card"
 import {CalendarIcon, ClipboardIcon, MailIcon, MapPinHouse} from "lucide-react"
-import {useEffect, useRef} from "react"
 import Image from 'next/image'
 import {Tabs, TabsTrigger} from "@/components/ui/tabs"
 import {TabsContent, TabsList} from "@/components/ui/tabs"
 import {
     Timeline,
-    TimelineContent,
     TimelineDot,
     TimelineHeading,
     TimelineItem,
-    TimelineLine
 } from "@/components/ui/timeline"
-import {motion, useInView} from "framer-motion"
+import {motion} from "framer-motion"
 import {fadeInFromRightVariants} from "./animations/fade-in-from-right"
 import {foldUpVariants} from "./animations/fold-up"
 import {staggerContainerVariants} from "./animations/stagger"
