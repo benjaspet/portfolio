@@ -2,45 +2,20 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { CalendarIcon, ClipboardIcon, Database, GithubIcon, LinkedinIcon, MailIcon, MapPinHouse, SlackIcon, TwitterIcon } from "lucide-react"
+import { CalendarIcon, ClipboardIcon, MailIcon, MapPinHouse } from "lucide-react"
 import { useEffect, useRef } from "react"
 import Image from 'next/image'
 import { Tabs, TabsTrigger } from "@/components/ui/tabs"
 import { TabsContent, TabsList } from "@/components/ui/tabs"
-import { Timeline, TimelineContent, TimelineDot, TimelineHeading, TimelineItem, TimelineLine } from "@/components/timeline"
-import { Badge } from "@/components/ui/badge"
+import { Timeline, TimelineContent, TimelineDot, TimelineHeading, TimelineItem, TimelineLine } from "@/components/ui/timeline"
 import { motion, useInView } from "framer-motion"
-
-const skills = {
-  languages: ["Go", "Java", "TypeScript", "Python", "C/C++", "SQL", "Racket"],
-  tools: ["Git", "Docker", "VS Code", "Postman", "Jira", "Git", "Docker", "VS Code", "Postman", "Jira"],
-  frameworks: ["React", "React Native", "Next.js", "Express", "Elysia", "Spring Boot", "Flask", "JUnit", "Jest"]
-}
-
-const fadeInFromRightVariants = {
-  hidden: { opacity: 0, x: 50 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
-  },
-};
-
-const swingVariants = {
-  hidden: {
-    opacity: 0,
-    scaleY: 0,
-    transformOrigin: "top", 
-  },
-  visible: {
-    opacity: 1,
-    scaleY: 1,
-    transition: {
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  },
-};
+import { fadeInFromRightVariants } from "./animations/fade-in-from-right"
+import { foldUpVariants } from "./animations/fold-up"
+import { staggerContainerVariants, staggerItemVariants } from "./animations/stagger"
+import { TwitterIcon, SlackIcon, LinkedInIcon, GitHubIcon } from "@/components/icons";
+import { projects } from "./config/projects"
+import { ProjectCard } from "@/components/project-card"
+import { skills } from "./config/skills"
 
 const listVariants = {
   visible: {
@@ -60,92 +35,6 @@ const textVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
 };
-
-const staggerContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2, 
-    },
-  },
-};
-
-const buttonVariants = {
-  hidden: { opacity: 0, y: 20 }, 
-  visible: {
-    opacity: 1,
-    y: 0, 
-    transition: { duration: 0.5, ease: "easeOut" },
-  },
-};
-
-type Project = {
-  id: number
-  title: string
-  description: string
-  imageUrl: string
-  technologies: string[]
-}
-
-const projects: Project[] = [
-  {
-    id: 1,
-    title: "Hexagonal Reversi",
-    description: "Designed and implemented Orthello using Java, incorporating a hexagonal grid to enhance strategic complexity and employing Swing for the GUI and JUnit for testing. Utilized the Model-View-Controller, Strategy, Observer, Adapter, and Factory patterns to structure game architecture. Created AI strategies that enabled different difficulty levels through move-selection algorithms.",
-    imageUrl: "/reversi.png",
-    technologies: ["React", "Node.js", "MongoDB"]
-  },
-  {
-    id: 2,
-    title: "PokéVault",
-    description: "Designed a dynamic web application using React, TypeScript, Vite, & Bootstrap to enable users to browse and explore a populated database of Pokémon trading cards. Implemented infinite scrolling with pagination and batch requests, optimizing performance and ensuring efficient data retrieval.",
-    imageUrl: "/pokevault.png",
-    technologies: ["React", "Firebase", "TypeScript"]
-  },
-  {
-    id: 3,
-    title: "Personal Portfolio",
-    description: "Developed my dynamic and responsive portfolio website using React, utilizing media queries for responsiveness and JSON for full configurability. It also includes a comment section with user authentication via Google using OAuth 2.0, user-level permissions, and SQLite for data storage.",
-    imageUrl: "/portfolio.png",
-    technologies: ["React", "Node.js", "OpenWeatherAPI"]
-  }
-]
-
-const TechnologyIcon = ({ tech }: { tech: string }) => {
-  switch (tech.toLowerCase()) {
-    default:
-      return <Database className="h-4 w-4" />
-  }
-}
-
-const ProjectCard = ({ project }: { project: Project }) => (
-  <Card className="overflow-hidden border-2 duration-300 border-gray-600 hover:border-[#0b6db8]">
-    <motion.div initial="hidden"
-      animate="visible"
-      variants={fadeInFromRightVariants}>
-      <Image
-        src={project.imageUrl}
-        alt={project.title}
-        width={400}
-        height={200}
-        className="w-[400px] h-[200px] object-cover"
-      />
-    </motion.div>
-    <CardContent className="p-4">
-      <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-      <p className="text-md text-muted-foreground mb-4 font-medium">{project.description}</p>
-      <div className="flex flex-wrap gap-2">
-        {project.technologies.map((tech, index) => (
-          <Badge key={index} variant="secondary" className="flex items-center gap-1">
-            <TechnologyIcon tech={tech} />
-            {tech}
-          </Badge>
-        ))}
-      </div>
-    </CardContent>
-  </Card>
-)
 
 export default function Home() {
 
@@ -174,7 +63,7 @@ export default function Home() {
               className="rounded-full border-4 border-[#0b6db8] animate-float"
             />
           </motion.div>
-          <motion.h1 className="text-center sm:text-start text-4xl font-bold" variants={swingVariants}
+          <motion.h1 className="text-center sm:text-start text-4xl font-bold" variants={foldUpVariants}
             initial="hidden"
             animate="visible">
             {"Benjamin Petrillo".split("").map((letter, index) => (
@@ -187,7 +76,7 @@ export default function Home() {
               </span>
             ))}
           </motion.h1>
-          <motion.h2 className="text-xl md:text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2" variants={swingVariants}
+          <motion.h2 className="text-xl md:text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2" variants={foldUpVariants}
             initial="hidden"
             animate="visible">
             {"Software Engineer • CS @ NEU".split("").map((letter, index) => (
@@ -200,7 +89,7 @@ export default function Home() {
               </span>
             ))}
           </motion.h2>
-          <motion.h4 variants={swingVariants}
+          <motion.h4 variants={foldUpVariants}
             initial="hidden"
             animate="visible" className="text-md text-gray-300 font-semibold text-center sm:text-start">
             <span className="hidden sm:inline-flex gap-1 items-center mb-2">
@@ -210,13 +99,13 @@ export default function Home() {
           <motion.div className="inline-flex gap-2 mt-1 self-center sm:self-start" variants={staggerContainerVariants}
             initial="hidden"
             animate="visible">
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button variant="gooeyLeft" size="xs" className="hover:rotate-[4deg]">
                 <ClipboardIcon size={16} className="mr-1.5" />
                 Resume
               </Button>
             </motion.div>
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button variant="gooeyLeft" size="xs" className="hover:rotate-[4deg]">
                 <CalendarIcon size={16} className="mr-1.5" />
                 Calendar
@@ -229,33 +118,33 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button
                 variant="gooeyRight"
                 size="icon"
                 className="transition-transform duration-500 hover:animate-pulse group"
               >
-                <GithubIcon
+                <GitHubIcon
                   size={16}
                   className="transition-transform duration-500 group-hover:rotate-[25deg]"
                 />
               </Button>
             </motion.div>
 
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button
                 variant="gooeyRight"
                 size="icon"
                 className="transition-transform duration-500 hover:animate-pulse group"
               >
-                <LinkedinIcon
+                <LinkedInIcon
                   size={16}
                   className="transition-transform duration-500 group-hover:rotate-[25deg]"
                 />
               </Button>
             </motion.div>
 
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button
                 variant="gooeyRight"
                 size="icon"
@@ -268,7 +157,7 @@ export default function Home() {
               </Button>
             </motion.div>
 
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button
                 variant="gooeyRight"
                 size="icon"
@@ -282,7 +171,7 @@ export default function Home() {
               </Button>
             </motion.div>
 
-            <motion.div variants={buttonVariants}>
+            <motion.div variants={staggerItemVariants}>
               <Button
                 variant="gooeyRight"
                 size="icon"
@@ -313,7 +202,7 @@ export default function Home() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4">
         <Card className="border-2 duration-300 hover:border-[#0b6db8]">
           <CardHeader>
-            <motion.div variants={swingVariants}
+            <motion.div variants={foldUpVariants}
               initial="hidden"
               animate="visible">
               <CardTitle>
@@ -341,7 +230,7 @@ export default function Home() {
                 <motion.span
                   key={index}
                   className="px-2 py-1 bg-[#0b6db8] text-white rounded-full text-xs font-semibold"
-                  variants={buttonVariants} // Reusing the buttonVariants for the animation
+                  variants={staggerItemVariants}
                 >
                   {lang}
                 </motion.span>
@@ -366,7 +255,7 @@ export default function Home() {
                 <motion.span
                   key={index}
                   className="px-2 py-1 bg-secondary text-white rounded-full text-xs font-semibold"
-                  variants={buttonVariants} // Reusing the buttonVariants for the animation
+                  variants={staggerItemVariants}
                 >
                   {lang}
                 </motion.span>
@@ -524,7 +413,7 @@ export default function Home() {
         <h2 className="text-3xl font-bold text-center mb-6">Personal Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
           {projects.map(project => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.identifier} project={project} />
           ))}
         </div>
       </div>
