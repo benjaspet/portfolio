@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -11,6 +11,10 @@ const outfit = localFont({
 export const metadata: Metadata = {
   title: "Ben Petrillo",
   description: "Aspiring Software Engineer",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b6db8",
 };
 
 export default function RootLayout({

@@ -3,18 +3,82 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CalendarIcon, ClipboardIcon, Database, GithubIcon, LinkedinIcon, MailIcon, MapPinHouse, SlackIcon, TwitterIcon } from "lucide-react"
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import Image from 'next/image'
 import { Tabs, TabsTrigger } from "@/components/ui/tabs"
 import { TabsContent, TabsList } from "@/components/ui/tabs"
 import { Timeline, TimelineContent, TimelineDot, TimelineHeading, TimelineItem, TimelineLine } from "@/components/timeline"
 import { Badge } from "@/components/ui/badge"
+import { motion, useInView } from "framer-motion"
 
 const skills = {
   languages: ["Go", "Java", "TypeScript", "Python", "C/C++", "SQL", "Racket"],
   tools: ["Git", "Docker", "VS Code", "Postman", "Jira", "Git", "Docker", "VS Code", "Postman", "Jira"],
   frameworks: ["React", "React Native", "Next.js", "Express", "Elysia", "Spring Boot", "Flask", "JUnit", "Jest"]
 }
+
+const fadeInFromRightVariants = {
+  hidden: { opacity: 0, x: 50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: "easeOut" },
+  },
+};
+
+const swingVariants = {
+  hidden: {
+    opacity: 0,
+    scaleY: 0,
+    transformOrigin: "top", 
+  },
+  visible: {
+    opacity: 1,
+    scaleY: 1,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const listVariants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  whileInView: { opacity: 1 }
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } },
+};
+
+const staggerContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, 
+    },
+  },
+};
+
+const buttonVariants = {
+  hidden: { opacity: 0, y: 20 }, 
+  visible: {
+    opacity: 1,
+    y: 0, 
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 type Project = {
   id: number
@@ -57,13 +121,17 @@ const TechnologyIcon = ({ tech }: { tech: string }) => {
 
 const ProjectCard = ({ project }: { project: Project }) => (
   <Card className="overflow-hidden border-2 duration-300 border-gray-600 hover:border-[#0b6db8]">
-    <Image
-      src={project.imageUrl}
-      alt={project.title}
-      width={400}
-      height={200}
-      className="w-[400px] h-[200px] object-cover"
-    />
+    <motion.div initial="hidden"
+      animate="visible"
+      variants={fadeInFromRightVariants}>
+      <Image
+        src={project.imageUrl}
+        alt={project.title}
+        width={400}
+        height={200}
+        className="w-[400px] h-[200px] object-cover"
+      />
+    </motion.div>
     <CardContent className="p-4">
       <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
       <p className="text-md text-muted-foreground mb-4 font-medium">{project.description}</p>
@@ -80,6 +148,10 @@ const ProjectCard = ({ project }: { project: Project }) => (
 )
 
 export default function Home() {
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   useEffect(() => {
     const letters: NodeListOf<Element> = document.querySelectorAll('.wave-letter')
     letters.forEach((letter: Element, index) => {
@@ -88,13 +160,36 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="mx-8 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-56 my-12 sm:my-16">
+    <div className="mx-8 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-56 my-6 sm:my-16">
       <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
         <div className="flex flex-col mb-2 sm:mb-0">
-          <h1 className="text-center sm:text-start text-4xl font-bold">
-            Benjamin Petrillo
-          </h1>
-          <h2 className="text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2">
+          <motion.div className="items-center self-center sm:hidden mb-3" initial="hidden"
+            animate="visible"
+            variants={fadeInFromRightVariants} >
+            <Image
+              src="/headshot.jpeg"
+              alt="Ben Petrillo"
+              width={200}
+              height={200}
+              className="rounded-full border-4 border-[#0b6db8] animate-float"
+            />
+          </motion.div>
+          <motion.h1 className="text-center sm:text-start text-4xl font-bold" variants={swingVariants}
+            initial="hidden"
+            animate="visible">
+            {"Benjamin Petrillo".split("").map((letter, index) => (
+              <span
+                key={index}
+                className="wave-letter inline-block"
+                style={{ whiteSpace: letter === " " ? "pre" : "normal" }}
+              >
+                {letter === " " ? "\u00A0" : letter}
+              </span>
+            ))}
+          </motion.h1>
+          <motion.h2 className="text-xl md:text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2" variants={swingVariants}
+            initial="hidden"
+            animate="visible">
             {"Software Engineer • CS @ NEU".split("").map((letter, index) => (
               <span
                 key={index}
@@ -104,67 +199,108 @@ export default function Home() {
                 {letter === " " ? "\u00A0" : letter}
               </span>
             ))}
-          </h2>
-          <h4 className="text-md text-gray-300 font-semibold text-center sm:text-start">
-            <span className="inline-flex gap-1 items-center">
+          </motion.h2>
+          <motion.h4 variants={swingVariants}
+            initial="hidden"
+            animate="visible" className="text-md text-gray-300 font-semibold text-center sm:text-start">
+            <span className="hidden sm:inline-flex gap-1 items-center mb-2">
               <MapPinHouse width={16} height={16} className="text-[#35a1f2]" /> Mission Hill, MA
             </span>
-          </h4>
-          <div className="inline-flex gap-2 mt-2 self-center sm:self-start">
-            <Button variant="gooeyLeft" size="xs" className="hover:rotate-[4deg]">
-              <ClipboardIcon size={16} className="mr-1.5" />
-              Resume
-            </Button>
-            <Button variant="gooeyLeft" size="xs" className="hover:rotate-[4deg]">
-              <CalendarIcon size={16} className="mr-1.5" />
-              Calendar
-            </Button>
-          </div>
-          <div className="inline-flex gap-2 mt-2.5 self-center sm:self-start">
-            <Button
-              variant="gooeyRight"
-              size="icon"
-              className="transition-transform duration-500 hover:animate-pulse group"
-            >
-              <GithubIcon
-                size={16}
-                className="transition-transform duration-500 group-hover:rotate-[25deg]"
-              />
-            </Button>
-            <Button
-              variant="gooeyRight"
-              size="icon"
-              className="transition-transform duration-500 hover:animate-pulse group"
-            >
-              <LinkedinIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]" />
-            </Button>
-            <Button
-              variant="gooeyRight"
-              size="icon"
-              className="transition-transform duration-500 hover:animate-pulse group"
-            >
-              <SlackIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]" />
-            </Button>
-            <Button
-              variant="gooeyRight"
-              size="icon"
-              className="transition-transform duration-500 hover:animate-pulse group"
-              onClick={() => window.open("https://twitter.com/Benjaspet")}
-            >
-              <TwitterIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]" />
-            </Button>
-            <Button
-              variant="gooeyRight"
-              size="icon"
-              className="transition-transform duration-500 hover:animate-pulse group"
-              onClick={() => open("mailto:petrillo.b@northeastern.edu")}
-            >
-              <MailIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]" />
-            </Button>
-          </div>
+          </motion.h4>
+          <motion.div className="inline-flex gap-2 mt-1 self-center sm:self-start" variants={staggerContainerVariants}
+            initial="hidden"
+            animate="visible">
+            <motion.div variants={buttonVariants}>
+              <Button variant="gooeyLeft" size="xs" className="hover:rotate-[4deg]">
+                <ClipboardIcon size={16} className="mr-1.5" />
+                Resume
+              </Button>
+            </motion.div>
+            <motion.div variants={buttonVariants}>
+              <Button variant="gooeyLeft" size="xs" className="hover:rotate-[4deg]">
+                <CalendarIcon size={16} className="mr-1.5" />
+                Calendar
+              </Button>
+            </motion.div>
+          </motion.div>
+          <motion.div
+            className="inline-flex gap-2 mt-2.5 self-center sm:self-start"
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={buttonVariants}>
+              <Button
+                variant="gooeyRight"
+                size="icon"
+                className="transition-transform duration-500 hover:animate-pulse group"
+              >
+                <GithubIcon
+                  size={16}
+                  className="transition-transform duration-500 group-hover:rotate-[25deg]"
+                />
+              </Button>
+            </motion.div>
+
+            <motion.div variants={buttonVariants}>
+              <Button
+                variant="gooeyRight"
+                size="icon"
+                className="transition-transform duration-500 hover:animate-pulse group"
+              >
+                <LinkedinIcon
+                  size={16}
+                  className="transition-transform duration-500 group-hover:rotate-[25deg]"
+                />
+              </Button>
+            </motion.div>
+
+            <motion.div variants={buttonVariants}>
+              <Button
+                variant="gooeyRight"
+                size="icon"
+                className="transition-transform duration-500 hover:animate-pulse group"
+              >
+                <SlackIcon
+                  size={16}
+                  className="transition-transform duration-500 group-hover:rotate-[25deg]"
+                />
+              </Button>
+            </motion.div>
+
+            <motion.div variants={buttonVariants}>
+              <Button
+                variant="gooeyRight"
+                size="icon"
+                className="transition-transform duration-500 hover:animate-pulse group"
+                onClick={() => window.open("https://twitter.com/Benjaspet")}
+              >
+                <TwitterIcon
+                  size={16}
+                  className="transition-transform duration-500 group-hover:rotate-[25deg]"
+                />
+              </Button>
+            </motion.div>
+
+            <motion.div variants={buttonVariants}>
+              <Button
+                variant="gooeyRight"
+                size="icon"
+                className="transition-transform duration-500 hover:animate-pulse group"
+                onClick={() => open("mailto:petrillo.b@northeastern.edu")}
+              >
+                <MailIcon
+                  size={16}
+                  className="transition-transform duration-500 group-hover:rotate-[25deg]"
+                />
+              </Button>
+            </motion.div>
+          </motion.div>
 
         </div>
-        <div className="flex-shrink-0 hidden sm:flex">
+        <motion.div className="flex-shrink-0 hidden sm:flex" initial="hidden"
+          animate="visible"
+          variants={fadeInFromRightVariants} >
           <Image
             src="/headshot.jpeg"
             alt="Ben Petrillo"
@@ -172,38 +308,70 @@ export default function Home() {
             height={200}
             className="rounded-full border-4 border-[#0b6db8] animate-float"
           />
-        </div>
+        </motion.div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4">
         <Card className="border-2 duration-300 hover:border-[#0b6db8]">
           <CardHeader>
-            <CardTitle>Programming Languages</CardTitle>
+            <motion.div variants={swingVariants}
+              initial="hidden"
+              animate="visible">
+              <CardTitle>
+                {"Programming Languages".split("").map((letter, index) => (
+                  <span
+                    key={index}
+                    className="wave-letter inline-block"
+                    style={{ whiteSpace: letter === " " ? "pre" : "normal" }}
+                  >
+                    {letter === " " ? "\u00A0" : letter}
+                  </span>
+                ))}
+              </CardTitle>
+            </motion.div>
             {/* <CardDescription>Languages I'm proficient in</CardDescription> */}
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-1">
+            <motion.div
+              className="flex flex-wrap gap-1"
+              variants={staggerContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               {skills.languages.map((lang, index) => (
-                <span key={index} className="px-2 py-1 bg-[#0b6db8] text-white rounded-full text-xs font-semibold">
+                <motion.span
+                  key={index}
+                  className="px-2 py-1 bg-[#0b6db8] text-white rounded-full text-xs font-semibold"
+                  variants={buttonVariants} // Reusing the buttonVariants for the animation
+                >
                   {lang}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </CardContent>
         </Card>
 
         <Card className="border-2 duration-300 hover:border-[#0b6db8]">
           <CardHeader>
-            <CardTitle>Frameworks</CardTitle>
+            <CardTitle className="animate-float [animation-delay:1500ms]">Frameworks</CardTitle>
             {/* <CardDescription>Frameworks and libraries I work with</CardDescription> */}
           </CardHeader>
           <CardContent>
-            <div className="flex flex-wrap gap-1">
-              {skills.frameworks.map((framework, index) => (
-                <span key={index} className="px-2 py-1 bg-accent text-accent-foreground rounded-full text-xs font-semibold">
-                  {framework}
-                </span>
+            <motion.div
+              className="flex flex-wrap gap-1"
+              variants={staggerContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {skills.frameworks.map((lang, index) => (
+                <motion.span
+                  key={index}
+                  className="px-2 py-1 bg-secondary text-white rounded-full text-xs font-semibold"
+                  variants={buttonVariants} // Reusing the buttonVariants for the animation
+                >
+                  {lang}
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </CardContent>
         </Card>
       </div>
@@ -243,24 +411,39 @@ export default function Home() {
                 <TimelineDot status="current" />
                 <TimelineLine done />
                 <TimelineContent className="leading-[1.2rem]">
-                  <div className="mb-1.5 ml-1">
-                    <p className="text-gray-300 font-semibold ">Generate Product Development</p>
-                    <p className="text-gray-300 font-semibold">Boston, MA • Sep 2024 – Present</p>
-                  </div>
-                  <ul className="list-disc ml-4">
-                    <li className="font-medium">
+                  <motion.div
+                    className="mb-1.5 ml-1"
+                    initial="hidden"
+                    animate="visible"
+                    variants={textVariants}
+                  >
+                    <motion.p className="text-gray-300 font-semibold" variants={textVariants}>
+                      Generate Product Development
+                    </motion.p>
+                    <motion.p className="text-gray-300 font-semibold" variants={textVariants}>
+                      Boston, MA • Sep 2024 – Present
+                    </motion.p>
+                  </motion.div>
+                  <motion.ul
+                    ref={ref}
+                    className="list-disc ml-4"
+                    initial="hidden"
+                    animate={isInView ? "visible" : "hidden"}
+                    variants={listVariants}
+                  >
+                    <motion.li variants={itemVariants} className="font-medium">
                       Engineered <strong>20+ CRUD endpoints</strong> for authentication, profiles, and venue interactions for a nightlife discovery platform
-                    </li>
-                    <li className="font-medium">
+                    </motion.li>
+                    <motion.li variants={itemVariants} className="font-medium">
                       Implemented authentication with <strong>JWTs</strong> and refresh tokens, leveraging <strong>Supabase</strong> and <strong>PostgreSQL</strong> for data storage
-                    </li>
-                    <li className="font-medium">
+                    </motion.li>
+                    <motion.li variants={itemVariants} className="font-medium">
                       Completed <strong>weekly scrum sprints with a team of 12</strong> to convert Figma designs into functional React Native components
-                    </li>
-                    <li className="font-medium">
+                    </motion.li>
+                    <motion.li variants={itemVariants} className="font-medium">
                       Reviewed and gave constructive feedback to peer pull requests, ensuring alignment with agile development practices
-                    </li>
-                  </ul>
+                    </motion.li>
+                  </motion.ul>
                 </TimelineContent>
               </TimelineItem>
               <TimelineItem status="done">
