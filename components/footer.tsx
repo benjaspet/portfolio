@@ -20,7 +20,7 @@ export default function Footer() {
                 <div className="container mx-auto text-center">
                     <div className="flex flex-col lg:flex-row items-center text-center lg:text-left lg:justify-between">
                         <div className="mb-2 lg:mb-0 inline-flex space-x-2">
-                            <Image src="/signature.svg" alt="" width={100} height={100} className={"animate-float"}/>
+                            <Image src="/signature.svg" alt="" width={100} height={100} />
                             {/* <h2 className="text-2xl font-bold">Ben Petrillo</h2> */}
                             <p className={"self-center font-semibold"}>&copy; {new Date().getFullYear()}</p>
 
