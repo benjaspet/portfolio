@@ -177,6 +177,14 @@ export default function Home() {
                             <Timeline>
                                 <CustomTimelineItem
                                     status={"current"}
+                                    role={"Software Technical Lead"}
+                                    company={"Generate Product Development"}
+                                    locationAndDate={"Boston, MA • Dec 2024 – Present"}
+                                    bullets={[
+                                        "Leading a team of *6 engineers* in the development of a full-stack React Native application, facilitating weekly scrum meetings and code reviews",
+                                    ]} />
+                                <CustomTimelineItem
+                                    status={"current"}
                                     role={"Software Engineer"}
                                     company={"Generate Product Development"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
