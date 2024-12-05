@@ -96,7 +96,7 @@ const TimelineDot = React.forwardRef<HTMLDivElement, TimelineDotProps>(
 )
 TimelineDot.displayName = "TimelineDot"
 const timelineContentVariants = cva(
-  "row-start-2 row-end-2 pb-8 text-muted-foreground",
+  "row-start-2 row-end-2 pb-6 text-muted-foreground",
   {
     variants: {
       side: {

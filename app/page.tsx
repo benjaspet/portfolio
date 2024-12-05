@@ -179,10 +179,7 @@ export default function Home() {
                                     status={"current"}
                                     role={"Software Technical Lead"}
                                     company={"Generate Product Development"}
-                                    locationAndDate={"Boston, MA • Dec 2024 – Present"}
-                                    bullets={[
-                                        "Leading a team of *6 engineers* in the development of a full-stack React Native application, facilitating weekly scrum meetings and code reviews",
-                                    ]} />
+                                    locationAndDate={"Boston, MA • Dec 2024 – Present"} />
                                 <CustomTimelineItem
                                     status={"current"}
                                     role={"Software Engineer"}
