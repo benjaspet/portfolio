@@ -54,7 +54,7 @@ const github = <GitHubIcon
 export default function Home() {
 
     return (
-        <div className="mx-8 sm:mx-12 md:mx-32 lg:mx-48 xl:mx-56 my-6 sm:my-16">
+        <div className="mx-8 sm:mx-12 md:mx-32 lg:mx-48 xl:max-w-[1080px] xl:justify-self-center my-6 sm:my-16">
             <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
                 <div className="flex flex-col mb-2 sm:mb-0">
                     <motion.div className="items-center self-center sm:hidden mb-3" initial="hidden"
@@ -179,28 +179,36 @@ export default function Home() {
                                     status={"current"}
                                     role={"Software Technical Lead"}
                                     company={"Generate Product Development"}
-                                    locationAndDate={"Boston, MA • Dec 2024 – Present"} />
+                                    locationAndDate={"Boston, MA • Dec 2024 – Present"}
+                                    bullets={[
+                                        "Lead a team of *6 engineers* in the development of a mobile app for a real client using *React Native* and *Golang*",
+                                        "Review *150+ applications* and conduct *6 technical interviews* for potential engineers, ensuring thorough & fair evaluation"
+                                    ]}
+                                    key={0}
+                                />
                                 <CustomTimelineItem
                                     status={"current"}
                                     role={"Software Engineer"}
                                     company={"Generate Product Development"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
                                     bullets={[
-                                        "Engineered *20+ CRUD endpoints* for authentication, profiles, and venue interactions for a nightlife discovery platform",
-                                        "Implemented authentication with *JWTs* and refresh tokens, leveraging *Supabase* and *PostgreSQL* for data storage",
-                                        "Completed *weekly scrum sprints with a team of 12* to convert Figma designs into functional React Native components",
-                                        "Reviewed and gave constructive feedback to peer pull requests, ensuring alignment with agile development practices"
+                                        "Engineer *20+ CRUD endpoints* for authentication, user profiles, and venue interactions for a nightlife discovery platform",
+                                        "Utilize *react-navigation* to create mobile navigation stacks, leveraging *Supabase* and *JWTs* for user authentication",
+                                        "Complete weekly scrum sprints with a team of 12 to adhere to ambitious project deadlines and alignment with Figma designs",
+                                        "Review and give constructive feedback to peer pull requests, ensuring alignment with agile development practices"
                                     ]
                                     } key={1}/>
                                 <CustomTimelineItem
                                     status={"current"}
                                     role={"Software Engineer Co-op"}
-                                    company={"FirstGlance (by LHS)"}
+                                    company={"FirstGlance by LHS"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
                                     bullets={[
-                                        "Spearheaded development of a *full-stack Next.js application* using Tailwind CSS and Redux that streamlined startup discovery for founders and investors using a metric-based system, implementing efficient data-fetching for *5,000+ users*",
-                                        "Developed a library of *30+ reusable components* based on Figma designs, standardizing UI elements across the platform",
-                                        "Built *30+ OpenAPI-compliant REST endpoints* with ElysiaJS, enforcing strict type validation and writing a suite of tests",
+                                        "Creating *30+ React components* based on Figma designs for a metric-based startup discovery platform using *Next.js*",
+                                        "Developing and maintaining *~25 OpenAPI-compliant REST endpoints* with *FastAPI*, enforcing strict type validation",
+                                        "Transitioning legacy infrastructure with raw Firebase queries to *PostgreSQL* with secure, endpoint-protected access",
+                                        "Leveraging *pytest* and *bun-test* to develop performance and API-level test suites for backend items, achieving *~88%* coverage",
+                                        "Utilizing *Terraform* to automate software deployment to *AWS EC2* instances, following infrastructure-as-code best practices"
                                     ]
                                     } key={2}/>
                                 <CustomTimelineItem
@@ -209,8 +217,8 @@ export default function Home() {
                                     company={"VC Village"}
                                     locationAndDate={"Boston, MA • Oct 2024 – Present"}
                                     bullets={[
-                                        "Transitioned a legacy frontend codebase from HTML/CSS to React and TypeScript for a startup accelerator program",
-                                        "Developed *20 responsive UI components and reusable hooks* for efficient data fetching and state management"
+                                        "Transition a legacy frontend codebase from HTML/CSS to *React* & *TypeScript* for a startup accelerator program",
+                                        "Develop *~20 responsive UI components and reusable hooks* for efficient data fetching and codebase abstraction"
                                     ]
                                     } key={3}/>
                                 <CustomTimelineItem
@@ -220,9 +228,9 @@ export default function Home() {
                                     locationAndDate={"Object-Oriented Design: May – Jul 2024"}
                                     additionalSubtitle={"Fundamentals of CS II: Jan – Apr 2024"}
                                     bullets={[
-                                        "Directed *6 lab sections* with *40-60 students each*, conducting lecture-style sessions to reinforce course concepts on *software development best practices*, data structures, model-view-controller, observer, and decorator patterns in Java",
-                                        "Graded exams and *30+ assignments and lab activities each week*, collaborating with professors on grading rubrics",
-                                        "Held weekly office hours for one-on-one student mentoring on course & lecture content, and led student exam proctoring"
+                                        "Direct *5 lab sections* of *40-60 students each*, conducting lecture-style sessions on software development best practices",
+                                        "Grade *30+ assignments* and lab activities weekly, collaborating with professors on grading rubrics and class activities",
+                                        "Hold office hours for one-on-one mentoring on software engineering, data structures, and model-view-controller patterns"
                                     ]
                                     } key={4}/>
                                 <TimelineItem>
