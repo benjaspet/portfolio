@@ -179,6 +179,7 @@ export default function Home() {
                                     status={"current"}
                                     role={"Software Technical Lead"}
                                     company={"Generate Product Development"}
+                                    companyWebsite={"https://generatenu.com/"}
                                     locationAndDate={"Boston, MA • Dec 2024 – Present"}
                                     bullets={[
                                         "Lead a team of *6 engineers* in the development of a mobile app for a real client using *React Native* and *Golang*",
@@ -190,6 +191,7 @@ export default function Home() {
                                     status={"current"}
                                     role={"Software Engineer"}
                                     company={"Generate Product Development"}
+                                    companyWebsite={"https://generatenu.com/"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
                                     bullets={[
                                         "Engineer *20+ CRUD endpoints* for authentication, user profiles, and venue interactions for a nightlife discovery platform",
@@ -202,6 +204,7 @@ export default function Home() {
                                     status={"current"}
                                     role={"Software Engineer Co-op"}
                                     company={"FirstGlance by LHS"}
+                                    companyWebsite={"https://literallyhelpingstartups.com"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
                                     bullets={[
                                         "Creating *30+ React components* based on Figma designs for a metric-based startup discovery platform using *Next.js*",
@@ -215,6 +218,7 @@ export default function Home() {
                                     status={"current"}
                                     role={"Frontend Engineer"}
                                     company={"VC Village"}
+                                    companyWebsite={"https://vcvillage.co"}
                                     locationAndDate={"Boston, MA • Oct 2024 – Present"}
                                     bullets={[
                                         "Transition a legacy frontend codebase from HTML/CSS to *React* & *TypeScript* for a startup accelerator program",
@@ -225,6 +229,7 @@ export default function Home() {
                                     status={"done"}
                                     role={"Teaching Assistant"}
                                     company={"Khoury College of Computer Sciences"}
+                                    companyWebsite={"https://www.khoury.northeastern.edu"}
                                     locationAndDate={"Object-Oriented Design: May – Jul 2024"}
                                     additionalSubtitle={"Fundamentals of CS II: Jan – Apr 2024"}
                                     bullets={[
