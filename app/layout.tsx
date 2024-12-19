@@ -28,18 +28,12 @@ export const viewport: Viewport = {
     themeColor: "#0b6db8",
 };
 
-export default function RootLayout({
-                                       children,
-                                   }: Readonly<{
-    children: React.ReactNode;
-}>) {
+export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
-        <html lang="en">
-        <body
-            className={`dark ${outfit.variable} antialiased`}
-        >
-        {children}
-        </body>
+        <html lang="en" style={{scrollbarWidth: "none"}}>
+            <body className={`dark ${outfit.variable} antialiased`}>
+                {children}
+            </body>
         </html>
     );
 }
