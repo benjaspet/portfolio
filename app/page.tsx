@@ -92,7 +92,7 @@ export default function Home() {
                                 variants={staggerContainerVariants}
                                 initial="hidden"
                                 animate="visible">
-                        <LeadingButton icon={clipboard} text="Resume" link={"/ben_petrillo_resume.pdf"}/>
+                        <LeadingButton icon={clipboard} text="Resume" link={"/resume.pdf"}/>
                         <LeadingButton icon={calendar} text="Calendar"
                                        link={"https://calendar.app.google/Yx8PH4GBmrJkwoE3A"}/>
                     </motion.div>
@@ -182,8 +182,8 @@ export default function Home() {
                                     companyWebsite={"https://generatenu.com/"}
                                     locationAndDate={"Boston, MA • Dec 2024 – Present"}
                                     bullets={[
-                                        "Lead a team of *6 engineers* in the development of a mobile app for a real client using *React Native* and *Golang*",
-                                        "Review *150+ applications* and conduct *6 technical interviews* for potential engineers, ensuring thorough & fair evaluation"
+                                        "Lead a team of 6 engineers in the development of a mobile app for a real client using React Native and Golang",
+                                        "Review 150+ applications and conduct 7 technical interviews for potential engineers, ensuring fair evaluation"
                                     ]}
                                     key={0}
                                 />
@@ -194,10 +194,9 @@ export default function Home() {
                                     companyWebsite={"https://generatenu.com/"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
                                     bullets={[
-                                        "Engineer *20+ CRUD endpoints* for authentication, user profiles, and venue interactions for a nightlife discovery platform",
-                                        "Utilize *react-navigation* to create mobile navigation stacks, leveraging *Supabase* and *JWTs* for user authentication",
-                                        "Complete weekly scrum sprints with a team of 12 to adhere to ambitious project deadlines and alignment with Figma designs",
-                                        "Review and give constructive feedback to peer pull requests, ensuring alignment with agile development practices"
+                                        "Develop ∼18 CRUD endpoints for authentication, user profiles, and venue interactions for a nightlife platform",
+                                        "Utilize react-navigation to create mobile navigation stacks, leveraging Supabase and JWTs for user auth",
+                                        "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project deadlines & code reviews",
                                     ]
                                     } key={1}/>
                                 <CustomTimelineItem
@@ -207,11 +206,11 @@ export default function Home() {
                                     companyWebsite={"https://literallyhelpingstartups.com"}
                                     locationAndDate={"Boston, MA • Sep 2024 – Present"}
                                     bullets={[
-                                        "Creating *30+ React components* based on Figma designs for a metric-based startup discovery platform using *Next.js*",
-                                        "Developing and maintaining *~25 OpenAPI-compliant REST endpoints* with *FastAPI*, enforcing strict type validation",
-                                        "Transitioning legacy infrastructure with raw Firebase queries to *PostgreSQL* with secure, endpoint-protected access",
-                                        "Leveraging *pytest* and *bun-test* to develop performance and API-level test suites for backend items, achieving *~88%* coverage",
-                                        "Utilizing *Terraform* to automate software deployment to *AWS EC2* instances, following infrastructure-as-code best practices"
+                                        "Develop and maintain 25 OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
+                                        "Create 30+ React components based on Figma designs for a metric-based startup discovery platform in Next.js",
+                                        "Transition legacy infrastructure with raw Firebase queries to PostgreSQL with secure, endpoint-protected access",
+                                        "Leverage pytest and bun-test to develop performance and API-level test suites, achieving 88% coverage",
+                                        "Utilize Terraform to automate software deployment to AWS EC2 instances, adhering to IaC best practices"
                                     ]
                                     } key={2}/>
                                 <CustomTimelineItem
@@ -221,8 +220,8 @@ export default function Home() {
                                     companyWebsite={"https://vcvillage.co"}
                                     locationAndDate={"Boston, MA • Oct 2024 – Present"}
                                     bullets={[
-                                        "Transition a legacy frontend codebase from HTML/CSS to *React* & *TypeScript* for a startup accelerator program",
-                                        "Develop *~20 responsive UI components and reusable hooks* for efficient data fetching and codebase abstraction"
+                                        "Transition a legacy frontend codebase from HTML/CSS to React & TypeScript for a startup accelerator program",
+                                        "Develop ~20 responsive UI components and reusable hooks for abstraction and efficient data fetching"
                                     ]
                                     } key={3}/>
                                 <CustomTimelineItem
@@ -233,8 +232,8 @@ export default function Home() {
                                     locationAndDate={"Object-Oriented Design: May – Jul 2024"}
                                     additionalSubtitle={"Fundamentals of CS II: Jan – Apr 2024"}
                                     bullets={[
-                                        "Direct *5 lab sections* of *40-60 students each*, conducting lecture-style sessions on software development best practices",
-                                        "Grade *30+ assignments* and lab activities weekly, collaborating with professors on grading rubrics and class activities",
+                                        "Direct 5 lab sections of 40-60 students each, conducting lecture-style sessions on software development best practices",
+                                        "Grade 30+ assignments and lab activities weekly, collaborating with professors on grading rubrics and class activities",
                                         "Hold office hours for one-on-one mentoring on software engineering, data structures, and model-view-controller patterns"
                                     ]
                                     } key={4}/>
