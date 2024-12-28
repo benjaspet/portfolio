@@ -16,7 +16,6 @@ import {fadeInFromRightVariants} from "./animations/fade-in-from-right"
 import {foldUpVariants} from "./animations/fold-up"
 import {staggerContainerVariants} from "./animations/stagger"
 import {TwitterIcon, SlackIcon, LinkedInIcon, GitHubIcon} from "@/components/icons";
-import {projects} from "./config/projects"
 import {ProjectCard} from "@/components/project-card"
 
 import LanguagesCard from "@/components/languages-card";
@@ -27,6 +26,8 @@ import CustomTimelineItem from "@/components/timeline-item";
 import WaveText from "@/components/wave-text";
 import {fadeDownVariants} from "@/app/animations/fade-down";
 import Footer from "@/components/footer";
+import config from "@/app/config";
+import {Education, Experience, PortfolioProject} from "@/app/types";
 
 const clipboard = <ClipboardIcon size={16} className="mr-1.5"/>
 const calendar = <CalendarIcon size={16} className="mr-1.5"/>
@@ -151,23 +152,16 @@ export default function Home() {
                                                 initial="hidden"
                                                 animate="visible">
                                         <CardContent className="space-y-2">
-                                            <div className={"leading-5"}>
-                                                <motion.h3 className="text-lg font-semibold mb-[-4px]" variants={fadeDownVariants}>Northeastern University</motion.h3>
-                                                <motion.p className="text-muted-foreground font-semibold" variants={fadeDownVariants}>B.S. – Computer Science
-                                                    (Software)</motion.p>
-                                                <motion.p className="text-muted-foreground font-semibold" variants={fadeDownVariants}>Sep 2022 – May 2026</motion.p>
-                                            </div>
-                                            <div className={"leading-5"}>
-                                                <motion.h3 className="text-lg font-semibold mb-[-4px]" variants={fadeDownVariants}>
-                                                    Boston College High School
-                                                </motion.h3>
-                                                <motion.p className="text-muted-foreground font-semibold" variants={fadeDownVariants}>
-                                                    Middle School, High School Diploma
-                                                </motion.p>
-                                                <motion.p className="text-muted-foreground font-semibold" variants={fadeDownVariants}>
-                                                    Sep 2016 – May 2022
-                                                </motion.p>
-                                            </div>
+                                            {config.education.map((edu: Education, index: number) => (
+                                                <div className={"leading-5"} key={index}>
+                                                    <motion.h3 className="text-lg font-semibold mb-[-4px]"
+                                                               variants={fadeDownVariants}>{edu.school}</motion.h3>
+                                                    <motion.p className="text-muted-foreground font-semibold"
+                                                               variants={fadeDownVariants}>{edu.degree}</motion.p>
+                                                    <motion.p className="text-muted-foreground font-semibold"
+                                                               variants={fadeDownVariants}>{edu.duration}</motion.p>
+                                                </div>
+                                            ))}
                                         </CardContent>
                                     </motion.div>
                                 </Card>
@@ -175,68 +169,18 @@ export default function Home() {
                         </TabsContent>
                         <TabsContent value="account" className="py-2">
                             <Timeline>
-                                <CustomTimelineItem
-                                    status={"current"}
-                                    role={"Software Technical Lead"}
-                                    company={"Generate Product Development"}
-                                    companyWebsite={"https://generatenu.com/"}
-                                    locationAndDate={"Boston, MA • Dec 2024 – Present"}
-                                    bullets={[
-                                        "Lead a team of 6 engineers in the development of a mobile app for a real client using React Native and Golang",
-                                        "Review 150+ applications and conduct 7 technical interviews for potential engineers, ensuring fair evaluation"
-                                    ]}
-                                    key={0}
-                                />
-                                <CustomTimelineItem
-                                    status={"current"}
-                                    role={"Software Engineer"}
-                                    company={"Generate Product Development"}
-                                    companyWebsite={"https://generatenu.com/"}
-                                    locationAndDate={"Boston, MA • Sep 2024 – Present"}
-                                    bullets={[
-                                        "Develop ∼18 CRUD endpoints for authentication, user profiles, and venue interactions for a nightlife platform",
-                                        "Utilize react-navigation to create mobile navigation stacks, leveraging Supabase and JWTs for user auth",
-                                        "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project deadlines & code reviews",
-                                    ]
-                                    } key={1}/>
-                                <CustomTimelineItem
-                                    status={"current"}
-                                    role={"Software Engineer Co-op"}
-                                    company={"FirstGlance by LHS"}
-                                    companyWebsite={"https://literallyhelpingstartups.com"}
-                                    locationAndDate={"Boston, MA • Sep 2024 – Present"}
-                                    bullets={[
-                                        "Develop and maintain 25 OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
-                                        "Create 30+ React components based on Figma designs for a metric-based startup discovery platform in Next.js",
-                                        "Transition legacy infrastructure with raw Firebase queries to PostgreSQL with secure, endpoint-protected access",
-                                        "Leverage pytest and bun-test to develop performance and API-level test suites, achieving 88% coverage",
-                                        "Utilize Terraform to automate software deployment to AWS EC2 instances, adhering to IaC best practices"
-                                    ]
-                                    } key={2}/>
-                                <CustomTimelineItem
-                                    status={"current"}
-                                    role={"Frontend Engineer"}
-                                    company={"VC Village"}
-                                    companyWebsite={"https://vcvillage.co"}
-                                    locationAndDate={"Boston, MA • Oct 2024 – Present"}
-                                    bullets={[
-                                        "Transition a legacy frontend codebase from HTML/CSS to React & TypeScript for a startup accelerator program",
-                                        "Develop ~20 responsive UI components and reusable hooks for abstraction and efficient data fetching"
-                                    ]
-                                    } key={3}/>
-                                <CustomTimelineItem
-                                    status={"done"}
-                                    role={"Teaching Assistant"}
-                                    company={"Khoury College of Computer Sciences"}
-                                    companyWebsite={"https://www.khoury.northeastern.edu"}
-                                    locationAndDate={"Object-Oriented Design: May – Jul 2024"}
-                                    additionalSubtitle={"Fundamentals of CS II: Jan – Apr 2024"}
-                                    bullets={[
-                                        "Direct 5 lab sections of 40-60 students each, conducting lecture-style sessions on software development best practices",
-                                        "Grade 30+ assignments and lab activities weekly, collaborating with professors on grading rubrics and class activities",
-                                        "Hold office hours for one-on-one mentoring on software engineering, data structures, and model-view-controller patterns"
-                                    ]
-                                    } key={4}/>
+                                {config.experience.map((exp: Experience, index: number) => (
+                                    <CustomTimelineItem
+                                        status={exp.status}
+                                        role={exp.role}
+                                        company={exp.company}
+                                        companyWebsite={exp.website}
+                                        locationAndDate={exp.locationAndDate}
+                                        additionalSubtitle={exp.additionalSubtitle}
+                                        bullets={exp.bullets}
+                                        key={index}
+                                    />
+                                ))}
                                 <TimelineItem>
                                     <TimelineHeading>I blossomed into existence 🌸</TimelineHeading>
                                     <TimelineDot status={"done"}/>
@@ -245,8 +189,8 @@ export default function Home() {
                         </TabsContent>
                         <TabsContent value={"projects"} className="py-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
-                                {projects.map(project => (
-                                    <ProjectCard key={project.identifier} project={project}/>
+                                {config.projects.map((proj: PortfolioProject, index: number) => (
+                                    <ProjectCard key={index} project={proj}/>
                                 ))}
                             </div>
                         </TabsContent>
