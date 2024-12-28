@@ -2,10 +2,11 @@ import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {motion} from "framer-motion";
 import {foldUpVariants} from "@/app/animations/fold-up";
 import {staggerContainerVariants, staggerItemVariants} from "@/app/animations/stagger";
-import {skills} from "@/app/config/skills";
 import React, {useEffect} from "react";
 import WaveText from "@/components/wave-text";
 import {fadeInFromRightVariants} from "@/app/animations/fade-in-from-right";
+
+import config from "@/app/config";
 
 export default function LanguagesCard() {
 
@@ -35,7 +36,7 @@ export default function LanguagesCard() {
                         initial="hidden"
                         animate="visible"
                     >
-                        {skills.languages.map((lang, index) => (
+                        {config.languages.map((lang, index) => (
                             <motion.span
                                 key={index}
                                 className="px-2 py-1 bg-[#0b6db8] text-white rounded-full text-xs font-semibold"

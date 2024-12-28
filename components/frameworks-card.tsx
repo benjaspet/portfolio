@@ -1,9 +1,9 @@
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {motion} from "framer-motion";
 import {staggerContainerVariants, staggerItemVariants} from "@/app/animations/stagger";
-import {skills} from "@/app/config/skills";
 import {fadeInFromRightVariants} from "@/app/animations/fade-in-from-right";
 import WaveText from "@/components/wave-text";
+import config from "@/app/config";
 
 export default function FrameworksCard() {
     return (
@@ -21,7 +21,7 @@ export default function FrameworksCard() {
                         initial="hidden"
                         animate="visible"
                     >
-                        {skills.frameworks.map((lang, index) => (
+                        {config.technologies.map((lang, index) => (
                             <motion.span
                                 key={index}
                                 className="px-2 py-1 bg-secondary text-white rounded-full text-xs font-semibold"

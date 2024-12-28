@@ -21,7 +21,8 @@ export const metadata: Metadata = {
                 alt: "Ben Petrillo",
             },
         ],
-    }
+    },
+    metadataBase: new URL("https://benpetrillo.dev")
 };
 
 export const viewport: Viewport = {

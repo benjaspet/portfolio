@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 import {fadeInFromRightVariants} from "@/app/animations/fade-in-from-right";
 import {Badge} from "./ui/badge";
 import Image from "next/image";
-import {PortfolioProject} from "@/app/types/types";
+import {PortfolioProject} from "@/app/types";
 
 type ProjectCardProps = {
     project: PortfolioProject;
