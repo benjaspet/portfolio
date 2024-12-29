@@ -12,6 +12,20 @@ const outfit = localFont({
 export const metadata: Metadata = {
     title: "Ben Petrillo",
     description: "I'm a software engineer and third-year student at Northeastern University studying Computer Science.",
+    icons: {
+        icon: [
+            {
+                media: "(prefers-color-scheme: dark)",
+                url: "/favicons/light.png",
+                href: "/favicons/light.png",
+            },
+            {
+                media: "(prefers-color-scheme: light)",
+                url: "/favicons/dark.png",
+                href: "/favicons/dark.png",
+            }
+        ]
+    },
     openGraph: {
         images: [
             {
