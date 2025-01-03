@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     openGraph: {
         images: [
             {
-                url: "/headshot.png",
+                url: "/headshot.jpg",
                 width: 1200,
                 height: 627,
                 alt: "Ben Petrillo",
