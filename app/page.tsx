@@ -62,7 +62,7 @@ export default function Home() {
                                 animate="visible"
                                 variants={fadeInFromRightVariants}>
                         <Image
-                            src="/headshot.jpg"
+                            src="/headshot.png"
                             alt="Ben Petrillo"
                             width={200}
                             height={200}
@@ -116,7 +116,7 @@ export default function Home() {
                             animate="visible"
                             variants={fadeInFromRightVariants}>
                     <Image
-                        src="/headshot.jpeg"
+                        src="/headshot.png"
                         alt="Ben Petrillo"
                         width={200}
                         height={200}
