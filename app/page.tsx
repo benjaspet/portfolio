@@ -112,7 +112,7 @@ export default function Home() {
                     </motion.div>
 
                 </div>
-                <motion.div className="flex-shrink-0 hidden sm:flex" initial="hidden"
+f                <motion.div className="flex-shrink-0 hidden sm:flex" initial="hidden"
                             animate="visible"
                             variants={fadeInFromRightVariants}>
                     <Image
