@@ -1,8 +1,9 @@
 type BoldifyProps = {
     text: string;
+    classname?: string;
 }
 
-export default function Boldify({ text }: BoldifyProps) {
+export default function Boldify({ text, classname }: BoldifyProps) {
     const bolded = text.replace(/\*([^*]+)\*/g, "<strong>$1</strong>");
-    return <div dangerouslySetInnerHTML={{ __html: bolded }} />;
+    return <div className={classname} dangerouslySetInnerHTML={{ __html: bolded }} />;
 }

@@ -1,10 +1,11 @@
 import React from "react"
-import {Card, CardContent} from "./ui/card";
+import {Card, CardContent, CardFooter} from "./ui/card";
 import {motion} from "framer-motion";
 import {fadeInFromRightVariants} from "@/app/animations/fade-in-from-right";
 import {Badge} from "./ui/badge";
 import Image from "next/image";
 import {PortfolioProject} from "@/app/types";
+import {Button} from "@/components/ui/button";
 
 type ProjectCardProps = {
     project: PortfolioProject;
@@ -19,11 +20,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         src={project.imageURL}
                         alt={project.title}
                         width={400}
-                        height={100}
-                        className="w-full h-[100px] object-cover"
+                        height={200}
+                        className="w-full h-[200px] object-cover"
                     />
                 </motion.div>
-                <CardContent className="p-5 flex flex-col flex-grow">
+                <CardContent className="px-5 pt-4 pb-2 flex flex-col flex-grow">
                     <h3 className="text-lg font-semibold mb-1">{project.title}</h3>
                     <p className="text-md text-muted-foreground mb-4 font-medium flex-grow">{project.description}</p>
                     <div className="flex flex-wrap gap-2 mt-auto">
@@ -34,6 +35,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         ))}
                     </div>
                 </CardContent>
+                <CardFooter className="text-sm text-gray-100 gap-4">
+                    <Button className={"p-0"} variant={"linkHover2"} onClick={() => window.open(project.githubURL)}>GitHub</Button>
+                    <Button className={"p-0"} variant={"linkHover2"}>Live</Button>
+                </CardFooter>
             </Card>
         </motion.div>
     )

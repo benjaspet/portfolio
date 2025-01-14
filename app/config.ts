@@ -28,8 +28,9 @@ export default {
             locationAndDate: "Boston, MA • Dec 2024 – Present",
             status: "current",
             "bullets": [
-                "Lead a team of 5 engineers in the development of a mobile app for a real client using React Native and Golang",
-                "Review 150+ applications and conduct 7 technical interviews for potential engineers, ensuring fair evaluation"
+                "Lead a team of 5 engineers in the development of PlateMate, a data-driven insight application for restaurants",
+                "Manage project milestones, delegate tickets, review pull requests, and lead project architecture discussions",
+                "Build a development environment using Nix, and develop CI workflow scripts to improve development velocity"
             ]
         },
         {
@@ -39,9 +40,9 @@ export default {
             locationAndDate: "Boston, MA • Sep - Dec 2024",
             status: "done",
             "bullets": [
-                "Develop ∼18 CRUD endpoints for authentication, user profiles, and venue interactions for a nightlife platform",
-                "Utilize react-navigation to create mobile navigation stacks, leveraging Supabase and JWTs for user auth",
-                "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project deadlines & code reviews"
+                "Implement 20+ CRUD routes for auth, users, and venue interactions for a nightlife discovery platform",
+                "Create mobile navigation stacks and architect auth flows leveraging JSON webtokens & Supabase PostgreSQL",
+                "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project demonstration deadlines"
             ]
         },
         {
@@ -86,12 +87,28 @@ export default {
     ],
     projects: [
         {
-            title: "Nightlife",
-            description: "A mobile application for nightlife discovery that helps users make informed decisions on where to spend their nights out, based on real, user-driven ratings that are specific to their interests.",
-            imageURL: "/nightlife.png",
+            title: "PlateMate",
+            description: "PlateMate is a data-driven meal insight platform that allows customers to rate their experience on a dish-by-dih basis, providing restaurants with actionable data on how to improve their menus.",
+            imageURL: "/platemate-cover.png",
             githubURL: "",
             liveURL: "",
+            techStack: ["Go", "MongoDB", "React Native"]
+        },
+        {
+            title: "Nightlife",
+            description: "A mobile application for nightlife discovery that helps users make informed decisions on where to spend their nights out, based on real, user-driven ratings that are specific to their interests.",
+            imageURL: "/nightlife-cover.png",
+            githubURL: "https://github.com/GenerateNU/nightlife",
+            liveURL: "",
             techStack: ["Go", "React Native", "PostgreSQL"]
+        },
+        {
+            title: "Ponjo Pastes",
+            description: "A code snippet sharing platform for developers.",
+            imageURL: "/ponjo-pastes-cover.png",
+            githubURL: "",
+            liveURL: "",
+            techStack: ["Go", "MongoDB", "React Native"]
         },
         {
             title: "Hexagonal Reversi",
@@ -128,7 +145,7 @@ export default {
         {
             title: "Elixir Music Bot & API",
             description: "A Discord music application serving over 300,000 users using the Spotify Tracks API and YouTube. Featuring custom playlist support via MongoDB and a RESTful API to motify the bot state externally.",
-            imageURL: "/elixir.png",
+            imageURL: "/elixir-cover.png",
             githubURL: "",
             liveURL: "",
             techStack: ["Java", "Javalin", "MongoDB"]
