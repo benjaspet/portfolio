@@ -28,13 +28,13 @@ export default function Footer() {
                         <nav className="mb-4 lg:mb-0">
                             <ul className="flex flex-wrap justify-center space-x-4">
                                 <li><Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">
-                                    <WaveText text={"Made with ❤ & Next.js, Tailwind, Shad"} />
+                                    Made with ❤ & Next.js, Tailwind, Shad
                                 </Link></li>
                             </ul>
                         </nav>
                         <div className="flex space-x-3">
                             <a href="https://github.com/benjaspet" target="_blank" rel="noopener noreferrer"
-                               className="group animate-float"
+                               className="group"
                                aria-label="Facebook">
                                 <GitHubIcon
                                     size={24}
@@ -42,13 +42,13 @@ export default function Footer() {
                                 />
                             </a>
                             <a href="https://twitter.com/benjaspet" target="_blank" rel="noopener noreferrer"
-                               className="group delay-3000 animate-float"
+                               className="group"
                                aria-label="Twitter">
                                 <TwitterIcon size={24}
                                              className="transition-transform duration-500 group-hover:rotate-[25deg]"/>
                             </a>
                             <a href="https://linkedin.com/in/ben-petrillo" target="_blank" rel="noopener noreferrer"
-                               className="group delay-1500 animate-float"
+                               className="group"
                                aria-label="LinkedIn">
                                 <LinkedInIcon size={24}
                                               className="transition-transform duration-500 group-hover:rotate-[25deg]"/>
