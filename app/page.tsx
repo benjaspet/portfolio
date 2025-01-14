@@ -1,7 +1,6 @@
 "use client"
 
-import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card"
-import {Bold, CalendarIcon, ClipboardIcon, MailIcon, MapPinHouse} from "lucide-react"
+import {CalendarIcon, ClipboardIcon, MailIcon} from "lucide-react"
 import Image from 'next/image'
 import {Tabs, TabsTrigger} from "@/components/ui/tabs"
 import {TabsContent, TabsList} from "@/components/ui/tabs"
@@ -20,9 +19,9 @@ import WaveText from "@/components/wave-text";
 import {fadeDownVariants} from "@/app/animations/fade-down";
 import Footer from "@/components/footer";
 import config from "@/app/config";
-import {Education, PortfolioProject} from "@/app/types";
+import {PortfolioProject} from "@/app/types";
 import ExperienceCard from "@/components/experience-card";
-import Boldify from "@/components/boldify";
+import {Separator} from "@/components/ui/separator";
 
 const clipboard = <ClipboardIcon size={16} className="mr-1.5"/>
 const calendar = <CalendarIcon size={16} className="mr-1.5"/>
@@ -79,7 +78,7 @@ export default function Home() {
                             alt="Ben Petrillo"
                             width={200}
                             height={200}
-                            className="rounded-full border-4 border-[#0b6db8] animate-float"
+                            className="rounded-full border-4 border-[#0b6db8]"
                         />
                     </motion.div>
                     <motion.h1 className="text-center sm:text-start text-4xl font-bold" variants={foldUpVariants}
@@ -99,7 +98,7 @@ export default function Home() {
                                animate="visible"
                                className="text-md text-gray-300 font-semibold text-center sm:text-start">
             <span className="hidden sm:inline-flex gap-1 items-center mb-2">
-              Let's make something impactful.
+              Let&#39;s make something impactful.
             </span>
                     </motion.h4>
                     <motion.div className="inline-flex gap-2 mt-1 self-center sm:self-start"
@@ -133,7 +132,7 @@ export default function Home() {
                         alt="Ben Petrillo"
                         width={200}
                         height={200}
-                        className="rounded-full border-4 border-[#0b6db8] animate-float"
+                        className="rounded-full border-4 border-[#0b6db8]"
                     />
                 </motion.div>
             </div>
@@ -146,98 +145,35 @@ export default function Home() {
                     <Tabs defaultValue="account" className="">
                         <TabsList className="flex w-full">
                             <TabsTrigger value="account" className="flex-1 text-center">
-                                Experience
+                                Experience & Education
                             </TabsTrigger>
                             <TabsTrigger value="password" className="flex-1 text-center">
-                                Bio/Education
-                            </TabsTrigger>
-                            <TabsTrigger value="projects" className="flex-1 text-center">
                                 Projects
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="password" className="py-2">
-                            <motion.div initial="hidden" animate="visible" variants={fadeDownVariants}>
-                                <Card className="border-2">
-                                    <CardHeader>
-                                        <CardTitle>Biography</CardTitle>
-                                    </CardHeader>
-                                    <CardContent>
-                                        <CardTitle>Education</CardTitle>
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-6">
-                                            <motion.div // This must be a motion.div for stagger to work
-                                                key={0}
-                                                variants={fadeInFromRightChildVariants} // Child variants
-                                            >
-                                                <ExperienceCard
-                                                    backgroundImage={"/northeastern-banner.jpg"}
-                                                    companyLogo={"/northeastern-logo.png"}
-                                                    role={"B.S. - Computer Science"}
-                                                />
-                                            </motion.div>
-                                            <motion.div
-                                                key={1}
-                                                variants={fadeInFromRightChildVariants}
-                                            >
-                                                <ExperienceCard
-                                                    backgroundImage={"/bchigh-banner.jpg"}
-                                                    companyLogo={"/bchigh-logo.png"}
-                                                    role={"2016-2022"}
-                                                />
-                                            </motion.div>
-                                        </div>
-                                    </CardContent>
-                                    <motion.div variants={fadeDownVariants}
-                                                initial="hidden"
-                                                animate="visible">
-                                        <CardContent className="space-y-2">
-                                            <motion.p className="text-muted-foreground font-semibold"
-                                                      variants={fadeDownVariants}>
-                                                I&#39;m a third-year Computer Science and Software student at
-                                                Northeastern University.
-                                                I serve as a Software Technical Lead for its premier product development
-                                                studio, Generate.
-                                            </motion.p>
-                                            <motion.p className="text-muted-foreground font-semibold"
-                                                      variants={fadeDownVariants}>
-                                                Most recently, I completed my first co-op as a software engineer at
-                                                FirstGlance,
-                                                a startup focusing on making discovery easier for startup founders and
-                                                investors.
-                                                During my experience, I developed core backend infrastructure and
-                                                frontend
-                                                components for their flagship product, leveraging tools like Python, AWS
-                                                EC2, Terraform,
-                                                TypeScript, and Next.js.
-                                            </motion.p>
-                                            <motion.p className="text-muted-foreground font-semibold"
-                                                      variants={fadeDownVariants}>
-                                                Previously, I was a Software Engineer at Generate, where I worked
-                                                with a team of 12 to develop a nightlife discovery mobile
-                                                application. I also held teaching assistant roles for CS3500: Object-Oriented
-                                                Design and CS2510: Fundamentals of Computer Science II at the Khoury
-                                                College of Computer Sciences.
-                                            </motion.p>
-                                        </CardContent>
-                                    </motion.div>
-                                </Card>
-                            </motion.div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
+                                {config.projects.map((proj: PortfolioProject, index: number) => (
+                                    <ProjectCard key={index} project={proj}/>
+                                ))}
+                            </div>
                         </TabsContent>
                         <TabsContent value="account" className="py-2">
                             <motion.div
                                 className="mx-auto flex items-center justify-center"
                                 initial="hidden"
                                 animate="visible"
-                                variants={fadeInFromRightVariants} // Parent variants
+                                variants={fadeInFromRightVariants}
                             >
                                 <motion.div
                                     className="w-full"
-                                    variants={fadeInFromRightVariants} // Ensures it participates in staggerChildren
+                                    variants={fadeInFromRightVariants}
                                 >
                                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                                    {companies.map((company, index) => (
-                                            <motion.div // This must be a motion.div for stagger to work
+                                        {companies.map((company, index) => (
+                                            <motion.div
                                                 key={index}
-                                                variants={fadeInFromRightChildVariants} // Child variants
+                                                variants={fadeInFromRightChildVariants}
                                             >
                                                 <ExperienceCard
                                                     backgroundImage={company.backgroundImage}
@@ -249,13 +185,30 @@ export default function Home() {
                                     </div>
                                 </motion.div>
                             </motion.div>
-                        </TabsContent>
-                        <TabsContent value={"projects"} className="py-4">
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
-                                {config.projects.map((proj: PortfolioProject, index: number) => (
-                                    <ProjectCard key={index} project={proj}/>
-                                ))}
-                            </div>
+                            <Separator className="my-4" />
+                            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-2"
+                                        variants={fadeInFromRightVariants}>
+                                <motion.div
+                                    key={0}
+                                    variants={fadeInFromRightChildVariants}
+                                >
+                                    <ExperienceCard
+                                        backgroundImage={"/northeastern-banner.jpg"}
+                                        companyLogo={"/northeastern-logo.png"}
+                                        role={"B.S. - Computer Science"}
+                                    />
+                                </motion.div>
+                                <motion.div
+                                    key={1}
+                                    variants={fadeInFromRightChildVariants}
+                                >
+                                    <ExperienceCard
+                                        backgroundImage={"/bchigh-banner.jpg"}
+                                        companyLogo={"/bchigh-logo.png"}
+                                        role={"2016-2022"}
+                                    />
+                                </motion.div>
+                            </motion.div>
                         </TabsContent>
                     </Tabs>
                 </motion.div>

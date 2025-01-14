@@ -4,7 +4,6 @@ import {motion, useInView} from "framer-motion";
 import {MutableRefObject, useRef} from "react";
 import {fadeDownVariants} from "@/app/animations/fade-down";
 import Image from "next/image";
-import WaveText from "@/components/wave-text";
 
 export default function Footer() {
 
