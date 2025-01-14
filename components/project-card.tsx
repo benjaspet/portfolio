@@ -13,7 +13,7 @@ type ProjectCardProps = {
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     return (
-        <motion.div initial="hidden" animate="visible" variants={fadeInFromRightVariants} className="h-full">
+        <div className="h-full">
             <Card className="overflow-hidden border-2 duration-300 border-gray-600 hover:border-[#0b6db8] h-full flex flex-col">
                 <motion.div initial="hidden" animate="visible" variants={fadeInFromRightVariants}>
                     <Image
@@ -35,11 +35,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                         ))}
                     </div>
                 </CardContent>
-                <CardFooter className="text-sm text-gray-100 gap-4">
-                    <Button className={"p-0"} variant={"linkHover2"} onClick={() => window.open(project.githubURL)}>GitHub</Button>
-                    <Button className={"p-0"} variant={"linkHover2"}>Live</Button>
+                <CardFooter className="text-sm text-gray-100 gap-4 pb-3">
+                    {project.githubURL && <Button className={"p-0"} variant={"linkHover2"} onClick={() => window.open(project.githubURL)}>GitHub</Button> }
+                    {project.liveURL && <Button className={"p-0"} variant={"linkHover2"} onClick={() => window.open(project.liveURL)}>Live</Button>}
+                    <Button className={"p-0 hover:cursor-text"} variant={"linkHover2"}>{project.duration}</Button>
                 </CardFooter>
             </Card>
-        </motion.div>
+        </div>
     )
 }

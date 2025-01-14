@@ -11,7 +11,7 @@ export default function FrameworksCard() {
             <Card className="border-2 duration-300 hover:border-[#0b6db8] flex-1">
                 <CardHeader>
                     <CardTitle>
-                        <WaveText text={"Frameworks"} />
+                        <WaveText text={"Tools & Frameworks"} />
                     </CardTitle>
                 </CardHeader>
                 <CardContent>

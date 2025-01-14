@@ -19,9 +19,10 @@ import WaveText from "@/components/wave-text";
 import {fadeDownVariants} from "@/app/animations/fade-down";
 import Footer from "@/components/footer";
 import config from "@/app/config";
-import {PortfolioProject} from "@/app/types";
+import {Education, PortfolioProject} from "@/app/types";
 import ExperienceCard from "@/components/experience-card";
 import {Separator} from "@/components/ui/separator";
+import EducationCard from "@/components/education-card";
 
 const clipboard = <ClipboardIcon size={16} className="mr-1.5"/>
 const calendar = <CalendarIcon size={16} className="mr-1.5"/>
@@ -45,24 +46,6 @@ const github = <GitHubIcon
     size={16}
     className="transition-transform duration-500 group-hover:rotate-[25deg]"
 />
-
-const companies = [
-    {
-        backgroundImage: "/generate-banner.jpg",
-        companyLogo: "/generate-logo.png",
-        role: "Software Technical Lead"
-    },
-    {
-        backgroundImage: "/firstglance-banner.jpg",
-        companyLogo: "/firstglance-logo.png",
-        role: "Software Engineer Co-op"
-    },
-    {
-        backgroundImage: "/khoury-banner.jpg",
-        companyLogo: "/northeastern-logo.png",
-        role: "Teaching Assistant, Object-Oriented Design"
-    }
-]
 
 export default function Home() {
 
@@ -98,7 +81,7 @@ export default function Home() {
                                animate="visible"
                                className="text-md text-gray-300 font-semibold text-center sm:text-start">
             <span className="hidden sm:inline-flex gap-1 items-center mb-2">
-              Let&#39;s make something impactful.
+              Let&#39;s build something cool together!
             </span>
                     </motion.h4>
                     <motion.div className="inline-flex gap-2 mt-1 self-center sm:self-start"
@@ -152,62 +135,50 @@ export default function Home() {
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="password" className="py-2">
-                            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4">
+                            <motion.div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4"
+                                        initial="hidden" animate="visible" variants={fadeInFromRightVariants}>
                                 {config.projects.map((proj: PortfolioProject, index: number) => (
-                                    <ProjectCard key={index} project={proj}/>
+                                    <motion.div key={index} variants={fadeInFromRightChildVariants}>
+                                        <ProjectCard key={index} project={proj}/>
+                                    </motion.div>
                                 ))}
-                            </div>
+                            </motion.div>
                         </TabsContent>
                         <TabsContent value="account" className="py-2">
                             <motion.div
-                                className="mx-auto flex items-center justify-center"
+                                className="mx-auto w-full flex items-center justify-center"
                                 initial="hidden"
                                 animate="visible"
                                 variants={fadeInFromRightVariants}
                             >
-                                <motion.div
-                                    className="w-full"
-                                    variants={fadeInFromRightVariants}
-                                >
-                                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                                        {companies.map((company, index) => (
-                                            <motion.div
-                                                key={index}
-                                                variants={fadeInFromRightChildVariants}
-                                            >
-                                                <ExperienceCard
-                                                    backgroundImage={company.backgroundImage}
-                                                    companyLogo={company.companyLogo}
-                                                    role={company.role}
-                                                />
-                                            </motion.div>
-                                        ))}
-                                    </div>
-                                </motion.div>
+                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                    {config.experience.map((company, index) => (
+                                        <motion.div
+                                            key={index}
+                                            variants={fadeInFromRightChildVariants}
+                                        >
+                                            <ExperienceCard
+                                                background={company.backgroundImage}
+                                                logo={company.companyLogo}
+                                                experience={company}
+                                            />
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </motion.div>
-                            <Separator className="my-4" />
+                            <Separator className="my-4"/>
                             <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-2"
                                         variants={fadeInFromRightVariants}>
-                                <motion.div
-                                    key={0}
-                                    variants={fadeInFromRightChildVariants}
-                                >
-                                    <ExperienceCard
-                                        backgroundImage={"/northeastern-banner.jpg"}
-                                        companyLogo={"/northeastern-logo.png"}
-                                        role={"B.S. - Computer Science"}
-                                    />
-                                </motion.div>
-                                <motion.div
-                                    key={1}
-                                    variants={fadeInFromRightChildVariants}
-                                >
-                                    <ExperienceCard
-                                        backgroundImage={"/bchigh-banner.jpg"}
-                                        companyLogo={"/bchigh-logo.png"}
-                                        role={"2016-2022"}
-                                    />
-                                </motion.div>
+                                {config.education.map((institution: Education, index: number) => (
+                                    <motion.div key={index} variants={fadeInFromRightChildVariants}>
+                                        <EducationCard
+                                            level={institution.level}
+                                            duration={institution.duration}
+                                            background={institution.background}
+                                            logo={institution.logo}
+                                        />
+                                    </motion.div>
+                                ))}
                             </motion.div>
                         </TabsContent>
                     </Tabs>

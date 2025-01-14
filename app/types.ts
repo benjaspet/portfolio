@@ -7,26 +7,36 @@ export type Config = {
 }
 
 export type Experience = {
-    role: string;
     company: string;
+    description: string;
     website: string;
-    locationAndDate: string;
-    status: "done" | "current";
-    additionalSubtitle?: string;
-    bullets: string[];
+    backgroundImage: string;
+    companyLogo: string;
+    roles: Role[];
+}
+
+export type Role = {
+    position: string;
+    location: string;
+    dateRange: string;
+    status: "current" | "done";
+    bullets: string[]
 }
 
 export type PortfolioProject = {
     title: string;
     description: string;
+    duration: string;
     imageURL: string;
-    githubURL: string;
-    liveURL: string;
+    githubURL?: string;
+    liveURL?: string;
     techStack: string[];
 }
 
 export type Education = {
-    school: string;
-    degree: string;
+    institution: string;
+    level: string;
     duration: string;
+    logo: string;
+    background: string;
 }

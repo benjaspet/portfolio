@@ -16,7 +16,7 @@ type CustomTimelineItemProps = {
     additionalSubtitle?: string;
 }
 
-export default function CustomTimelineItem({ status, role, company, companyWebsite, locationAndDate, bullets, additionalSubtitle }: CustomTimelineItemProps) {
+export default function CustomTimelineItem({ status, role, locationAndDate, bullets, additionalSubtitle }: CustomTimelineItemProps) {
 
     const ref: MutableRefObject<null> = useRef(null);
     const isInView: boolean = useInView(ref, {once: true, amount: 0.10});
@@ -33,9 +33,6 @@ export default function CustomTimelineItem({ status, role, company, companyWebsi
                     animate="visible"
                     variants={fadeDownVariants}
                 >
-                    <motion.a href={companyWebsite} className="text-gray-300 font-semibold duration-300 hover:text-[#0b6db8]" variants={fadeDownVariants}>
-                        {company}
-                    </motion.a>
                     <motion.p className="text-gray-300 font-semibold" variants={fadeDownVariants}>
                         {locationAndDate}
                     </motion.p>

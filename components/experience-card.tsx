@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -12,17 +11,17 @@ import {
 } from "@/components/ui/dialog"
 import {Timeline, TimelineDot, TimelineHeading, TimelineItem} from "@/components/ui/timeline";
 import CustomTimelineItem from "@/components/timeline-item";
-import config from "@/app/config";
-import {Experience} from "@/app/types";
+import {Experience, Role} from "@/app/types";
 import Image from "next/image";
+import {ScrollArea} from "@/components/ui/scroll-area";
 
 type CardProps = {
-    companyLogo: string;
-    role: string;
-    backgroundImage: string;
+    experience: Experience;
+    logo: string;
+    background: string;
 };
 
-const Card = ({ companyLogo, role, backgroundImage }: CardProps) => {
+const Card = ({ experience, logo, background }: CardProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -34,7 +33,7 @@ const Card = ({ companyLogo, role, backgroundImage }: CardProps) => {
                     onMouseLeave={() => setIsHovered(false)}
                 >
                     <Image
-                        src={backgroundImage}
+                        src={background}
                         alt="Background image"
                         className="transition-transform duration-300 ease-in-out"
                         width={600}
@@ -48,7 +47,7 @@ const Card = ({ companyLogo, role, backgroundImage }: CardProps) => {
                         <div
                             className={`absolute inset-0 flex items-center justify-center transition-opacity ease-in-out ${isHovered ? 'opacity-0' : 'duration-1000 opacity-100'}`}>
                             <Image
-                                src={companyLogo}
+                                src={logo}
                                 alt="Company logo"
                                 className="max-w-[80%] max-h-[50%] object-contain"
                                 width={300}
@@ -63,49 +62,45 @@ const Card = ({ companyLogo, role, backgroundImage }: CardProps) => {
                                 transformOrigin: 'bottom'
                             }}>
                                 <h2 className="text-white text-2xl font-bold text-center px-4">
-                                    {role}
+                                    {experience.roles[0].position}
                                 </h2>
                             </div>
                         </div>
                     </div>
                 </div>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-4xl">
-                <DialogHeader>
-                    <DialogTitle>Generate Product Development</DialogTitle>
-                    <DialogDescription className={"text-md leading-5"}>
-                        Generate is Northeastern’s premiere student-led product development studio. Its team of
-                        dedicated engineers and designers work and empower real startups with our innovative products.
-
-
-                        Each semester, Generate works with Software and Hardware founders to build their product and
-                        support them on their entrepreneurial journey.
-                    </DialogDescription>
-                </DialogHeader>
-                <Timeline>
-                    {config.experience.slice(0,2).map((exp: Experience, index: number) => (
-                        <CustomTimelineItem
-                            status={exp.status}
-                            role={exp.role}
-                            company={exp.company}
-                            companyWebsite={exp.website}
-                            locationAndDate={exp.locationAndDate}
-                            additionalSubtitle={exp.additionalSubtitle}
-                            bullets={exp.bullets}
-                            key={index}
-                        />
-                    ))}
-                    <TimelineItem>
-                        <TimelineHeading>Experience began.</TimelineHeading>
-                        <TimelineDot status={"done"}/>
-                    </TimelineItem>
-                </Timeline>
-                <DialogFooter className="sm:justify-start">
-                    <DialogClose asChild>
-                        <Button type="button" variant="secondary">
-                            Close
-                        </Button>
-                    </DialogClose>
+            <DialogContent className="max-w-[350px] sm:max-w-[650px] lg:max-w-[960px] p-0">
+                <ScrollArea className="max-h-[60vh] overflow-y-auto">
+                    <div className="p-6">
+                        <DialogHeader>
+                            <DialogTitle className={"text-xl"}>{experience.company}</DialogTitle>
+                            <DialogDescription className={"text-md leading-5"}>
+                                {experience.description}
+                            </DialogDescription>
+                        </DialogHeader>
+                        <div className="mt-4">
+                            <Timeline>
+                                {experience.roles.map((role: Role, index: number) => (
+                                    <CustomTimelineItem
+                                        status={role.status}
+                                        role={role.position}
+                                        company={experience.company}
+                                        companyWebsite={experience.website}
+                                        locationAndDate={role.location + " • " + role.dateRange}
+                                        bullets={role.bullets}
+                                        key={index}
+                                    />
+                                ))}
+                                <TimelineItem>
+                                    <TimelineHeading>Experience began.</TimelineHeading>
+                                    <TimelineDot status={"done"}/>
+                                </TimelineItem>
+                            </Timeline>
+                        </div>
+                    </div>
+                </ScrollArea>
+                <DialogFooter className="md:hidden p-6 border-t">
+                    <Button className={"bg-[#0b6db8] text-white"}>Close</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
