@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button"
 import {
     Dialog,
+    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -100,7 +100,9 @@ const Card = ({ experience, logo, background }: CardProps) => {
                     </div>
                 </ScrollArea>
                 <DialogFooter className="md:hidden p-6 border-t">
-                    <Button className={"bg-[#0b6db8] text-white"}>Close</Button>
+                    <DialogClose className={"bg-[#0b6db8] text-white p-2 rounded-lg"}>
+                        Close
+                    </DialogClose>
                 </DialogFooter>
             </DialogContent>
         </Dialog>
