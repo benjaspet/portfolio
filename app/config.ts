@@ -64,6 +64,16 @@ export default {
             companyLogo: "/firstglance-logo.png",
             roles: [
                 {
+                    position: "Software Engineer",
+                    location: "Boston, MA",
+                    dateRange: "Jan 2025 - Present",
+                    status: "current",
+                    bullets: [
+                        "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
+                        "Implement CRUD endpoints for interacting with AWS S3 for secure asset storage and retrieval"
+                    ]
+                },
+                {
                     position: "Software Engineer Co-op",
                     location: "Boston, MA",
                     dateRange: "Sep 2024 - Present",

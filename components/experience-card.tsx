@@ -69,7 +69,7 @@ const Card = ({ experience, logo, background }: CardProps) => {
                     </div>
                 </div>
             </DialogTrigger>
-            <DialogContent className="max-w-[350px] sm:max-w-[650px] lg:max-w-[960px] p-0">
+            <DialogContent className="rounded-lg max-w-[350px] sm:max-w-[650px] lg:max-w-[960px] p-0">
                 <ScrollArea className="max-h-[60vh] overflow-y-auto">
                     <div className="p-6">
                         <DialogHeader>
