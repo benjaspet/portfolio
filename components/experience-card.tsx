@@ -35,9 +35,9 @@ const Card = ({ experience, logo, background }: CardProps) => {
                     <Image
                         src={background}
                         alt="Background image"
-                        className="transition-transform duration-300 ease-in-out"
+                        className="h-full transition-transform duration-300 ease-in-out"
                         width={600}
-                        height={400}
+                        height={600}
                     />
 
                     <div

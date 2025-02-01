@@ -50,7 +50,7 @@ const github = <GitHubIcon
 export default function Home() {
 
     return (
-        <div className="mx-8 sm:mx-12 md:mx-32 lg:mx-48 xl:max-w-[1080px] xl:justify-self-center my-6 sm:my-16">
+        <div className="mx-12 sm:mx-26 md:mx-24 lg:mx-36 xl:max-w-[1080px] xl:justify-self-center my-6 sm:my-16">
             <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
                 <div className="flex flex-col mb-2 sm:mb-0">
                     <motion.div className="items-center self-center sm:hidden mb-3" initial="hidden"
@@ -151,7 +151,7 @@ export default function Home() {
                                 animate="visible"
                                 variants={fadeInFromRightVariants}
                             >
-                                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
                                     {config.experience.map((company, index) => (
                                         <motion.div
                                             key={index}

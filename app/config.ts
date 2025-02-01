@@ -33,7 +33,7 @@ export default {
             companyLogo: "/generate-logo.png",
             roles: [
                 {
-                    position: "Software Technical Lead",
+                    position: "Technical Lead",
                     location: "Boston, MA",
                     dateRange: "Dec 2024 - Present",
                     status: "current",
@@ -76,8 +76,8 @@ export default {
                 {
                     position: "Software Engineer Co-op",
                     location: "Boston, MA",
-                    dateRange: "Sep 2024 - Present",
-                    status: "current",
+                    dateRange: "Sep - Dec 2024",
+                    status: "done",
                     bullets: [
                         "Introduce a master traction page, onboarding components, and user profile flow for an internal startup discovery tool with search, filter, input validation, and settings functionality using Next.js, accelerating analytical efforts",
                         "Generate a migration pipeline to transition populated data from Firebase to PostgreSQL with schema design",
