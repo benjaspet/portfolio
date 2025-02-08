@@ -50,7 +50,7 @@ const github = <GitHubIcon
 export default function Home() {
 
     return (
-        <div className="mx-12 sm:mx-26 md:mx-24 lg:mx-36 xl:max-w-[1080px] xl:justify-self-center my-6 sm:my-16">
+        <div className="mx-6 sm:mx-16 md:mx-24 lg:mx-36 xl:max-w-[1080px] xl:justify-self-center my-6 sm:my-16">
             <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
                 <div className="flex flex-col mb-2 sm:mb-0">
                     <motion.div className="items-center self-center sm:hidden mb-3" initial="hidden"
@@ -151,7 +151,7 @@ export default function Home() {
                                 animate="visible"
                                 variants={fadeInFromRightVariants}
                             >
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                                     {config.experience.map((company, index) => (
                                         <motion.div
                                             key={index}
@@ -166,7 +166,16 @@ export default function Home() {
                                     ))}
                                 </div>
                             </motion.div>
-                            <Separator className="my-4"/>
+                            <motion.div className="my-4 w-full mx-auto flex items-center"
+                                        initial="hidden"
+                                        animate="visible"
+                                        variants={fadeInFromRightVariants}>
+                                <Separator className="flex-1 mr-4" />
+                                <h3 className="text-2xl font-bold text-gray-300 whitespace-nowrap">
+                                    Education
+                                </h3>
+                                <Separator className="flex-1 ml-4" />
+                            </motion.div>
                             <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-2"
                                         variants={fadeInFromRightVariants}>
                                 {config.education.map((institution: Education, index: number) => (

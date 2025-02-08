@@ -26,6 +26,24 @@ export default {
     ],
     experience: [
         {
+            company: "Chewy",
+            description: "Chewy, Inc. is an American online retailer of pet food and other pet-related products based in Plantation, Florida. Chewy went public in 2019 with the ticker symbol CHWY on the New York Stock Exchange.",
+            website: "https://chewy.com",
+            backgroundImage: "/chewy-banner.jpg",
+            companyLogo: "/chewy-logo.png",
+            roles: [
+                {
+                    position: "Software Engineer Co-op",
+                    location: "Boston, MA",
+                    dateRange: "June 2025",
+                    status: "current",
+                    bullets: [
+                        "Incoming June 2025"
+                    ]
+                },
+            ]
+        },
+        {
             company: "Generate Product Development",
             description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
             website: "https://generatenu.com",
