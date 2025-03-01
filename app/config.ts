@@ -27,7 +27,7 @@ export default {
     experience: [
         {
             company: "Chewy",
-            description: "Chewy, Inc. is an American online retailer of pet food and other pet-related products based in Plantation, Florida. Chewy went public in 2019 with the ticker symbol CHWY on the New York Stock Exchange.",
+            description: "Chewy is an American online retailer of pet food and other pet-related products based in Plantation, Florida.",
             website: "https://chewy.com",
             backgroundImage: "/chewy-banner.jpg",
             companyLogo: "/chewy-logo.png",
