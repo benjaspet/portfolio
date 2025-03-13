@@ -27,7 +27,7 @@ export default function Footer() {
                         <nav className="mb-4 lg:mb-0">
                             <ul className="flex flex-wrap justify-center space-x-4">
                                 <li><Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">
-                                    Made with ❤ & Next.js, Tailwind, Shad
+                                    Made with ❤︎ in Boston, MA
                                 </Link></li>
                             </ul>
                         </nav>
