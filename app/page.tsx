@@ -152,18 +152,20 @@ export default function Home() {
                                 variants={fadeInFromRightVariants}
                             >
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                    {config.experience.map((company, index) => (
-                                        <motion.div
-                                            key={index}
-                                            variants={fadeInFromRightChildVariants}
-                                        >
-                                            <ExperienceCard
-                                                background={company.backgroundImage}
-                                                logo={company.companyLogo}
-                                                experience={company}
-                                            />
-                                        </motion.div>
-                                    ))}
+                                    {config.experience.map((company, index) => {
+                                        return (
+                                            <motion.div
+                                                key={index}
+                                                variants={fadeInFromRightChildVariants}
+                                            >
+                                                <ExperienceCard
+                                                    background={company.backgroundImage}
+                                                    logo={company.companyLogo}
+                                                    experience={company}
+                                                />
+                                            </motion.div>
+                                        );
+                                    })}
                                 </div>
                             </motion.div>
                             <motion.div className="my-4 w-full mx-auto flex items-center"

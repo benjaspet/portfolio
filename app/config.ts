@@ -44,6 +44,24 @@ export default {
             ]
         },
         {
+            company: "Code4Community",
+            description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
+            website: "https://c4cneu.com",
+            backgroundImage: "/c4c-banner.jpg",
+            companyLogo: "/c4c-logo.png",
+            roles: [
+                {
+                    position: "Software Developer",
+                    location: "Boston, MA",
+                    dateRange: "Sep 2025",
+                    status: "current",
+                    bullets: [
+                        "Incoming Sep 2025"
+                    ]
+                }
+            ]
+        },
+        {
             company: "Generate Product Development",
             description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
             website: "https://generatenu.com",
@@ -123,6 +141,24 @@ export default {
                         "Direct 3 lab sections of 40+ students, conducting lecture-style sessions on software development best practices",
                         "Grade 30+ assignments and lab activities weekly, collaborating with professors on grading rubrics and activities",
                         "Hold office hours for one-on-one mentoring on software engineering, data structures, and MVC patterns"
+                    ]
+                }
+            ]
+        },
+        {
+            company: "Chatham Bars Inn",
+            description: "",
+            website: "https://chathambarsinn.com",
+            backgroundImage: "/cbi-background.png",
+            companyLogo: "/cbi-logo.png",
+            roles: [
+                {
+                    position: "Beach House Grill Staff",
+                    location: "Chatham, MA",
+                    dateRange: "May - Aug 2022",
+                    status: "done",
+                    bullets: [
+                        "Worked as a server and bartender at a high-end restaurant on Cape Cod, Massachusetts, providing exceptional customer service to guests",
                     ]
                 }
             ]

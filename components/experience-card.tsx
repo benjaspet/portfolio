@@ -49,7 +49,7 @@ const Card = ({ experience, logo, background }: CardProps) => {
                             <Image
                                 src={logo}
                                 alt="Company logo"
-                                className="max-w-[80%] max-h-[50%] object-contain"
+                                className="max-w-[100%] max-h-[50%] object-contain"
                                 width={300}
                                 height={200}
                             />
@@ -100,7 +100,7 @@ const Card = ({ experience, logo, background }: CardProps) => {
                     </div>
                 </ScrollArea>
                 <DialogFooter className="md:hidden p-6 border-t">
-                    <DialogClose className={"bg-[#0b6db8] text-white p-2 rounded-lg"}>
+                    <DialogClose className={"bg-[#0b6db8] text-wc4c-logohite p-2 rounded-lg"}>
                         Close
                     </DialogClose>
                 </DialogFooter>
