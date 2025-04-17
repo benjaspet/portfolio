@@ -4,6 +4,7 @@ export type Config = {
     education: Education[];
     experience: Experience[];
     projects: PortfolioProject[];
+    posts: Post[];
 }
 
 export type Experience = {
@@ -31,6 +32,17 @@ export type PortfolioProject = {
     githubURL?: string;
     liveURL?: string;
     techStack: string[];
+}
+
+export type Post = {
+    title: string;
+    timestamp: string;
+    link: string;
+    content: string[];
+    images: {
+        source: string;
+        position: string;
+    }[],
 }
 
 export type Education = {

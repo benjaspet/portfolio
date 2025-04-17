@@ -12,29 +12,30 @@ export default function Footer() {
 
     return (
         <motion.div ref={ref}
-            variants={fadeDownVariants}
+                    variants={fadeDownVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}>
             <footer className="text-gray-300 py-4">
                 <div className="container mx-auto text-center">
-                    <div className="flex flex-col lg:flex-row items-center text-center lg:text-left lg:justify-between">
-                        <div className="mb-2 lg:mb-0 inline-flex space-x-2">
-                            <Image src="/signature.svg" alt="" width={100} height={100} />
-                            {/* <h2 className="text-2xl font-bold">Ben Petrillo</h2> */}
-                            <p className={"self-center font-semibold"}>&copy; {new Date().getFullYear()}</p>
-
+                    {/* 3 column grid layout with all items centered */}
+                    <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-4">
+                        {/* Left column - signature */}
+                        <div className="flex justify-center lg:justify-start">
+                            <Image src="/signature.svg" alt="" width={144} height={100} />
                         </div>
-                        <nav className="mb-4 lg:mb-0">
-                            <ul className="flex flex-wrap justify-center space-x-4">
-                                <li><Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">
-                                    Made with ❤︎ in Boston, MA
-                                </Link></li>
-                            </ul>
-                        </nav>
-                        <div className="flex space-x-3">
+
+                        {/* Middle column - Made in Boston */}
+                        <div className="flex justify-center">
+                            <Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">
+                                Made with ❤︎ in Boston, MA
+                            </Link>
+                        </div>
+
+                        {/* Right column - social icons */}
+                        <div className="flex justify-center lg:justify-end space-x-3">
                             <a href="https://github.com/benjaspet" target="_blank" rel="noopener noreferrer"
                                className="group"
-                               aria-label="Facebook">
+                               aria-label="GitHub">
                                 <GitHubIcon
                                     size={24}
                                     className="transition-transform duration-500 group-hover:rotate-[25deg]"

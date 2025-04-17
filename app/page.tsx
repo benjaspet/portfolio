@@ -19,10 +19,11 @@ import WaveText from "@/components/wave-text";
 import {fadeDownVariants} from "@/app/animations/fade-down";
 import Footer from "@/components/footer";
 import config from "@/app/config";
-import {Education, PortfolioProject} from "@/app/types";
+import {Education, PortfolioProject, Post} from "@/app/types";
 import ExperienceCard from "@/components/experience-card";
 import {Separator} from "@/components/ui/separator";
 import EducationCard from "@/components/education-card";
+import PostPreview from "@/components/post-preview";
 
 const clipboard = <ClipboardIcon size={16} className="mr-1.5"/>
 const calendar = <CalendarIcon size={16} className="mr-1.5"/>
@@ -120,6 +121,9 @@ export default function Home() {
                 </motion.div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4">
+                {config.posts.map((post: Post, index: number) => (
+                    <PostPreview key={index} title={post.title} link={post.link}/>
+                ))}
                 <LanguagesCard/>
                 <FrameworksCard/>
             </div>
@@ -172,11 +176,11 @@ export default function Home() {
                                         initial="hidden"
                                         animate="visible"
                                         variants={fadeInFromRightVariants}>
-                                <Separator className="flex-1 mr-4" />
+                                <Separator className="flex-1 mr-4"/>
                                 <h3 className="text-2xl font-bold text-gray-300 whitespace-nowrap">
                                     Education
                                 </h3>
-                                <Separator className="flex-1 ml-4" />
+                                <Separator className="flex-1 ml-4"/>
                             </motion.div>
                             <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-2"
                                         variants={fadeInFromRightVariants}>

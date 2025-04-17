@@ -168,10 +168,10 @@ export default {
         {
             title: "PlateMate",
             description: "PlateMate is a data-driven meal insight platform that allows customers to rate their experience on a dish-by-dish basis, providing restaurants with actionable data on how to improve their menus.",
-            duration: "Dec 2024 - Present",
+            duration: "Jan - Apr 2025",
             imageURL: "/platemate-cover.png",
             githubURL: "https://github.com/GenerateNU/platemate",
-            liveURL: "",
+            liveURL: "/projects/platemate",
             techStack: ["Go", "MongoDB", "React Native"]
         },
         {
@@ -182,6 +182,16 @@ export default {
             githubURL: "https://github.com/GenerateNU/nightlife",
             liveURL: "",
             techStack: ["Go", "React Native", "PostgreSQL"]
+        },
+        {
+          title: "Constellation",
+          description: "A platform to track and manage your finances, with a focus on budgeting and expense tracking for small businesses, giving them insights and helping them make informed financial decisions.",
+            duration: "Jan 2025 - Present",
+            imageURL: "/constellation-cover.png",
+            githubURL: "https://github.com/GenerateNU/constellation",
+            liveURL: "",
+            techStack: ["Java", "Spring Boot", "CockroachDB"]
+
         },
         {
             title: "PokéVault",
@@ -218,6 +228,29 @@ export default {
             githubURL: "https://github.com/benjaspet/elixir-v4",
             liveURL: "",
             techStack: ["Java", "Javalin", "MongoDB"]
+        }
+    ],
+    posts: [
+        {
+            title: "My experience at Generate: a Sherman Center program",
+            timestamp: "Thu Apr 17 2025",
+            link: "/projects/platemate",
+            content: [
+                "PlateMate is a mobile applications that allows customers to rate their experience at restaurants on a dish-by-dish basis, providing restaurants with actionable data on how to improve their menus. It focuses on what customers actually care about - the food. The platform provides a user-friendly onboarding flow to garner meal preferences and dietary restrictions from users, which are then use to curate a set of recommended dishes. The app also includes a social media aspect, allowing users to share their experiences and connect with others who have similar tastes, and get recommended different dishes based on their friends' reviews as well. The goal is to create a community of food lovers who can discover new dishes and restaurants together.",
+            ],
+            images: [
+                {
+                    source: "",
+                    position: "right"
+                }
+            ],
+        },
+        {
+            title: "My feelings on the software engineering job search",
+            timestamp: "Tue Apr 15 2025",
+            link: "/posts/current-job-search",
+            content: [],
+            images: [],
         }
     ]
 } as Config;

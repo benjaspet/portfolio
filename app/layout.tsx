@@ -9,6 +9,12 @@ const outfit = localFont({
     weight: "100 800",
 });
 
+const nunito = localFont({
+    src: "./fonts/NunitoVariable.ttf",
+    variable: "--font-nunito",
+    weight: "100 900",
+});
+
 export const metadata: Metadata = {
     title: "Ben Petrillo",
     description: "I'm a software engineer and third-year student at Northeastern University studying Computer Science.",
@@ -46,7 +52,7 @@ export const viewport: Viewport = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en" style={{scrollbarWidth: "none"}}>
-            <body className={`dark ${outfit.variable} antialiased`}>
+            <body className={`dark ${outfit.variable} ${nunito.variable} antialiased`}>
                 {children}
             </body>
         </html>
