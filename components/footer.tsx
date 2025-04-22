@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import {GitHubIcon, TwitterIcon, LinkedInIcon} from "@/components/icons";
+import {GitHubIcon, LinkedInIcon, TwitterIcon} from "@/components/icons";
 import {motion, useInView} from "framer-motion";
 import {MutableRefObject, useRef} from "react";
 import {fadeDownVariants} from "@/app/animations/fade-down";
@@ -17,21 +17,17 @@ export default function Footer() {
                     animate={isInView ? "visible" : "hidden"}>
             <footer className="text-gray-300 py-4">
                 <div className="container mx-auto text-center">
-                    {/* 3 column grid layout with all items centered */}
                     <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-4">
-                        {/* Left column - signature */}
                         <div className="flex justify-center lg:justify-start">
-                            <Image src="/signature.svg" alt="" width={144} height={100} />
+                            <Image src="/signature.svg" alt="" width={180} height={100}/>
                         </div>
 
-                        {/* Middle column - Made in Boston */}
-                        <div className="flex justify-center">
+                        <div className="hidden md:flex justify-center">
                             <Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">
                                 Made with ❤︎ in Boston, MA
                             </Link>
                         </div>
 
-                        {/* Right column - social icons */}
                         <div className="flex justify-center lg:justify-end space-x-3">
                             <a href="https://github.com/benjaspet" target="_blank" rel="noopener noreferrer"
                                className="group"

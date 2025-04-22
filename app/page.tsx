@@ -1,10 +1,11 @@
-"use client"
-
+"use client";
+import React, { useEffect, useState } from "react";
+import DotGrid from "@/components/dot-grid";
 import {CalendarIcon, ClipboardIcon, MailIcon} from "lucide-react"
 import Image from 'next/image'
 import {Tabs, TabsTrigger} from "@/components/ui/tabs"
 import {TabsContent, TabsList} from "@/components/ui/tabs"
-import {motion} from "framer-motion"
+import {motion, AnimatePresence} from "framer-motion"
 import {fadeInFromRightChildVariants, fadeInFromRightVariants} from "./animations/fade-in-from-right"
 import {foldUpVariants} from "./animations/fold-up"
 import {staggerContainerVariants} from "./animations/stagger"
@@ -49,9 +50,86 @@ const github = <GitHubIcon
 />
 
 export default function Home() {
+    const [isMobile, setIsMobile] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isLayoutReady, setIsLayoutReady] = useState(false);
 
-    return (
-        <div className="mx-6 sm:mx-16 md:mx-24 lg:mx-36 xl:max-w-[1080px] xl:justify-self-center my-6 sm:my-16">
+    useEffect(() => {
+        const checkMobile = () => {
+            if (window.innerWidth <= 640) {
+                setIsMobile(true);
+            }
+        };
+
+        checkMobile();
+
+        setIsLayoutReady(true);
+
+        window.addEventListener('resize', checkMobile);
+
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 500);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+            clearTimeout(timer);
+        };
+    }, []);
+
+    const LoadingSkeleton = () => (
+        <div className="px-6 sm:px-12 py-6 md:py-12 overflow-y-auto h-full hide-scrollbar">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
+                <div className="flex flex-col mb-2 sm:mb-0 w-full sm:w-2/3">
+                    <div className="sm:hidden w-[200px] h-[200px] bg-slate-700 rounded-full self-center mb-6 animate-pulse" />
+
+                    <div className="h-10 bg-slate-700 rounded-md w-3/4 sm:w-4/5 mb-3 animate-pulse self-center sm:self-start" />
+
+                    <div className="h-8 bg-slate-700 rounded-md w-5/6 mb-4 animate-pulse self-center sm:self-start" />
+
+                    <div className="h-5 bg-slate-700 rounded-md w-2/3 mb-4 animate-pulse hidden sm:block" />
+
+                    <div className="flex gap-2 self-center sm:self-start">
+                        <div className="h-9 bg-slate-700 rounded-md w-24 animate-pulse" />
+                        <div className="h-9 bg-slate-700 rounded-md w-28 animate-pulse" />
+                    </div>
+
+                    <div className="flex gap-2 mt-3 self-center sm:self-start">
+                        <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
+                        <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
+                        <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
+                        <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
+                        <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
+                    </div>
+                </div>
+
+                <div className="hidden sm:block w-[200px] h-[200px] bg-slate-700 rounded-full animate-pulse" />
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-8">
+                <div className="h-40 bg-slate-700 rounded-lg animate-pulse" />
+                <div className="h-40 bg-slate-700 rounded-lg animate-pulse" />
+                <div className="h-40 bg-slate-700 rounded-lg animate-pulse" />
+                <div className="h-40 bg-slate-700 rounded-lg animate-pulse" />
+            </div>
+
+            <div className="my-8">
+                <div className="h-12 bg-slate-700 rounded-md w-full mb-4 animate-pulse" />
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    <div className="h-64 bg-slate-700 rounded-lg animate-pulse" />
+                    <div className="h-64 bg-slate-700 rounded-lg animate-pulse" />
+                    <div className="h-64 bg-slate-700 rounded-lg animate-pulse" />
+                    <div className="h-64 bg-slate-700 rounded-lg animate-pulse" />
+                </div>
+            </div>
+
+            <div className="h-16 bg-slate-700 rounded-md mt-8 animate-pulse" />
+        </div>
+    );
+
+    const HomeContent = () => (
+        <div className="px-6 sm:px-12 py-6 md:py-12 overflow-y-auto h-full hide-scrollbar">
             <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
                 <div className="flex flex-col mb-2 sm:mb-0">
                     <motion.div className="items-center self-center sm:hidden mb-3" initial="hidden"
@@ -75,15 +153,15 @@ export default function Home() {
                         variants={foldUpVariants}
                         initial="hidden"
                         animate="visible">
-                        <WaveText text={"Software Engineer • CS @ NEU"}/>
+                        <WaveText text={"Computer Science @ Northeastern"}/>
                     </motion.h2>
                     <motion.h4 variants={foldUpVariants}
                                initial="hidden"
                                animate="visible"
                                className="text-md text-gray-300 font-semibold text-center sm:text-start">
-            <span className="hidden sm:inline-flex gap-1 items-center mb-2">
-              Let&#39;s build something cool together!
-            </span>
+                      <span className="hidden sm:inline-flex gap-1 items-center mb-2">
+                        Let&#39;s build something cool together!
+                      </span>
                     </motion.h4>
                     <motion.div className="inline-flex gap-2 mt-1 self-center sm:self-start"
                                 variants={staggerContainerVariants}
@@ -104,9 +182,7 @@ export default function Home() {
                         <SocialButton icon={slack} link={"https://slack.com"}/>
                         <SocialButton icon={twitter} link={"https://twitter.com/Benjaspet"}/>
                         <SocialButton icon={mail} link={"mailto:petrillo.b@northeastern.edu"}/>
-
                     </motion.div>
-
                 </div>
                 <motion.div className="flex-shrink-0 hidden sm:flex" initial="hidden"
                             animate="visible"
@@ -139,7 +215,7 @@ export default function Home() {
                             </TabsTrigger>
                         </TabsList>
                         <TabsContent value="password" className="py-2">
-                            <motion.div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 md:gap-4"
+                            <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4"
                                         initial="hidden" animate="visible" variants={fadeInFromRightVariants}>
                                 {config.projects.map((proj: PortfolioProject, index: number) => (
                                     <motion.div key={index} variants={fadeInFromRightChildVariants}>
@@ -201,5 +277,84 @@ export default function Home() {
             </div>
             <Footer/>
         </div>
-    )
+    );
+
+    if (isMobile === null || !isLayoutReady) {
+        return (
+            <div className="min-h-screen flex items-center justify-center">
+                <div className="animate-pulse h-16 w-16 rounded-full bg-slate-700"></div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="min-h-screen">
+            {!isMobile && (
+                <div className="flex h-screen">
+                    <div className="w-1/2 overflow-y-auto hide-scrollbar">
+                        <AnimatePresence mode="wait">
+                            {isLoading ? (
+                                <motion.div
+                                    key="loading"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                >
+                                    <LoadingSkeleton />
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="content"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                >
+                                    <HomeContent />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+
+                    <div className="fixed top-0 right-0 w-1/2 h-screen bg-slate-900 border-l-4 border-l-slate-700">
+                        <DotGrid
+                            dotSize={8}
+                            spacing={25}
+                            patternSpeed={1}
+                            padding={8}
+                        />
+                    </div>
+                </div>
+            )}
+
+            {isMobile && (
+                <div className="min-h-screen pb-32">
+                    <div className="w-full">
+                        <AnimatePresence mode="wait">
+                            {isLoading ? (
+                                <motion.div
+                                    key="loading-mobile"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                >
+                                    <LoadingSkeleton />
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="content-mobile"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                >
+                                    <HomeContent />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 }

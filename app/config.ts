@@ -30,7 +30,7 @@ export default {
             description: "Chewy is an American online retailer of pet food and other pet-related products based in Plantation, Florida.",
             website: "https://chewy.com",
             backgroundImage: "/chewy-banner.jpg",
-            companyLogo: "/chewy-logo.png",
+            companyLogo: "/chewy-logo-new.png",
             roles: [
                 {
                     position: "Software Engineer Co-op",
