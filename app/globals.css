@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  font-family: NeulisNeueRegular, sans-serif;
+  font-family: Outfit, sans-serif;
 }
 
 @keyframes custom-bounce {
