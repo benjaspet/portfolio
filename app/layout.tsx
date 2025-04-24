@@ -3,16 +3,10 @@ import localFont from "next/font/local";
 import "./globals.css";
 import React from "react";
 
-const outfit = localFont({
-    src: "./fonts/OutfitVariable.ttf",
-    variable: "--font-outfit",
-    weight: "100 800",
-});
-
-const nunito = localFont({
-    src: "./fonts/NunitoVariable.ttf",
-    variable: "--font-nunito",
-    weight: "100 900",
+const neulisNeueRegular = localFont({
+    src: "./fonts/NeulisNeueRegular.otf",
+    variable: "--font-neulis-neue-regular",
+    weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -52,7 +46,7 @@ export const viewport: Viewport = {
 export default function RootLayout({children}: Readonly<{ children: React.ReactNode; }>) {
     return (
         <html lang="en" style={{scrollbarWidth: "none"}}>
-            <body className={`dark ${outfit.variable} ${nunito.variable} antialiased`}>
+            <body className={`dark ${neulisNeueRegular.variable} antialiased`}>
                 {children}
             </body>
         </html>
