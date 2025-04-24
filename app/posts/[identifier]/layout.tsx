@@ -202,7 +202,7 @@ export default function Layout({children}: Readonly<{ children: React.ReactNode;
                             <NavigationMenu>
                                 <NavigationMenuList className={"gap-1"}>
                                     <NavigationMenuItem>
-                                        <Link href="/public" legacyBehavior passHref>
+                                        <Link href="/" legacyBehavior passHref>
                                             <NavigationMenuLink
                                                 className={navigationMenuTriggerStyle()}>Home</NavigationMenuLink>
                                         </Link>
