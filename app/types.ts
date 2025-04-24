@@ -1,3 +1,5 @@
+import {GalleryImage} from "@/components/galleryImage";
+
 export type Config = {
     languages: string[];
     technologies: string[];
@@ -35,14 +37,16 @@ export type PortfolioProject = {
 }
 
 export type Post = {
+    identifier: string;
     title: string;
+    author: string;
     timestamp: string;
     link: string;
-    content: string[];
-    images: {
-        source: string;
-        position: string;
-    }[],
+    sections: {
+        name: string;
+        paragraphs: string[];
+    }[];
+    images?: GalleryImage[];
 }
 
 export type Education = {

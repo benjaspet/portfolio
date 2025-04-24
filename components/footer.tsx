@@ -24,7 +24,7 @@ export default function Footer() {
 
                         <div className="hidden md:flex justify-center">
                             <Link href="/" className="hover:text-[#0b6db8] transition-colors font-medium">
-                                Made with ❤︎ in Boston, MA
+                                Made with ❤︎ in Boston
                             </Link>
                         </div>
 
