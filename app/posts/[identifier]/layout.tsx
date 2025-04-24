@@ -169,9 +169,15 @@ export default function Layout({children}: Readonly<{ children: React.ReactNode;
                                         </Link>
                                     </NavigationMenuItem>
                                     <NavigationMenuItem>
-                                        <Link href="/posts/platemate" legacyBehavior passHref>
+                                        <Link href="/posts/gen-platemate" legacyBehavior passHref>
                                             <NavigationMenuLink
                                                 className={navigationMenuTriggerStyle()}>PlateMate</NavigationMenuLink>
+                                        </Link>
+                                    </NavigationMenuItem>
+                                    <NavigationMenuItem>
+                                        <Link href="/posts/pqueue-web-crawling" legacyBehavior passHref>
+                                            <NavigationMenuLink
+                                                className={navigationMenuTriggerStyle()}>Web Crawling</NavigationMenuLink>
                                         </Link>
                                     </NavigationMenuItem>
                                 </NavigationMenuList>
@@ -205,6 +211,12 @@ export default function Layout({children}: Readonly<{ children: React.ReactNode;
                                         <Link href="/posts/platemate" legacyBehavior passHref>
                                             <NavigationMenuLink
                                                 className={navigationMenuTriggerStyle()}>PlateMate</NavigationMenuLink>
+                                        </Link>
+                                    </NavigationMenuItem>
+                                    <NavigationMenuItem>
+                                        <Link href="/posts/pqueue-web-crawling" legacyBehavior passHref>
+                                            <NavigationMenuLink
+                                                className={navigationMenuTriggerStyle()}>Web Crawling</NavigationMenuLink>
                                         </Link>
                                     </NavigationMenuItem>
                                 </NavigationMenuList>

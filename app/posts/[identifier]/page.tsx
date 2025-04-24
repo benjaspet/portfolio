@@ -20,7 +20,7 @@ export default function PlateMateDetailsPage() {
                     {title}
                 </h1>
                 <p>
-                    <span className={"italic font-semibold text-gray-300"}
+                    <span className={"text-gray-300"}
                           style={{marginLeft: "0.25rem"}}>{author}, on {timestamp}</span>
                 </p>
             </div>
