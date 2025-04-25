@@ -171,7 +171,7 @@ export default {
             duration: "Jan - Apr 2025",
             imageURL: "/platemate-cover.png",
             githubURL: "https://github.com/GenerateNU/platemate",
-            liveURL: "/posts/platemate",
+            liveURL: "/posts/gen-platemate",
             techStack: ["Go", "MongoDB", "React Native"]
         },
         {
@@ -180,7 +180,7 @@ export default {
             duration: "Sep - Dec 2024",
             imageURL: "/nightlife-cover.png",
             githubURL: "https://github.com/GenerateNU/nightlife",
-            liveURL: "",
+            liveURL: "/posts/gen-nightlife",
             techStack: ["Go", "React Native", "PostgreSQL"]
         },
         {
@@ -292,53 +292,81 @@ export default {
             ]
         },
         {
-            identifier: "pqueue-web-crawling",
-            title: "Priority queues for web crawling",
+            identifier: "gen-nightlife",
+            title: "Nightlife: Generate Fall 2024",
             author: "Ben Petrillo",
-            timestamp: "Thu Apr 24 2025",
-            link: "/posts/pqueue-web-crawling",
+            timestamp: "Fri Apr 25 2025",
+            link: "/posts/gen-nightlife",
             sections: [
                 {
-                    name: "Introduction",
+                    name: "Overview",
                     paragraphs: [
-                        "A web crawler (sometimes known as a robot, a spider, or a scraper) is a piece of software that automatically gathers and traverses documents on the web. For example, lets say you have a crawler and you tell it to start at https://www.wikipedia.com. The software will first download the Wikipedia homepage, then it will parse the HTML and locate all hyperlinks (i.e., anchor tags) embedded in the page. The crawler then downloads all the HTML pages specified by the URLs on the homepage, and parses them looking for more hyperlinks. This process continues until all of the pages on Wikipedia are downloaded and parsed.",
-                        "Web crawlers are a fundamental component of today’s web. For example, Googlebot is Google’s web crawler. Googlebot is constantly scouring the web, downloading pages in search of new and updated content. All of this data forms the backbone of Google’s search engine infrastructure."
+                        "Nightlife is a mobile app that revolutionizes nightlife discovery with a user-driven rating system that personalizes venue recommendations based on ambiance, music, crowd, and service."
                     ],
                 },
                 {
-                    name: "The Task",
+                    name: "Problem & Solution",
                     paragraphs: [
-                        "For this project, we were given a large-scale mock social networking site called Fakebook. The site contained a login page, user profiles, and a feed page. Our task was to find a total of 5 secret flags embedded into the HTML of random user profiles.",
-                        "Now, the naive approach is to manually search page by page. This is evidently not ideal, as the site contains tens of thousands of user profiles. Instead, we can automate this process by developing a web crawler.",
+                        "Figuring out where to go out and enjoy the nightlife of your city can be difficult, especially when it comes to figuring out \"the vibe\" of a venue. It may be perfect on paper, but in person it's not quite what you expected for some reason you can't put your finger on.",
+                        "Nightlife is an interactive platform focused on transforming the way people experience nightlife. With a mission to make nightlife exploration seamless and tailored to each individual, Nightlife offers a comprehensive, user-driven platform where individuals can rate, and review venues based on various criteria like ambiance, music, crowd, and service. This approach empowers users to make informed decisions about their nights out, ensuring their experiences align with their specific and individual preferences.",
+                        "Since this app was an exploration and extension off of existing functionality (traditional review apps like Google, Yelp, etc.), it was important to really emphasize the application of that functionality and what Nightlife adds to it. By bringing in characters that users would be assigned to and a 'Resonate' feature that had aligning qualities, we were able to add depth to the venue review and discovery technology, and use the idea of personalization to create an innovative solution.",
                     ],
                 },
                 {
-                    name: "Implementation",
+                    name: "Engineering",
                     paragraphs: [
-                        "I had to keep track of the pages that the crawler had already visited. This was important for two primary reasons.",
-                        "Obviously, it isn’t efficient to revisit the same pages over and over again. If I was to not keep track of where it had been, I would visit pages multiple times, which is not ideal by any means. Secondly, and more importantly, not keeping track of visited pages can lead to infinite loops. For example, if user A is friends with user B, then A’s page links to B, and B’s page links to A. I had to design my crawler in a way that would prevent it from pin-ponging back and forth from A->B, B->A, A->B, B->A, etc.",
-                        "I used a queue-based system to managed visited and unvisited pages. If a page was not yet visited, I would add it to the queue. If a page was visited, I would skip it. This way, I could ensure that the crawler would not visit the same page twice. The sample code below shows how I implemented this for GET requests, where I would process a profile page.",
-                        "This approach worked very well. I then needed to handle HTTP status codes where the server would request a redirect or return a 503 status code. I implemented a robust error-handling mechanism to handle these cases.",
-                        "The base implementation worked and found all flags in ~30 minutes. But I wanted faster. So, what other way to optimize this than to use multithreading? I was able to reduce the time down to an average of 5-7 minutes this way.",
-                    ],
+                        "We used Go on the backend with the Fiber web framework. For our database, we used PostgreSQL. Authentication was handled by our provider, Supabase, with libraries for both our frontend for seamless integration. On the frontend, we used React Native with TypeScript.",
+                        "One of the most difficult portions of this project was data acquisition. We needed to somehow collect venue data for our database to make the app functional. We developed a Python script using the Google Maps API to aggregate venues in the greater Boston area to our database. This proved to be quite effective.",
+                    ]
                 },
                 {
-                    name: "Formatting the Output",
+                    name: "Debrief",
                     paragraphs: [
-                        "For debugging purposes and to provide a visual representation of the crawler’s progress, I formatted the output to display the number of flags found, the number of pages visited, the number of pages left to visit, and the runtime of the crawler. This was especially useful when running the crawler in verbose mode, as it provided a real-time view of the crawler’s progress. If a flag was found, the output would also display the flag itself.",
-                    ],
+                        "This was my first experience in Generate, as a Software Engineer. I learned how to develop a mobile app for the first time with this experience, from start to finish, with all aspects of the product development lifecycle. I met so many amazing people as I was introduced to the organization. The following semester, I assumed the role as Technical Lead for another client project, PlateMate.",
+                    ]
+                }
+            ],
+            images: [
+                {
+                    src: "/projects/nightlife/nightlife-mockup-01.png",
+                    height: 500,
                 },
                 {
-                    name: "Synopsis & Source Code",
-                    paragraphs: [
-                        "For my high-level approach, I first started by logging into the server. To do this, I had to manipulate the login form in such a way that I could extract the CSRF token and the session cookie. Once I had these, I could then use them to log in. I stored the cookie in a class variable so that I only needed to log in to Fakebook once, and could include that cookie in the header of all future requests.",
-                        "The next step I took from here after logging in was to extract the links of friend profiles from the pages my crawler visits. I did this by creating a custom HTML parser and overrode its handle_starttag method to extract the href attribute from all a tags on the page. In the same HTML parser, I also overrode the handle_data method to extract the flags from the data that contains FLAG: by splitting the data by : and adding the second element to the list of flags (as that is a flag).",
-                        "Once I had the links, I had to keep track of the frontier (which I used a deque for) and the links that have already been visited (which I used a set for, because they can be iterated through much easier than a queue can be iterated through). I then iterated through the links and visited each one, extracting the links from each page and adding them to the frontier if they had not already been visited. I also extracted the flags from each page and added them to a list. I chose to print the flags out as my crawler goes instead of printing them all at the end.",
-                        "I then implemented my handler for status codes. If the status code was a 200, I parsed the links from the page as normaly and checked for flags. If the status code was a 302, I would extract the location header (to find the redirect link) and add it to the frontier if it had not already been visited, and would visit it later. If the status code was a 403 or 404, I would simply skip the link and move on to the next one. If the status code was a 503, I would simply wait and add the link to the end of the queue to visit later. For 500s and 504s, I would simply skip the link because the error would be due to an internal server error or an infrastructure error.",
-                        "The primary challenge I faced when completing this assignment was figuring out how to reverse-engineer the login form in order to log into Fakebook. I was able to find the CSRF middleware token by simply inspecting the login form, but it took me a while to figure out what exactly to do with it and how to use it alongside the session ID. Handling status codes was not too big of an issue for me, but I also had trouble with figuring out which data structures to use for the frontier and the visited set and how to update them correctly. I also had trouble with the HTML parser, as I had never used one before and had to figure out how to use it correctly.",
-                        "Testing for this project took a lot of time. I created a logger (which can be visualized and activate by using the -verbose option) to print the current runtime, the length of the queue, the amount of flags found, and the length of the visited set. Logging into the Fakebook server proved to be the most difficult, so to debug and test this I printed out the CSRF token and the session ID first to make sure I could parse them correctly. I then printed out the headers of the response to see that I was passing correct headers, and by printing out the raw response and the headers I was able to parse the response easier. Overall, for testing, I printed out data at various points in the code to make sure that I was extracting the correct data and used the printed responses with their status codes to debug.",
-                        "Source: https://github.com/benjaspet/cs3700"
-                    ],
+                    src: "/projects/nightlife/nightlife-mockup-02.png",
+                    height: 500,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-mockup-03.png",
+                    height: 500,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-logo.png",
+                },
+                {
+                    src: "/projects/nightlife/nightlife-logomark.png",
+                },
+                {
+                    src: "/projects/nightlife/nightlife-identity.png",
+                    height: 400,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-color-palette.png",
+                    height: 600,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-components.png",
+                    height: 500,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-personalities-01.png",
+                    height: 500,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-personalities-02.png",
+                    height: 500,
+                },
+                {
+                    src: "/projects/nightlife/nightlife-team.jpg",
                 },
             ]
         }

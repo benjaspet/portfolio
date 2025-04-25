@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { CalendarIcon, ClipboardIcon, MailIcon } from "lucide-react"
 import Image from "next/image"
 import { Tabs, TabsTrigger } from "@/components/ui/tabs"
@@ -77,12 +77,9 @@ export default function Home() {
 
         checkMobile()
         setIsLayoutReady(true)
-
         window.addEventListener("resize", checkMobile)
 
-        const timer = setTimeout(() => {
-            setIsLoading(false)
-        }, 500)
+        const timer = setTimeout(() => setIsLoading(false), 800)
 
         return () => {
             window.removeEventListener("resize", checkMobile)
@@ -95,18 +92,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
                 <div className="flex flex-col mb-2 sm:mb-0 w-full sm:w-2/3">
                     <div className="sm:hidden w-[200px] h-[200px] bg-slate-700 rounded-full self-center mb-6 animate-pulse" />
-
                     <div className="h-10 bg-slate-700 rounded-md w-3/4 sm:w-4/5 mb-3 animate-pulse self-center sm:self-start" />
-
                     <div className="h-8 bg-slate-700 rounded-md w-5/6 mb-4 animate-pulse self-center sm:self-start" />
-
                     <div className="h-5 bg-slate-700 rounded-md w-2/3 mb-4 animate-pulse hidden sm:block" />
-
                     <div className="flex gap-2 self-center sm:self-start">
                         <div className="h-9 bg-slate-700 rounded-md w-24 animate-pulse" />
                         <div className="h-9 bg-slate-700 rounded-md w-28 animate-pulse" />
                     </div>
-
                     <div className="flex gap-2 mt-3 self-center sm:self-start">
                         <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
                         <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
@@ -115,7 +107,6 @@ export default function Home() {
                         <div className="h-8 w-8 bg-slate-700 rounded-md animate-pulse" />
                     </div>
                 </div>
-
                 <div className="hidden sm:block w-[200px] h-[200px] bg-slate-700 rounded-full animate-pulse" />
             </div>
 
@@ -128,7 +119,6 @@ export default function Home() {
 
             <div className="my-8">
                 <div className="h-12 bg-slate-700 rounded-md w-full mb-4 animate-pulse" />
-
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                     <div className="h-64 bg-slate-700 rounded-lg animate-pulse" />
                     <div className="h-64 bg-slate-700 rounded-lg animate-pulse" />
@@ -139,6 +129,10 @@ export default function Home() {
 
             <div className="h-16 bg-slate-700 rounded-md mt-8 animate-pulse" />
         </div>
+    )
+
+    const GallerySkeleton = () => (
+        <div className="w-full h-full bg-slate-200 dark:bg-slate-700 animate-pulse"></div>
     )
 
     const HomeContent = () => (
@@ -325,7 +319,6 @@ export default function Home() {
     return (
         <div className="min-h-screen">
             {!isMobile && isLayoutReady ? (
-                // Desktop layout
                 <div className="flex h-screen">
                     <div className="w-1/2 overflow-y-auto hide-scrollbar">
                         <AnimatePresence mode="wait">
@@ -335,7 +328,7 @@ export default function Home() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
                                 >
                                     <LoadingSkeleton />
                                 </motion.div>
@@ -344,7 +337,7 @@ export default function Home() {
                                     key="content"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
                                 >
                                     <HomeContent />
                                 </motion.div>
@@ -352,12 +345,34 @@ export default function Home() {
                         </AnimatePresence>
                     </div>
 
-                    <div className="top-0 right-0 w-1/2 h-screen pr-4">
-                        <SlidingGallery images={images} />
+                    <div className="w-1/2 h-screen">
+                        <AnimatePresence mode="wait">
+                            {isLoading ? (
+                                <motion.div
+                                    key="gallery-loading"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className="h-full w-full"
+                                >
+                                    <GallerySkeleton />
+                                </motion.div>
+                            ) : (
+                                <motion.div
+                                    key="gallery-content"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                                    className="h-full w-full"
+                                >
+                                    <SlidingGallery images={images} />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
                     </div>
                 </div>
             ) : (
-                // Mobile layout - no gallery, just content
                 <div className="min-h-screen">
                     <div className="w-full">
                         <AnimatePresence mode="wait">
@@ -367,7 +382,7 @@ export default function Home() {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
                                 >
                                     <LoadingSkeleton />
                                 </motion.div>
@@ -376,7 +391,7 @@ export default function Home() {
                                     key="content-mobile"
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
-                                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
                                 >
                                     <HomeContent />
                                 </motion.div>
