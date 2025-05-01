@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import Image from "next/image"
 
 interface Logo {
@@ -27,26 +27,11 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
                                                            mobileGap = 32,
                                                            padding = "20px 0",
                                                            height = 60,
-                                                           mobileHeight = 32,
                                                        }) => {
     const scrollerRef = useRef<HTMLDivElement>(null)
     const trackRef = useRef<HTMLDivElement>(null)
-    const [isMobile, setIsMobile] = useState<boolean>(false)
 
     const scrollerId = React.useMemo(() => `scroller-${Math.floor(Math.random() * 10000)}`, [])
-
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 768)
-        }
-
-        checkMobile()
-        window.addEventListener("resize", checkMobile)
-
-        return () => {
-            window.removeEventListener("resize", checkMobile)
-        }
-    }, [])
 
     useEffect(() => {
         if (!trackRef.current || logos.length === 0) return
@@ -79,10 +64,8 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
                 }
             }, 100)
 
-            setTimeout(() => {
-                clearInterval(imageLoadTimer)
-                setupAnimation()
-            }, 2000)
+            clearInterval(imageLoadTimer)
+            setupAnimation()
         }
 
         return () => {
@@ -91,10 +74,10 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
                 trackRef.current.classList.remove(`${scrollerId}-animate`)
             }
         }
-    }, [logos, scrollerId, isMobile])
+    }, [logos, scrollerId])
 
-    const getCurrentGap = () => (isMobile ? mobileGap : gap)
-    const getCurrentHeight = () => (isMobile ? mobileHeight : height)
+    const getCurrentGap = () => (gap)
+    const getCurrentHeight = () => (height)
 
     const renderLogo = (logo: Logo, index: number, isClone = false) => (
         <div

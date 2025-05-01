@@ -4,8 +4,10 @@ import {notFound, useParams} from "next/navigation";
 import config from "@/app/config";
 import {useGetPost} from "@/hooks/useGetPost";
 import WordmarkScroll from "@/components/wordmark-scroll";
-import {FormatText} from "@/components/format-text";
 import React from "react";
+import {useIsMobile} from "@/hooks/useIsMobile";
+import Image from "next/image";
+import {FormatText} from "@/components/format-text";
 
 const techLogos = [
     {url: "/wordmarks/zoominfo.png", alt: "Google"},
@@ -32,6 +34,7 @@ export default function PlateMateDetailsPage() {
 
     const {identifier} = useParams<{ identifier: string }>();
     const post = useGetPost(identifier, config);
+    const isMobile = useIsMobile(768);
 
     if (!post) return notFound();
 
@@ -44,13 +47,30 @@ export default function PlateMateDetailsPage() {
                     {title}
                 </h1>
                 <p className={"py-2"}>
-                    <span className={"text-gray-300"} style={{marginLeft: "0.25rem"}}>{author}, on {timestamp}</span>
+                    <span className={"text-gray-300"}>{author}, on {timestamp}</span>
                 </p>
             </div>
-            {identifier === "how-to-get-swe-interviews" && (
+            {identifier === "how-to-get-swe-interviews" && !isMobile && (
                 <div className={"pb-4"}>
                     <WordmarkScroll logos={techLogos} direction={"right"} speed={50} height={60} gap={32}/>
                     <WordmarkScroll logos={techLogos2} direction={"left"} speed={50} height={60} gap={32}/>
+                </div>
+            )}
+            {identifier === "how-to-get-swe-interviews" && isMobile && (
+                <div className={"pb-4 flex"}>
+                    <Image
+                        src={"/wordmarks/placeholder.png"}
+                        alt={"wordmark placeholder"}
+                        width={300}
+                        height={80}
+                        priority
+                        style={{
+                            height: "80px",
+                            width: "100%",
+                            objectFit: "contain",
+                            maxWidth: "none",
+                        }}
+                    />
                 </div>
             )}
             {sections.map(section => {
