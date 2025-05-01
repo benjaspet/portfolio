@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useEffect, useRef, useState} from "react"
+import React, { useEffect, useRef, useState } from "react"
 import Image from "next/image";
 
 interface Logo {
@@ -38,7 +38,6 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
     const scrollerId = React.useMemo(() => `scroller-${Math.floor(Math.random() * 10000)}`, []);
 
     useEffect(() => {
-
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
         };
@@ -53,29 +52,48 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
     }, []);
 
     useEffect(() => {
-        if (!trackRef.current) return;
+        if (!trackRef.current || logos.length === 0) return;
 
         const measureTrack = () => {
             if (!trackRef.current) return;
 
-            const singleSetWidth = trackRef.current.scrollWidth / 2;
-            if (singleSetWidth > 0) {
-                setTrackWidth(singleSetWidth);
+            void trackRef.current.offsetWidth;
+
+            const logoElements = trackRef.current.querySelectorAll('[data-logo-item="true"]');
+            if (logoElements.length === 0) return;
+
+            const firstSetElements = Array.from(logoElements).slice(0, logos.length);
+            let totalWidth = 0;
+
+            firstSetElements.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                totalWidth += rect.width;
+            });
+
+            if (totalWidth > 0) {
+                setTrackWidth(totalWidth);
                 setAnimationReady(true);
             }
         };
+
+        const timer = setTimeout(() => {
+            measureTrack();
+        }, 100);
 
         const resizeObserver = new ResizeObserver(() => {
             measureTrack();
         });
 
-        resizeObserver.observe(trackRef.current);
-        measureTrack();
-
-        const currTrackRef = trackRef.current;
+        if (trackRef.current) {
+            resizeObserver.observe(trackRef.current);
+        }
 
         return () => {
-            resizeObserver.unobserve(currTrackRef);
+            clearTimeout(timer);
+            if (trackRef.current) {
+                // eslint-disable-next-line react-hooks/exhaustive-deps
+                resizeObserver.unobserve(trackRef.current);
+            }
         };
     }, [logos, gap, mobileGap, isMobile]);
 
@@ -85,6 +103,7 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
     const renderLogo = (logo: Logo, index: number, isClone = false) => (
         <div
             key={`${logo.alt}-${index}${isClone ? "-clone" : ""}`}
+            data-logo-item="true"
             style={{
                 marginRight: `${getCurrentGap()}px`,
                 height: `${getCurrentHeight()}px`,
