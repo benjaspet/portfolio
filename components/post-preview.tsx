@@ -27,7 +27,7 @@ export default function PostPreview({title, link}: PostPreviewProps) {
                                 className="text-white group-hover:text-gray-200 mr-1 transition-colors duration-300 whitespace-nowrap">
                                 Read:
                             </span>
-                            <span className="truncate font-semibold">{title}</span>
+                            <span className="truncate font-semibold py-1">{title}</span>
                         </Link>
                     </CardTitle>
                 </motion.div>

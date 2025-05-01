@@ -191,7 +191,7 @@ export default function Layout({children}: Readonly<{ children: React.ReactNode;
                         {images && images.length > 0 ? (
                             <SlidingGallery images={images}/>
                         ) : (
-                            <div className="w-full h-full bg-slate-200 dark:bg-slate-700 animate-pulse"></div>
+                            <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]"></div>
                         )}
                     </div>
                 </div>

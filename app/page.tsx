@@ -35,7 +35,7 @@ const github = <GitHubIcon size={16} className="transition-transform duration-50
 const images = [
     {
         src: "/projects/platemate/platemate-speak.png",
-        height: 600,
+        height: 400,
     },
     {
         src: "/photography/gallway-self.jpg",
@@ -44,8 +44,8 @@ const images = [
         src: "/projects/platemate/platemate-leadership.jpg",
     },
     {
-        src: "/photography/code-chicago.jpg",
-        height: 500,
+        src: "/photography/fish.png",
+        height: 300,
     },
     {
         src: "/projects/nightlife/nightlife-team.jpg",
@@ -60,7 +60,7 @@ const images = [
         height: 500,
     },
     {
-        src: "/photography/molly.jpg",
+        src: "/photography/lobster.png",
         height: 340,
     },
 ]
@@ -217,7 +217,7 @@ export default function Home() {
                 </motion.div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4">
-                {config.posts.map((post: Post, index: number) => (
+                {config.posts.slice(0, 2).map((post: Post, index: number) => (
                     <PostPreview key={index} title={post.title} link={post.link} />
                 ))}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 col-span-1 sm:col-span-2">
