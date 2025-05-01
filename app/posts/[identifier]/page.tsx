@@ -5,6 +5,7 @@ import config from "@/app/config";
 import {useGetPost} from "@/hooks/useGetPost";
 import WordmarkScroll from "@/components/wordmark-scroll";
 import {FormatText} from "@/components/format-text";
+import React from "react";
 
 const techLogos = [
     {url: "/wordmarks/zoominfo.png", alt: "Google"},
@@ -59,7 +60,7 @@ export default function PlateMateDetailsPage() {
                             {section.name}
                         </h2>
                         {section.paragraphs.map((paragraph, index) => (
-                            <FormatText text={paragraph} className={"mb-4"} key={index} />
+                            <FormatText text={paragraph} className={"mb-4"} key={index}/>
                         ))}
                     </div>
                 )
