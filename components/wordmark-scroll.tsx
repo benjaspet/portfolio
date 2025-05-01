@@ -13,8 +13,10 @@ interface WordmarkScrollProps {
     direction?: "left" | "right";
     speed?: number;
     gap?: number;
+    mobileGap?: number;
     padding?: string;
     height?: number;
+    mobileHeight?: number;
 }
 
 const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
@@ -22,15 +24,33 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
                                                            direction = "left",
                                                            speed = 15,
                                                            gap = 80,
+                                                           mobileGap = 40,
                                                            padding = "20px 0",
                                                            height = 60,
+                                                           mobileHeight = 40,
                                                        }) => {
     const scrollerRef = useRef<HTMLDivElement>(null);
     const trackRef = useRef<HTMLDivElement>(null);
     const [trackWidth, setTrackWidth] = useState<number>(0);
     const [animationReady, setAnimationReady] = useState<boolean>(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
 
     const scrollerId = React.useMemo(() => `scroller-${Math.floor(Math.random() * 10000)}`, []);
+
+    useEffect(() => {
+
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkMobile();
+
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
 
     useEffect(() => {
         if (!trackRef.current) return;
@@ -57,14 +77,17 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
         return () => {
             resizeObserver.unobserve(currTrackRef);
         };
-    }, [logos, gap]);
+    }, [logos, gap, mobileGap, isMobile]);
+
+    const getCurrentGap = () => isMobile ? mobileGap : gap;
+    const getCurrentHeight = () => isMobile ? mobileHeight : height;
 
     const renderLogo = (logo: Logo, index: number, isClone = false) => (
         <div
             key={`${logo.alt}-${index}${isClone ? "-clone" : ""}`}
             style={{
-                marginRight: `${gap}px`,
-                height: `${height}px`,
+                marginRight: `${getCurrentGap()}px`,
+                height: `${getCurrentHeight()}px`,
                 display: "flex",
                 alignItems: "center",
                 flexShrink: 0,
@@ -80,7 +103,7 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
                     maxWidth: "none",
                 }}
                 width={500}
-                height={height}
+                height={getCurrentHeight()}
             />
         </div>
     );
@@ -117,6 +140,12 @@ const WordmarkScroll: React.FC<WordmarkScrollProps> = ({
       animation: ${trackWidth > 0 ?
         (direction === "left" ? `scroll-left-${scrollerId}` : `scroll-right-${scrollerId}`) + ` ${speed}s linear infinite`
         : 'none'};
+    }
+    
+    @media (max-width: 768px) {
+      .${scrollerId} {
+        padding: 15px 0;
+      }
     }
   `;
 
