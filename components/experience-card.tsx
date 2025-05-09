@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
     Dialog,
     DialogClose,
@@ -9,65 +9,53 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
+import { Card, CardContent } from "@/components/ui/card";
 import {Timeline, TimelineDot, TimelineHeading, TimelineItem} from "@/components/ui/timeline";
 import CustomTimelineItem from "@/components/timeline-item";
 import {Experience, Role} from "@/app/types";
 import Image from "next/image";
 import {ScrollArea} from "@/components/ui/scroll-area";
+import {BuildingIcon, CalendarIcon} from "lucide-react";
 
 type CardProps = {
     experience: Experience;
     logo: string;
-    background: string;
 };
 
-const Card = ({ experience, logo, background }: CardProps) => {
-    const [isHovered, setIsHovered] = useState(false);
+const ExperienceCard = ({ experience, logo }: CardProps) => {
 
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <div
-                    className="relative h-48 group cursor-pointer rounded-lg overflow-hidden shadow-lg transition-shadow border-2 border-muted duration-300 ease-in-out hover:shadow-2xl"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
-                >
-                    <Image
-                        src={background}
-                        alt="Background image"
-                        className="h-full transition-transform duration-300 ease-in-out"
-                        width={600}
-                        height={600}
-                    />
+                <Card className="overflow-hidden border-2 hover:cursor-pointer hover:border-blue-700 transition-all duration-300 hover:shadow-md">
+                    <CardContent className="p-6">
+                        <div className="flex items-start gap-5">
+                            <div className="flex-shrink-0 p-0.5 rounded-md border bg-slate-700 border-slate-700">
+                                <Image
+                                    src={logo || "/placeholder.svg"}
+                                    alt={`${experience.company} logo`}
+                                    width={40}
+                                    height={40}
+                                    className="object-contain rounded-md"
+                                />
+                            </div>
 
-                    <div
-                        className="absolute inset-0 bg-black bg-opacity-80 transition-opacity duration-700 ease-in-out"/>
-
-                    <div className="absolute inset-0 flex flex-col items-center justify-center">
-                        <div
-                            className={`absolute inset-0 flex items-center justify-center transition-opacity ease-in-out ${isHovered ? 'opacity-0' : 'duration-1000 opacity-100'}`}>
-                            <Image
-                                src={logo}
-                                alt="Company logo"
-                                className="max-w-[100%] max-h-[50%] object-contain"
-                                width={300}
-                                height={200}
-                            />
-                        </div>
-
-                        <div
-                            className={`absolute inset-0 flex items-center justify-center overflow-hidden ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-                            <div className="transition-transform duration-300 ease-in-out transform-gpu" style={{
-                                transform: isHovered ? 'rotateX(0deg)' : 'rotateX(-90deg)',
-                                transformOrigin: 'bottom'
-                            }}>
-                                <h2 className="text-white text-2xl font-bold text-center px-4">
-                                    {experience.roles[0].position}
-                                </h2>
+                            <div className="space-y-0.5">
+                                <h3 className="font-semibold text-lg tracking-tight line-clamp-1">{experience.roles[0].position}</h3>
+                                <div className="space-y-1.5">
+                                    <div className="flex items-center text-muted-foreground">
+                                        <BuildingIcon className="w-4 h-4 mr-2" />
+                                        <span className="font-medium line-clamp-1">{experience.company}</span>
+                                    </div>
+                                    <div className="flex items-center text-sm text-muted-foreground">
+                                        <CalendarIcon className="w-4 h-4 mr-2" />
+                                        <span className={"line-clamp-1"}>{experience.roles[0].dateRange}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </CardContent>
+                </Card>
             </DialogTrigger>
             <DialogContent className="rounded-lg max-w-[350px] sm:max-w-[650px] lg:max-w-[960px] p-0">
                 <ScrollArea className="max-h-[60vh] overflow-y-auto">
@@ -85,7 +73,6 @@ const Card = ({ experience, logo, background }: CardProps) => {
                                         status={role.status}
                                         role={role.position}
                                         company={experience.company}
-                                        companyWebsite={experience.website}
                                         locationAndDate={role.location + " • " + role.dateRange}
                                         bullets={role.bullets}
                                         key={index}
@@ -109,5 +96,5 @@ const Card = ({ experience, logo, background }: CardProps) => {
     );
 };
 
-export default Card;
+export default ExperienceCard;
 

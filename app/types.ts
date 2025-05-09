@@ -12,8 +12,6 @@ export type Config = {
 export type Experience = {
     company: string;
     description: string;
-    website: string;
-    backgroundImage: string;
     companyLogo: string;
     roles: Role[];
 }

@@ -2,7 +2,7 @@ import {Config} from "./types";
 
 export default {
     languages: [
-        "Java", "Go", "TypeScript", "Python", "HTML/CSS", "C++", "Racket"
+        "Java", "Go", "TypeScript", "Python", "HTML/CSS", "C++", "Common Lisp", "Racket"
     ],
     technologies: [
         "React", "React Native", "Next.js", "Spring Boot", "FastAPI", "Node.js", "Docker", "Terraform", "AWS (EC2, S3, Lambda)",
@@ -26,16 +26,14 @@ export default {
     ],
     experience: [
         {
-            company: "Chewy",
-            description: "Chewy is an American online retailer of pet food and other pet-related products based in Plantation, Florida.",
-            website: "https://chewy.com",
-            backgroundImage: "/chewy-banner.jpg",
-            companyLogo: "/chewy-logo-new.png",
+            company: "Chewy, Inc.",
+            description: "American online retailer of pet food and other pet-related products based in Plantation, Florida.",
+            companyLogo: "/chewy-icon.png",
             roles: [
                 {
-                    position: "Software Engineer Co-op",
+                    position: "Software Engineering Co-op",
                     location: "Boston, MA",
-                    dateRange: "June 2025",
+                    dateRange: "June - Dec 2025",
                     status: "current",
                     bullets: [
                         "Incoming June 2025"
@@ -44,16 +42,31 @@ export default {
             ]
         },
         {
+            company: "Ventrian Analytics",
+            description: "Metric-based financial management platform for small businesses.",
+            companyLogo: "/ventrian-icon.png",
+            roles: [
+                {
+                    position: "Software Engineering Intern",
+                    location: "Boston, MA",
+                    dateRange: "May - Aug 2025",
+                    status: "current",
+                    bullets: [
+                        "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
+                        "Implement CRUD endpoints for interacting with AWS S3 for secure asset storage and retrieval"
+                    ]
+                },
+            ]
+        },
+        {
             company: "Code4Community",
             description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
-            website: "https://c4cneu.com",
-            backgroundImage: "/c4c-banner.jpg",
-            companyLogo: "/c4c-logo.png",
+            companyLogo: "/c4c-icon.png",
             roles: [
                 {
                     position: "Software Developer",
                     location: "Boston, MA",
-                    dateRange: "Sep 2025",
+                    dateRange: "May 2025 - Present",
                     status: "current",
                     bullets: [
                         "Incoming Sep 2025"
@@ -64,9 +77,7 @@ export default {
         {
             company: "Generate Product Development",
             description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
-            website: "https://generatenu.com",
-            backgroundImage: "/generate-banner.jpg",
-            companyLogo: "/generate-logo.png",
+            companyLogo: "/generate-icon.png",
             roles: [
                 {
                     position: "Technical Lead",
@@ -93,24 +104,12 @@ export default {
             ]
         },
         {
-            company: "FirstGlance",
+            company: "Stealth Startup",
             description: "A startup discovery platform that makes finding, evaluating, and sharing startups easier than ever before by providing personalized startup recommendations tailored to investors' preferences, allowing them to follow startups' progress, and enabling effortless sharing of startup information.",
-            website: "https://literallyhelpingstartups.com",
-            backgroundImage: "/firstglance-banner.jpg",
-            companyLogo: "/firstglance-logo.png",
+            companyLogo: "/firstglance-icon.png",
             roles: [
                 {
-                    position: "Software Engineer",
-                    location: "Boston, MA",
-                    dateRange: "Jan 2025 - Present",
-                    status: "current",
-                    bullets: [
-                        "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
-                        "Implement CRUD endpoints for interacting with AWS S3 for secure asset storage and retrieval"
-                    ]
-                },
-                {
-                    position: "Software Engineer Co-op",
+                    position: "Software Engineering Co-op",
                     location: "Boston, MA",
                     dateRange: "Sep - Dec 2024",
                     status: "done",
@@ -125,11 +124,9 @@ export default {
             ]
         },
         {
-            company: "Northeastern University Khoury College of Computer Sciences",
+            company: "Northeastern University",
             description: "The computer science school of Northeastern University in Boston, Massachusetts. It was the first college in the United States dedicated to the field of computer science when it was founded in 1982.",
-            website: "https://www.khoury.northeastern.edu/",
-            backgroundImage: "/khoury-banner.jpg",
-            companyLogo: "/khoury-logo.png",
+            companyLogo: "/northeastern-icon.png",
             roles: [
                 {
                     position: "Teaching Assistant",
@@ -145,24 +142,6 @@ export default {
                 }
             ]
         },
-        {
-            company: "Chatham Bars Inn",
-            description: "",
-            website: "https://chathambarsinn.com",
-            backgroundImage: "/cbi-background.png",
-            companyLogo: "/cbi-logo.png",
-            roles: [
-                {
-                    position: "Beach House Grill Staff",
-                    location: "Chatham, MA",
-                    dateRange: "May - Aug 2022",
-                    status: "done",
-                    bullets: [
-                        "Worked as a server and bartender at a high-end restaurant on Cape Cod, Massachusetts, providing exceptional customer service to guests",
-                    ]
-                }
-            ]
-        }
     ],
     projects: [
         {
@@ -182,6 +161,15 @@ export default {
             githubURL: "https://github.com/GenerateNU/nightlife",
             liveURL: "/posts/gen-nightlife",
             techStack: ["Go", "React Native", "PostgreSQL"]
+        },
+        {
+            title: "Budgr",
+            description: "Finance tracking catered to college students and young adults. Manage your finances and discover methods others are using to save money. Track your spending, set budgets, and get insights on your spending habits.",
+            duration: "May 2025",
+            imageURL: "/projects/budgr/budgr-cover.png",
+            githubURL: "https://github.com",
+            liveURL: "",
+            techStack: ["Java", "React Native", "MongoDB", "Figma"]
         },
         {
           title: "Constellation",

@@ -10,7 +10,6 @@ type CustomTimelineItemProps = {
     status: "done" | "default" | "current" | "error" | "custom" | null | undefined;
     role: string;
     company: string;
-    companyWebsite: string;
     locationAndDate: string;
     bullets?: string[];
     additionalSubtitle?: string;
