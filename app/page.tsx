@@ -1,7 +1,6 @@
 "use client"
 import React from "react"
 import {CalendarIcon, ClipboardIcon, MailIcon} from "lucide-react"
-import Image from "next/image"
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {AnimatePresence, motion} from "framer-motion"
 import {fadeInFromRightChildVariants, fadeInFromRightVariants} from "./animations/fade-in-from-right"
@@ -19,10 +18,9 @@ import ExperienceCard from "@/components/experience-card"
 import {Separator} from "@/components/ui/separator"
 import EducationCard from "@/components/education-card"
 import PostPreview from "@/components/post-preview"
-import SlidingGallery from "@/components/sliding-gallery"
 import PillCard from "@/components/pill-card"
 import {useLayoutSetup} from "@/hooks/useLayoutSetup"
-import HomeSkeleton from "@/components/skeletons/home-skeleton"
+import {HeadshotSlideshow} from "@/components/headshot-slideshow";
 
 const icons = {
     clipboard: <ClipboardIcon size={16} className="mr-1.5"/>,
@@ -35,62 +33,36 @@ const icons = {
 }
 
 const images = [
-    {src: "/projects/platemate/platemate-speak.png", height: 400},
-    {src: "/photography/gallway-self.jpg"},
-    {src: "/projects/platemate/platemate-leadership.jpg"},
-    {src: "/photography/lobster-roll.jpg", height: 500},
-    {src: "/projects/nightlife/nightlife-team.jpg", height: 300},
-    {src: "/photography/fish.jpg", height: 300},
-    {src: "/projects/platemate/platemate-showcase-present.jpg", height: 500},
-    {src: "/photography/lobster.png", height: 340}
-]
+    "/photography/present.png",
+    "/photography/headshot.png",
+    "/photography/ireland.jpg",
+    "/photography/lobster-roll.jpg",
+    "/photography/grad.jpg",
+    "/photography/fish.jpg",
+    "/photography/sunroom.jpg",
+];
 
 export default function Home() {
-    const {isMobile, isLoading, isLayoutReady} = useLayoutSetup()
-
-    if (isMobile === null || !isLayoutReady) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="animate-pulse h-16 w-16 rounded-full bg-slate-700"></div>
-            </div>
-        )
-    }
+    const {isMobile} = useLayoutSetup()
 
     const fadeTransition = {duration: 0.3, ease: "easeInOut"}
 
     interface ContentLoaderProps {
         children: React.ReactNode;
-        loadingKey: string;
         contentKey: string;
     }
 
-    const ContentLoader = ({children, loadingKey, contentKey}: ContentLoaderProps) => (
+    const ContentLoader = ({children, contentKey}: ContentLoaderProps) => (
         <AnimatePresence mode="wait">
-            {isLoading ? (
-                <motion.div
-                    key={loadingKey}
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    exit={{opacity: 0}}
-                    transition={fadeTransition}
-                >
-                    <HomeSkeleton/>
-                </motion.div>
-            ) : (
-                <motion.div
-                    key={contentKey}
-                    initial={{opacity: 0}}
-                    animate={{opacity: 1}}
-                    transition={fadeTransition}
-                >
-                    {children}
-                </motion.div>
-            )}
+            <motion.div
+                key={contentKey}
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                transition={fadeTransition}
+            >
+                {children}
+            </motion.div>
         </AnimatePresence>
-    )
-
-    const GallerySkeleton = () => (
-        <div className="w-full h-full bg-slate-200 dark:bg-slate-700 animate-pulse"></div>
     )
 
     const ProfileHeader = () => (
@@ -103,23 +75,24 @@ export default function Home() {
                     animate="visible"
                     variants={fadeInFromRightVariants}
                 >
-                    <Image
-                        src="/headshot.png"
-                        alt="Ben Petrillo"
-                        width={200}
-                        height={200}
-                        className="rounded-full border-4 border-[#0b6db8]"
-                    />
+                    <HeadshotSlideshow images={images} alt={"Headshot"} width={200} height={200} className={"rounded-full border-4 border-[#0b6db8]"} />
                 </motion.div>
 
-                {/* Name and title */}
                 <motion.h1
                     className="text-center sm:text-start text-4xl font-bold"
                     variants={foldUpVariants}
                     initial="hidden"
                     animate="visible"
                 >
-                    <p>Benjamin Petrillo</p>
+                    <p>Ben
+                        <span className={"inline text-[#0b6db8]"}>
+                            [
+                        </span>
+                        jamin
+                        <span className={"inline text-[#0b6db8]"}>
+                            ]
+                        </span>
+                        Petrillo</p>
                 </motion.h1>
                 <motion.h2
                     className="text-xl md:text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2"
@@ -135,7 +108,7 @@ export default function Home() {
                     animate="visible"
                     className="text-md text-gray-300 font-semibold text-center sm:text-start"
                 >
-          <span className="hidden sm:inline-flex gap-1 items-center mb-2">
+          <span className="hidden sm:inline-flex gap-1 items-center mb-4">
             Shipping quality software, one line at a time.
           </span>
                 </motion.h4>
@@ -171,13 +144,7 @@ export default function Home() {
                 animate="visible"
                 variants={fadeInFromRightVariants}
             >
-                <Image
-                    src="/headshot.png"
-                    alt="Ben Petrillo"
-                    width={200}
-                    height={200}
-                    className="rounded-full border-4 border-[#0b6db8]"
-                />
+                <HeadshotSlideshow images={images} alt={"Headshot"} width={200} height={200} className={"rounded-full border-4 border-[#0b6db8]"} />
             </motion.div>
         </div>
     )
@@ -265,7 +232,6 @@ export default function Home() {
         </>
     )
 
-    // Main content component
     const HomeContent = () => (
         <div className="px-6 sm:px-12 py-6 md:py-12 overflow-y-auto h-full hide-scrollbar">
             <ProfileHeader/>
@@ -297,53 +263,37 @@ export default function Home() {
     )
 
     return (
-        <div className="min-h-screen">
-            {!isMobile && isLayoutReady ? (
-                <div className="flex h-screen">
-                    {/* Left content panel */}
-                    <div className="w-1/2 overflow-y-auto hide-scrollbar">
-                        <ContentLoader loadingKey="loading" contentKey="content">
-                            <HomeContent/>
-                        </ContentLoader>
-                    </div>
+        <AnimatePresence mode="wait">
+            <motion.div
+                key="main-content"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={fadeTransition}
+                className="min-h-screen"
+            >
+                {!isMobile ? (
+                    <div className="flex h-screen">
+                        <div className="w-1/2 overflow-y-auto hide-scrollbar">
+                            <ContentLoader contentKey="content">
+                                <HomeContent/>
+                            </ContentLoader>
+                        </div>
 
-                    {/* Right gallery panel */}
-                    <div className="w-1/2 h-screen">
-                        <AnimatePresence mode="wait">
-                            {isLoading ? (
-                                <motion.div
-                                    key="gallery-loading"
-                                    initial={{opacity: 0}}
-                                    animate={{opacity: 1}}
-                                    exit={{opacity: 0}}
-                                    transition={fadeTransition}
-                                    className="h-full w-full"
-                                >
-                                    <GallerySkeleton/>
-                                </motion.div>
-                            ) : (
-                                <motion.div
-                                    key="gallery-content"
-                                    initial={{opacity: 0}}
-                                    animate={{opacity: 1}}
-                                    transition={fadeTransition}
-                                    className="h-full w-full"
-                                >
-                                    <SlidingGallery images={images}/>
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
+                        <div className="w-1/2 h-screen">
+                            <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]" />
+                        </div>
                     </div>
-                </div>
-            ) : (
-                <div className="min-h-screen">
-                    <div className="w-full">
-                        <ContentLoader loadingKey="loading-mobile" contentKey="content-mobile">
-                            <HomeContent/>
-                        </ContentLoader>
+                ) : (
+                    <div className="min-h-screen">
+                        <div className="w-full">
+                            <ContentLoader contentKey="content-mobile">
+                                <HomeContent/>
+                            </ContentLoader>
+                        </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )}
+            </motion.div>
+        </AnimatePresence>
     )
 }

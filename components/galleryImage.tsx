@@ -31,7 +31,7 @@ export default function GalleryImageComponent({
             <Image
                 src={image.src}
                 alt={`Gallery image ${index + 1}`}
-                width={500}
+                width={image.height || imageHeight}
                 height={image.height || imageHeight}
                 className="w-full h-full object-cover rounded-lg"
                 priority={index < 4}

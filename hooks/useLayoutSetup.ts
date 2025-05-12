@@ -1,7 +1,7 @@
 import {useIsMobile} from "@/hooks/useIsMobile";
 import {useEffect, useState} from "react";
 
-export function useLayoutSetup(loadingDelay = 800) {
+export function useLayoutSetup(loadingDelay = 0) {
     const [isMobile, setIsMobile] = useIsMobile();
     const [isLoading, setIsLoading] = useState(true);
     const [isLayoutReady, setIsLayoutReady] = useState(false);

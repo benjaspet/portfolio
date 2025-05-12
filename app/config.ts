@@ -49,7 +49,7 @@ export default {
                 {
                     position: "Software Engineering Intern",
                     location: "Boston, MA",
-                    dateRange: "May - Aug 2025",
+                    dateRange: "May 2025",
                     status: "current",
                     bullets: [
                         "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
@@ -126,7 +126,7 @@ export default {
         {
             company: "Northeastern University",
             description: "The computer science school of Northeastern University in Boston, Massachusetts. It was the first college in the United States dedicated to the field of computer science when it was founded in 1982.",
-            companyLogo: "/northeastern-icon.png",
+            companyLogo: "/northeastern-icon.jpg",
             roles: [
                 {
                     position: "Teaching Assistant",
@@ -182,19 +182,10 @@ export default {
 
         },
         {
-            title: "PokéVault",
-            description: "A Pokémon trading card database application with real-time updates on new releases, card prices, and more built with React. Features include searching, infinite scrolling, and card recommendations.",
-            duration: "May - Aug 2024",
-            imageURL: "/pokevault.png",
-            githubURL: "",
-            liveURL: "https://pokevault.benpetrillo.dev",
-            techStack: ["React", "TypeScript", "Bootstrap 5"]
-        },
-        {
             title: "Hexagonal Reversi",
             description: "An implementation of Orthello with a hexagonal grid using Java Swing and built using MVC design patterns. Includes AI strategies with various difficulty levels using move selection algorithms.",
             duration: "Nov - Dec 2023",
-            imageURL: "/reversi.png",
+            imageURL: "/reversi-cover.jpeg",
             githubURL: "https://github.com/benjaspet/cs3500",
             liveURL: "",
             techStack: ["Java", "Swing", "JUnit 4"]
@@ -211,77 +202,8 @@ export default {
     ],
     posts: [
         {
-            identifier: "how-to-get-swe-interviews",
-            title: "From zero to hero: how I got multiple interviews and offers for software engineering internships from top tech companies in today's market",
-            author: "Ben Petrillo",
-            timestamp: "Wed Apr 30 2025",
-            link: "/posts/how-to-get-swe-interviews",
-            sections: [
-                {
-                    name: "Preface",
-                    paragraphs: [
-                        "It was just about a year ago today when I [panicked](https://www.reddit.com/r/csMajors/comments/1k448v8/no_internships_feeling_extremely_worthless/).",
-                        "I had just finished my sophomore year at university as a computer science student. Since January of that year, I had been applying to internship and co-op opportunities at hundreds of companies for roles in software engineering and data science. I had no luck, getting rejected left and right. It was hard enough balancing a job search with multiple classes and working a part-time job as a teaching assistant on campus. I did not know what I was doing wrong.",
-                        "**Then, I cracked the code.** I landed multiple interviews and offers from the companies above.",
-                        "In this post, I want to share how I went **from zero to hero: no offers to multiple.** In addition to myself, many of my friends followed this process and had similar success."
-                    ],
-                },
-                {
-                    name: "Step 1: Getting your resume in order",
-                    paragraphs: [
-                        "The first step to getting interviews is to have a resume that stands out. The resume is the main component that recruiters use to screen candidates; **you should nail this step.**",
-                        "To start, your resume must be ATS-friendly and *appealing to the eye.* I cannot stress this part enough. It should be clear, with no uneven spacing and strange formatting. A great starting point I recommend is to use [Jake's resume](https://www.overleaf.com/latex/templates/jakes-resume/syzfjbzwjncs), but I do recommend making a few changes, such as placing your technologies below your education and above your experience. I'd further recommend referencing [my resume](/resume.pdf) for further insight.",
-                        "For your experience and project bullet points, you should use the following structure: **action verb + what you did + how you did it + impact.** Make sure to reference the specific technologies you used to do so. You should have 2-3 projects listed as well. You should always be updating your resume for each new project, hackathon, or experience you gain.",
-                        "If you don't have industry experience, list TA positions, research positions, etc. in the experience section. Do not include positions that are not applicable to the roles your applying to, e.g. Starbucks Barista."
-                    ]
-                },
-                {
-                    name: "Step 2: Campus involvement & projects",
-                    paragraphs: [
-                        "I've seen it time and time again: the students that are the most successful are the ones that go **above and beyond the classroom** and get involved in campus software organizations, personal projects, and hackathons. This is the largest differentiator I have seen between those who are getting interviews, and those who are not. Recruiters want candidates that are passionate about software development and are willing to go the extra mile to learn and grow.",
-                        "Join student clubs and organizations and take on software development roles in them, and work your way up to leadership positions. This is a great way to get experience and build your resume.",
-                        "**Work on personal projects.** You will learn many more technologies, frameworks, and languages this way. You will also have something to talk about in interviews. Try to have at least one project **that is deployed** so employers can see it real-time.",
-                        "Another huge differentiator: on your resume, provide hyperlinks to the GitHub repositories of your projects. This shows employers the commits and progress you've done on the project. You look way better with a commit history, pull requests, etc. on your source code than the other candidates that simply upload their project as a folder."
-                    ]
-                },
-                {
-                    name: "Step 3: Networking",
-                    paragraphs: [
-                        "People will say it again and again, but network. It opens up opportunities for referrals and so much more. Even better, networking **is much easier through any clubs or student organizations you join.** Believe me, I have seen it firsthand and have been referred to companies this way myself!"
-                    ],
-                },
-                {
-                    name: "Step 4: Leetcode & interview preparation",
-                    paragraphs: [
-                        "As much as we hate Leetcoding, it is necessary in this market. Employers need a way to filter out candidates.",
-                        "Start off slowly and work your way up to the harder problems. By the end of your second year, you should have taken an algorithms and data structures course. If you have not already familiarized yourself with DSA, take the time to do so. I recommend [the NeetCode 150](https://neetcode.io/practice?tab=neetcode150) for Leetcode preparation after you understand intermediate DSA.",
-                    ]
-                },
-                {
-                    name: "Step 5: Applying",
-                    paragraphs: [
-                        "**Be consistent. Seriously.** This is a major downfall of most students. People apply to 30-50 jobs, then get sick of the rejections and quit. **Don't do this!** I fell victim to it at some point too, but you'll realize you do not accomplish anything by doing this. **Apply to 5-10 positions daily, and make sure you apply to new listing as soon as they are posted.** Filter by most recent on LinkedIn and other job boards. Being one of the first to apply to a listing increases the likelihood of your application being reviewed, because at larger companies they do not have time to view all applications.",
-                        "The logic here is simple: **the more you put yourself out there, the more responses you will get.**"
-                    ]
-                },
-                {
-                    name: "Step 6: The interviews",
-                    paragraphs: [
-                        "For behavioral interviews, use the STAR method: situation, task, action, result. Do not ramble and talk about things that don't matter. **Ask questions too!** Doing research on the company and the interviewer beforehand was a tactic I used to differentiate myself; it shows you are truly invested in the company, and want to learn firsthand about the culture. Take it slow, with calm breaths. Look interested and have a bright facial expression. They're human too!",
-                        "For the technical, voice your thoughts. Ask for guidance in the right direction; the interview usually wants you to pass. **Use the advice they provide;** the interviewers want to see *how you implement criticism*. Make sure to start off with the bruteforce solution, and proceed to the optimal, and **explain the time complexities!**"
-                    ],
-                },
-                {
-                    name: "Ending thoughts",
-                    paragraphs: [
-                        "Remember, the job search is a marathon, not a sprint. It takes time and effort to find the right opportunity. Don't get discouraged by rejections; they are a part of the process. Keep pushing forward and stay positive. **Remember, it only takes one offer**.",
-                    ]
-                }
-            ],
-        },
-        {
             identifier: "gen-platemate",
-            title: "PlateMate: a Generate client project",
+            title: "PlateMate: a Generate S25 client project",
             author: "Ben Petrillo",
             timestamp: "Thu Apr 24 2025",
             link: "/posts/gen-platemate",
@@ -307,43 +229,39 @@ export default {
                         "Throughout the semester, we had three main events. Our first was Proof of Concept, where me and the other members of the leadership team present a baseline version of our progress on the backend of our app, what its purpose is, the tech stack, and how it works. For our second event, Featurethon, we had a 24-hour competition among client teams to build the 'best' new features for our posts, which ended in a presentation and award ceremony.",
                         "The culminating event was Showcase. At the end of each academic semester, the Generate client teams present their work to the clients and the greater Northeastern community.",
                         "I had a great time, this having been my second semester in Generate. I've made so many connections and have learned so much during this time. I truly learned all aspects of the software development lifecycle.",
-                        "I hope to continue as a member of Generate's operations team in the future. As of writing this, for summer and fall of 2025, I will join Code4Community as a Software Developer where I will work on posts for non-profit organizations in the Greater Boston area."
+                        "I hope to continue as a member of Generate's operations team in the future. As of writing this, for summer and fall of 2025, I will join Code4Community as a Software Developer where I will work on projects for non-profit organizations in the Greater Boston area."
                     ],
                 }
             ],
             images: [
                 {
-                    src: "/projects/platemate/platemate-brand.png",
-                },
-                {
-                    src: "/projects/platemate/platemate-settings.png",
-                    height: 800,
-                },
-                {
                     src: "/projects/platemate/platemate-mockup-grid.png",
-                },
-                {
-                    src: "/projects/platemate/platemate-restaurant.png",
-                    height: 800,
-                },
-                {
-                    src: "/projects/platemate/platemate-mockup.png",
-                    height: 300,
-                },
-                {
-                    src: "/projects/platemate/platemate-dash.png",
-                    height: 800,
                 },
                 {
                     src: "/projects/platemate/platemate-showcase-team.png",
                     height: 340,
                 },
                 {
-                    src: "/projects/platemate/platemate-feed.png",
-                    height: 800,
+                    src: "/projects/platemate/platemate-brand.png",
                 },
                 {
                     src: "/projects/platemate/platemate-show.jpg",
+                    height: 340,
+                },
+                {
+                    src: "/projects/platemate/platemate-color-palette.png",
+                    height: 500,
+                },
+                {
+                    src: "/projects/platemate/gen-s25-audience.jpg",
+                    height: 340,
+                },
+                {
+                    src: "/projects/platemate/platemate-logo.png",
+                    height: 400,
+                },
+                {
+                    src: "/projects/platemate/platemate-leadership.jpg",
                     height: 340,
                 },
             ]
@@ -385,26 +303,15 @@ export default {
             ],
             images: [
                 {
-                    src: "/projects/nightlife/nightlife-mockup-01.png",
-                    height: 500,
-                },
-                {
-                    src: "/projects/nightlife/nightlife-mockup-02.png",
-                    height: 500,
-                },
-                {
-                    src: "/projects/nightlife/nightlife-mockup-03.png",
-                    height: 500,
-                },
-                {
                     src: "/projects/nightlife/nightlife-logo.png",
+                    height: 300,
                 },
                 {
                     src: "/projects/nightlife/nightlife-logomark.png",
                 },
                 {
                     src: "/projects/nightlife/nightlife-identity.png",
-                    height: 400,
+                    height: 500,
                 },
                 {
                     src: "/projects/nightlife/nightlife-color-palette.png",

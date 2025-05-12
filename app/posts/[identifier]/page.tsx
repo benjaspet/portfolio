@@ -3,38 +3,13 @@
 import {notFound, useParams} from "next/navigation";
 import config from "@/app/config";
 import {useGetPost} from "@/hooks/useGetPost";
-import WordmarkScroll from "@/components/wordmark-scroll";
 import React from "react";
-import {useIsMobile} from "@/hooks/useIsMobile";
-import Image from "next/image";
 import {FormatText} from "@/components/format-text";
-
-const techLogos = [
-    {url: "/wordmarks/zoominfo.png", alt: "Google"},
-    {url: "/wordmarks/wayfair.png", alt: "Microsoft"},
-    {url: "/wordmarks/gevernova.png", alt: "Microsoft"},
-    {url: "/wordmarks/chewy.png", alt: "Microsoft"},
-    {url: "/wordmarks/citizens.png", alt: "Microsoft"},
-    {url: "/wordmarks/gd.png", alt: "Microsoft"},
-    {url: "/wordmarks/morse.png", alt: "Microsoft"},
-    {url: "/wordmarks/crio.png", alt: "Microsoft"},
-];
-
-const techLogos2 = [
-    {url: "/wordmarks/prudential.png", alt: "Microsoft"},
-    {url: "/wordmarks/schneider.png", alt: "Microsoft"},
-    {url: "/wordmarks/draftkings.png", alt: "Microsoft"},
-    {url: "/wordmarks/cmegroup.png", alt: "Microsoft"},
-    {url: "/wordmarks/barracuda.png", alt: "Microsoft"},
-    {url: "/wordmarks/granite.png", alt: "Microsoft"},
-    {url: "/wordmarks/wolterskluwer.png", alt: "Microsoft"},
-]
 
 export default function PlateMateDetailsPage() {
 
     const {identifier} = useParams<{ identifier: string }>();
     const post = useGetPost(identifier, config);
-    const isMobile = useIsMobile(768);
 
     if (!post) return notFound();
 
@@ -50,29 +25,6 @@ export default function PlateMateDetailsPage() {
                     <span className={"text-gray-300"}>{author}, on {timestamp}</span>
                 </p>
             </div>
-            {identifier === "how-to-get-swe-interviews" && !isMobile && (
-                <div className={"pb-4"}>
-                    <WordmarkScroll logos={techLogos} direction={"right"} speed={50} height={60} gap={32}/>
-                    <WordmarkScroll logos={techLogos2} direction={"left"} speed={50} height={60} gap={32}/>
-                </div>
-            )}
-            {identifier === "how-to-get-swe-interviews" && isMobile && (
-                <div className={"pb-4 flex"}>
-                    <Image
-                        src={"/wordmarks/placeholder.png"}
-                        alt={"wordmark placeholder"}
-                        width={300}
-                        height={80}
-                        priority
-                        style={{
-                            height: "80px",
-                            width: "100%",
-                            objectFit: "contain",
-                            maxWidth: "none",
-                        }}
-                    />
-                </div>
-            )}
             {sections.map(section => {
                 return (
                     <div key={section.name} className="mb-4">

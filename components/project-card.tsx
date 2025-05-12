@@ -17,17 +17,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         <div className="h-full group">
             <Card className="overflow-hidden border-2 border-gray-600 hover:border-[#0b6db8] h-full flex flex-col
                             transform transition-all duration-300 ease-in-out
-                            hover:scale-100 hover:shadow-lg hover:shadow-[#0b6db8]/20
-                            group-hover:-translate-y-1">
+                            hover:scale-100 hover:shadow-lg hover:shadow-[#0b6db8]/20">
                 <motion.div initial="hidden" animate="visible" variants={fadeInFromRightVariants}>
                     <div className="overflow-hidden">
                         <Image
                             src={project.imageURL}
                             alt={project.title}
                             width={400}
-                            height={200}
-                            className="w-full h-[200px] object-cover transform transition-transform duration-500
-                                    group-hover:scale-105"
+                            height={240}
+                            className="w-full h-[200px] md:h-[240px] object-cover"
                         />
                     </div>
                 </motion.div>
