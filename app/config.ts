@@ -13,22 +13,22 @@ export default {
             institution: "Northeastern University",
             level: "B.S. – Computer Science",
             duration: "2022 – 2026",
-            logo: "/northeastern-logo.png",
-            background: "/northeastern-banner.jpg"
+            logo: "/education/northeastern-logo.png",
+            background: "/education/northeastern-banner.jpg"
         },
         {
             institution: "Boston College High School",
             level: "High School Diploma",
             duration: "2016 – 2022",
-            logo: "/bchigh-logo.png",
-            background: "/bchigh-banner.jpg"
+            logo: "/education/bchigh-logo.png",
+            background: "/education/bchigh-banner.jpg"
         }
     ],
     experience: [
         {
             company: "Chewy, Inc.",
             description: "American online retailer of pet food and other pet-related products based in Plantation, Florida.",
-            companyLogo: "/chewy-icon.png",
+            companyLogo: "/experience/chewy-icon.png",
             roles: [
                 {
                     position: "Software Engineering Co-op",
@@ -44,7 +44,7 @@ export default {
         {
             company: "Ventrian Analytics",
             description: "Metric-based financial management platform for small businesses.",
-            companyLogo: "/ventrian-icon.png",
+            companyLogo: "/experience/ventrian-icon.png",
             roles: [
                 {
                     position: "Software Engineering Intern",
@@ -61,7 +61,7 @@ export default {
         {
             company: "Code4Community",
             description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
-            companyLogo: "/c4c-icon.png",
+            companyLogo: "/experience/c4c-icon.png",
             roles: [
                 {
                     position: "Software Developer",
@@ -77,7 +77,7 @@ export default {
         {
             company: "Generate Product Development",
             description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
-            companyLogo: "/generate-icon.png",
+            companyLogo: "/experience/generate-icon.png",
             roles: [
                 {
                     position: "Technical Lead",
@@ -106,7 +106,7 @@ export default {
         {
             company: "Stealth Startup",
             description: "A startup discovery platform that makes finding, evaluating, and sharing startups easier than ever before by providing personalized startup recommendations tailored to investors' preferences, allowing them to follow startups' progress, and enabling effortless sharing of startup information.",
-            companyLogo: "/firstglance-icon.png",
+            companyLogo: "/experience/firstglance-icon.png",
             roles: [
                 {
                     position: "Software Engineering Co-op",
@@ -126,7 +126,7 @@ export default {
         {
             company: "Northeastern University",
             description: "The computer science school of Northeastern University in Boston, Massachusetts. It was the first college in the United States dedicated to the field of computer science when it was founded in 1982.",
-            companyLogo: "/northeastern-icon.jpg",
+            companyLogo: "/experience/northeastern-icon.jpg",
             roles: [
                 {
                     position: "Teaching Assistant",
@@ -148,7 +148,7 @@ export default {
             title: "PlateMate",
             description: "PlateMate is a data-driven meal insight platform that allows customers to rate their experience on a dish-by-dish basis, providing restaurants with actionable data on how to improve their menus.",
             duration: "Jan - Apr 2025",
-            imageURL: "/platemate-cover.png",
+            imageURL: "/projects/platemate-cover.png",
             githubURL: "https://github.com/GenerateNU/platemate",
             liveURL: "/posts/gen-platemate",
             techStack: ["Go", "MongoDB", "React Native"]
@@ -157,7 +157,7 @@ export default {
             title: "Nightlife",
             description: "A mobile application for nightlife discovery that helps users make informed decisions on where to spend their nights out, based on real, user-driven ratings that are specific to their interests.",
             duration: "Sep - Dec 2024",
-            imageURL: "/nightlife-cover.png",
+            imageURL: "/projects/nightlife-cover.png",
             githubURL: "https://github.com/GenerateNU/nightlife",
             liveURL: "/posts/gen-nightlife",
             techStack: ["Go", "React Native", "PostgreSQL"]
@@ -175,7 +175,7 @@ export default {
           title: "Constellation",
           description: "A platform to track and manage your finances, with a focus on budgeting and expense tracking for small businesses, giving them insights and helping them make informed financial decisions.",
             duration: "Jan 2025 - Present",
-            imageURL: "/constellation-cover.png",
+            imageURL: "/projects/constellation-cover.png",
             githubURL: "https://github.com/GenerateNU/constellation",
             liveURL: "",
             techStack: ["Java", "Spring Boot", "CockroachDB"]
@@ -185,7 +185,7 @@ export default {
             title: "Hexagonal Reversi",
             description: "An implementation of Orthello with a hexagonal grid using Java Swing and built using MVC design patterns. Includes AI strategies with various difficulty levels using move selection algorithms.",
             duration: "Nov - Dec 2023",
-            imageURL: "/reversi-cover.jpeg",
+            imageURL: "/projects/reversi-cover.jpeg",
             githubURL: "https://github.com/benjaspet/cs3500",
             liveURL: "",
             techStack: ["Java", "Swing", "JUnit 4"]
@@ -194,7 +194,7 @@ export default {
             title: "Elixir Music",
             description: "A Discord music application serving over 300,000 users using the Spotify Tracks API and YouTube. Featuring custom playlist support via MongoDB and a RESTful API to motify the bot state externally.",
             duration: "May 2022 - Aug 2024",
-            imageURL: "/elixir-cover.png",
+            imageURL: "/projects/elixir-cover.png",
             githubURL: "https://github.com/benjaspet/elixir-v4",
             liveURL: "",
             techStack: ["Java", "Javalin", "MongoDB"]
