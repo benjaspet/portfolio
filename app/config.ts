@@ -148,7 +148,7 @@ export default {
             title: "PlateMate",
             description: "PlateMate is a data-driven meal insight platform that allows customers to rate their experience on a dish-by-dish basis, providing restaurants with actionable data on how to improve their menus.",
             duration: "Jan - Apr 2025",
-            imageURL: "/projects/platemate-cover.png",
+            imageURL: "/projects/platemate/platemate-cover.png",
             githubURL: "https://github.com/GenerateNU/platemate",
             liveURL: "/posts/gen-platemate",
             techStack: ["Go", "MongoDB", "React Native"]
@@ -157,7 +157,7 @@ export default {
             title: "Nightlife",
             description: "A mobile application for nightlife discovery that helps users make informed decisions on where to spend their nights out, based on real, user-driven ratings that are specific to their interests.",
             duration: "Sep - Dec 2024",
-            imageURL: "/projects/nightlife-cover.png",
+            imageURL: "/projects/nightlife/nightlife-cover.png",
             githubURL: "https://github.com/GenerateNU/nightlife",
             liveURL: "/posts/gen-nightlife",
             techStack: ["Go", "React Native", "PostgreSQL"]
@@ -175,7 +175,7 @@ export default {
           title: "Constellation",
           description: "A platform to track and manage your finances, with a focus on budgeting and expense tracking for small businesses, giving them insights and helping them make informed financial decisions.",
             duration: "Jan 2025 - Present",
-            imageURL: "/projects/constellation-cover.png",
+            imageURL: "/projects/constellation/constellation-cover.png",
             githubURL: "https://github.com/GenerateNU/constellation",
             liveURL: "",
             techStack: ["Java", "Spring Boot", "CockroachDB"]
@@ -185,7 +185,7 @@ export default {
             title: "Hexagonal Reversi",
             description: "An implementation of Orthello with a hexagonal grid using Java Swing and built using MVC design patterns. Includes AI strategies with various difficulty levels using move selection algorithms.",
             duration: "Nov - Dec 2023",
-            imageURL: "/projects/reversi-cover.jpeg",
+            imageURL: "/projects/reversi/reversi-cover.jpeg",
             githubURL: "https://github.com/benjaspet/cs3500",
             liveURL: "",
             techStack: ["Java", "Swing", "JUnit 4"]
@@ -194,7 +194,7 @@ export default {
             title: "Elixir Music",
             description: "A Discord music application serving over 300,000 users using the Spotify Tracks API and YouTube. Featuring custom playlist support via MongoDB and a RESTful API to motify the bot state externally.",
             duration: "May 2022 - Aug 2024",
-            imageURL: "/projects/elixir-cover.png",
+            imageURL: "/projects/elixir/elixir-cover.png",
             githubURL: "https://github.com/benjaspet/elixir-v4",
             liveURL: "",
             techStack: ["Java", "Javalin", "MongoDB"]

@@ -84,15 +84,7 @@ export default function Home() {
                     initial="hidden"
                     animate="visible"
                 >
-                    <p>Ben
-                        <span className={"inline text-[#0b6db8]"}>
-                            [
-                        </span>
-                        jamin
-                        <span className={"inline text-[#0b6db8]"}>
-                            ]
-                        </span>
-                        Petrillo</p>
+                    <p>Ben Petrillo</p>
                 </motion.h1>
                 <motion.h2
                     className="text-xl md:text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2"
