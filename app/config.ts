@@ -42,14 +42,14 @@ export default {
             ]
         },
         {
-            company: "Ventrian Analytics",
+            company: "Nuvoma Solutions",
             description: "Metric-based financial management platform for small businesses.",
-            companyLogo: "/experience/ventrian-icon.png",
+            companyLogo: "/experience/nuvoma-icon.png",
             roles: [
                 {
-                    position: "Software Engineering Intern",
+                    position: "Software Engineering Lead",
                     location: "Boston, MA",
-                    dateRange: "May 2025",
+                    dateRange: "Jun 2025 - Present",
                     status: "current",
                     bullets: [
                         "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
@@ -82,7 +82,7 @@ export default {
                 {
                     position: "Technical Lead",
                     location: "Boston, MA",
-                    dateRange: "Dec 2024 - Present",
+                    dateRange: "Dec 2024 - Apr 2025",
                     status: "current",
                     bullets: [
                         "Lead a team of 5 engineers in the development of PlateMate, a data-driven insight application for restaurants",
