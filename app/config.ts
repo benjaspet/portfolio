@@ -36,24 +36,23 @@ export default {
                     dateRange: "June - Dec 2025",
                     status: "current",
                     bullets: [
-                        "Incoming June 2025"
+                        "Building and designing an automated regression test framework for core services used by the Fulfillment Execution Applications team, reducing manual testing and accelerating deployment times"
                     ]
                 },
             ]
         },
         {
-            company: "Ventrian Analytics",
-            description: "Metric-based financial management platform for small businesses.",
-            companyLogo: "/experience/ventrian-icon.png",
+            company: "Nuvoma Solutions",
+            description: "A dedicated group of operational and engineering leaders that provide software solutions for smaller businesses.",
+            companyLogo: "/experience/nuvoma-icon.png",
             roles: [
                 {
-                    position: "Software Engineering Intern",
+                    position: "Software Engineering Lead",
                     location: "Boston, MA",
-                    dateRange: "May 2025",
+                    dateRange: "Jun 2025 - Present",
                     status: "current",
                     bullets: [
-                        "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
-                        "Implement CRUD endpoints for interacting with AWS S3 for secure asset storage and retrieval"
+                        "Commissioned by a former professional athlete to develop a web application for a new training bootcamp",
                     ]
                 },
             ]
@@ -82,7 +81,7 @@ export default {
                 {
                     position: "Technical Lead",
                     location: "Boston, MA",
-                    dateRange: "Dec 2024 - Present",
+                    dateRange: "Dec 2024 - Apr 2025",
                     status: "current",
                     bullets: [
                         "Lead a team of 5 engineers in the development of PlateMate, a data-driven insight application for restaurants",

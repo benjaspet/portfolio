@@ -33,13 +33,11 @@ const icons = {
 }
 
 const images = [
-    "/photography/present.png",
+    "/photography/escape-room.jpg",
+    "/photography/golden-gate.jpg",
     "/photography/headshot.png",
+    "/photography/present.png",
     "/photography/ireland.jpg",
-    "/photography/lobster-roll.jpg",
-    "/photography/grad.jpg",
-    "/photography/fish.jpg",
-    "/photography/sunroom.jpg",
 ];
 
 export default function Home() {
