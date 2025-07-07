@@ -36,14 +36,14 @@ export default {
                     dateRange: "June - Dec 2025",
                     status: "current",
                     bullets: [
-                        "Incoming June 2025"
+                        "Building and designing an automated regression test framework for core services used by the Fulfillment Execution Applications team, reducing manual testing and accelerating deployment times"
                     ]
                 },
             ]
         },
         {
             company: "Nuvoma Solutions",
-            description: "Metric-based financial management platform for small businesses.",
+            description: "A dedicated group of operational and engineering leaders that provide software solutions for smaller businesses.",
             companyLogo: "/experience/nuvoma-icon.png",
             roles: [
                 {
@@ -52,8 +52,7 @@ export default {
                     dateRange: "Jun 2025 - Present",
                     status: "current",
                     bullets: [
-                        "Maintain cloud infrastructure, optimize database queries, and create numerous frontend components",
-                        "Implement CRUD endpoints for interacting with AWS S3 for secure asset storage and retrieval"
+                        "Commissioned by a former professional athlete to develop a web application for a new training bootcamp",
                     ]
                 },
             ]
