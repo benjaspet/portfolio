@@ -2,11 +2,11 @@ import {Config} from "./types";
 
 export default {
     languages: [
-        "Java", "Go", "TypeScript", "Python", "HTML/CSS", "C++", "Common Lisp", "Racket"
+        "Java", "Go", "TypeScript", "Python", "HTML/CSS", "Lisp"
     ],
     technologies: [
-        "React", "React Native", "Next.js", "Spring Boot", "FastAPI", "Node.js", "Docker", "Terraform", "AWS (EC2, S3, Lambda)",
-        "PostgreSQL", "MySQL", "MongoDB", "Prisma", "Firebase", "Nix", "Git", "Scikit-learn", "JUnit", "Jest"
+        "AWS (EC2, S3, Lambda, DynamoDB, SQS, EKS)", "EventBridge", "Apache Kafka", "Datadog", "PostgreSQL", "MongoDB",
+        "Nix", "Docker", "Terraform", "Spring Boot", "FastAPI", "React", "React Native", "Next.js", "Playwright", "JUnit",
     ],
     education: [
         {
@@ -36,23 +36,52 @@ export default {
                     dateRange: "June - Dec 2025",
                     status: "current",
                     bullets: [
-                        "Building and designing an automated regression test framework for core services used by the Fulfillment Execution Applications team, reducing manual testing and accelerating deployment times"
+                        "Containerized the Veterinarian Medical Guide (VMG) service using Docker, LocalStack, and Terraform,\n" +
+                        "establishing a robust, event-driven testing framework as a core tooling repository to validate the entire data\n" +
+                        "pipeline—from Kafka injection via DynamoDB processing to downstream SQS delivery",
+                        "Identified and resolved a critical bug in Chewy’s NDC Manager service that prevented the creation and updating\n" +
+                        "of new externally compounded records, restoring functionality to 10,000+ daily downstream pharmacy workflows",
+                        "Developed a regression testing framework leveraging builder patterns for the Lynx platform using Playwright and\n" +
+                        "TypeScript, injecting into a Jenkins pipeline to speed up deployment"
                     ]
                 },
             ]
         },
         {
-            company: "Nuvoma Solutions",
-            description: "A dedicated group of operational and engineering leaders that provide software solutions for smaller businesses.",
+            company: "Stealth Startup",
+            description: "A startup discovery platform that makes finding, evaluating, and sharing startups easier than ever before by providing personalized startup recommendations tailored to investors' preferences, allowing them to follow startups' progress, and enabling effortless sharing of startup information.",
+            companyLogo: "/experience/firstglance-icon.png",
+            roles: [
+                {
+                    position: "Software Engineering Co-op",
+                    location: "Boston, MA",
+                    dateRange: "Sep - Dec 2024",
+                    status: "done",
+                    bullets: [
+                        "Engineered a traction dashboard, auth flows, and onboarding components for an internal tool using Next.js",
+                        "Created a data migration pipeline from Firebase to PostgreSQL, architecting schema design and relations",
+                        "Integrated 25+ OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
+                        "Automated infrastructure deployment to AWS EC2 instances using Terraform, accelerating workflows",
+                        "Leveraged pytest and bun-test to develop regression and API-level test suites, achieving 88% coverage"
+                    ]
+                }
+            ]
+        },
+        {
+            company: "Synethos, Inc.",
+            description: "Synethos offers comprehensive consulting for entrepreneurs and businesses to build the technology foundation needed for unicorn-level success.",
             companyLogo: "/experience/nuvoma-icon.png",
             roles: [
                 {
-                    position: "Software Engineering Lead",
+                    position: "Software Engineer (Lead)",
                     location: "Boston, MA",
                     dateRange: "Jun 2025 - Present",
                     status: "current",
                     bullets: [
-                        "Commissioned by a former professional athlete to develop a web application for a new training bootcamp",
+                        "Commissioned by a former professional athlete to develop a platform for an elite football training business, using\n" +
+                        "Google AppScripts for registration workflows with Next.js & Tailwind CSS for SSR and mobile responsiveness",
+                        "Developed core software for a Minecraft server network featuring a matchmaking algorithm & queue system,\n" +
+                        "leveraging MariaDB and object-oriented PHP"
                     ]
                 },
             ]
@@ -63,12 +92,12 @@ export default {
             companyLogo: "/experience/c4c-icon.png",
             roles: [
                 {
-                    position: "Software Developer",
+                    position: "Software Developer (Core Infra)",
                     location: "Boston, MA",
                     dateRange: "May 2025 - Present",
                     status: "current",
                     bullets: [
-                        "Incoming Sep 2025"
+                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
                     ]
                 }
             ]
@@ -79,7 +108,7 @@ export default {
             companyLogo: "/experience/generate-icon.png",
             roles: [
                 {
-                    position: "Technical Lead",
+                    position: "Software Engineer (Tech Lead)",
                     location: "Boston, MA",
                     dateRange: "Dec 2024 - Apr 2025",
                     status: "current",
@@ -98,26 +127,6 @@ export default {
                         "Implement 20+ CRUD routes for auth, users, and venue interactions for a nightlife discovery platform",
                         "Create mobile navigation stacks and architect auth flows leveraging JSON webtokens & Supabase PostgreSQL",
                         "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project demonstration deadlines"
-                    ]
-                }
-            ]
-        },
-        {
-            company: "Stealth Startup",
-            description: "A startup discovery platform that makes finding, evaluating, and sharing startups easier than ever before by providing personalized startup recommendations tailored to investors' preferences, allowing them to follow startups' progress, and enabling effortless sharing of startup information.",
-            companyLogo: "/experience/firstglance-icon.png",
-            roles: [
-                {
-                    position: "Software Engineering Co-op",
-                    location: "Boston, MA",
-                    dateRange: "Sep - Dec 2024",
-                    status: "done",
-                    bullets: [
-                        "Introduce a master traction page, onboarding components, and user profile flow for an internal startup discovery tool with search, filter, input validation, and settings functionality using Next.js, accelerating analytical efforts",
-                        "Generate a migration pipeline to transition populated data from Firebase to PostgreSQL with schema design",
-                        "Automate deployment to AWS EC2 instances using Terraform and CD pipelines, accelerating workflows",
-                        "Integrate 25+ OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
-                        "Leverage pytest and bun-test to develop performance and API-level test suites, achieving 88% coverage"
                     ]
                 }
             ]

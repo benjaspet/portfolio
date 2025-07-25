@@ -37,7 +37,6 @@ const images = [
     "/photography/golden-gate.jpg",
     "/photography/headshot.png",
     "/photography/present.png",
-    "/photography/ireland.jpg",
 ];
 
 export default function Home() {
@@ -90,7 +89,7 @@ export default function Home() {
                     initial="hidden"
                     animate="visible"
                 >
-                    <p>Software Engineer</p>
+                    <p>Software Engineering</p>
                 </motion.h2>
                 <motion.h4
                     variants={foldUpVariants}
@@ -99,7 +98,7 @@ export default function Home() {
                     className="text-md text-gray-300 font-semibold text-center sm:text-start"
                 >
           <span className="hidden sm:inline-flex gap-1 items-center mb-4">
-            Shipping quality software, one line at a time.
+            Always moving fast, eager to learn, ready to build.
           </span>
                 </motion.h4>
 
@@ -109,9 +108,9 @@ export default function Home() {
                     initial="hidden"
                     animate="visible"
                 >
-                    <LeadingButton icon={icons.clipboard} text="Resume" link={"/resume.pdf"}/>
+                    <LeadingButton icon={icons.clipboard} text="Resume Request" link={"mailto:me@benpetrillo.dev"}/>
                     <LeadingButton icon={icons.calendar} text="Calendar"
-                                   link={"https://calendar.app.google/Yx8PH4GBmrJkwoE3A"}/>
+                                   link={"https://calendar.app.google/b7nQyNqL7jHk92Lv9"}/>
                 </motion.div>
 
                 <motion.div
@@ -175,6 +174,7 @@ export default function Home() {
 
     const ExperienceAndEducationTab = () => (
         <>
+            {/* First 2 experiences without header */}
             <motion.div
                 className="mx-auto w-full items-center justify-center"
                 initial="hidden"
@@ -182,7 +182,7 @@ export default function Home() {
                 variants={fadeInFromRightVariants}
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {config.experience.map((company, index) => (
+                    {config.experience.slice(0, 2).map((company, index) => (
                         <motion.div key={index} variants={fadeInFromRightChildVariants}>
                             <ExperienceCard
                                 logo={company.companyLogo}
@@ -193,6 +193,42 @@ export default function Home() {
                 </div>
             </motion.div>
 
+            {/* Campus Experience header - only show if there are more than 2 experiences */}
+            {config.experience.length > 2 && (
+                <motion.div
+                    className="my-4 w-full mx-auto flex items-center"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeInFromRightVariants}
+                >
+                    <Separator className="flex-1 mr-4"/>
+                    <h3 className="text-2xl font-bold text-gray-300 whitespace-nowrap">Campus Experience</h3>
+                    <Separator className="flex-1 ml-4"/>
+                </motion.div>
+            )}
+
+            {/* Remaining experiences under Campus Experience */}
+            {config.experience.length > 2 && (
+                <motion.div
+                    className="mx-auto w-full items-center justify-center"
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeInFromRightVariants}
+                >
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {config.experience.slice(2).map((company, index) => (
+                            <motion.div key={index + 2} variants={fadeInFromRightChildVariants}>
+                                <ExperienceCard
+                                    logo={company.companyLogo}
+                                    experience={company}
+                                />
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+            )}
+
+            {/* Education section */}
             <motion.div
                 className="my-4 w-full mx-auto flex items-center"
                 initial="hidden"
@@ -264,13 +300,13 @@ export default function Home() {
             >
                 {!isMobile ? (
                     <div className="flex h-screen">
-                        <div className="w-1/2 overflow-y-auto hide-scrollbar">
+                        <div className="w-3/5 overflow-y-auto hide-scrollbar">
                             <ContentLoader contentKey="content">
                                 <HomeContent/>
                             </ContentLoader>
                         </div>
 
-                        <div className="w-1/2 h-screen">
+                        <div className="w-2/5 h-screen">
                             <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]" />
                         </div>
                     </div>

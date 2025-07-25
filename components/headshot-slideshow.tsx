@@ -18,7 +18,7 @@ export function HeadshotSlideshow({
                                       width,
                                       height,
                                       className = "",
-                                      interval = 10000,
+                                      interval = 15000,
                                   }: ImageFaderProps) {
     const [current, setCurrent] = useState(0)
     const [isFading, setIsFading] = useState(false)
@@ -32,7 +32,7 @@ export function HeadshotSlideshow({
             setTimeout(() => {
                 setCurrent((prev) => (prev + 1) % images.length)
                 setIsFading(false)
-            }, 1000) // Match this to the CSS fade duration
+            }, 1000)
         }, interval)
 
         return () => clearInterval(fadeInterval)
@@ -66,7 +66,6 @@ export function HeadshotSlideshow({
 
     return (
         <div className="relative overflow-hidden" style={{ width, height }}>
-            {/* Current Image (always visible) */}
             <Image
                 key={images[current]}
                 src={images[current]}
@@ -78,7 +77,6 @@ export function HeadshotSlideshow({
                 } z-10`}
             />
 
-            {/* Next Image (fades in over current) */}
             <Image
                 key={images[next]}
                 src={images[next]}
