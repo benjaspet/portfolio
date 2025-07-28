@@ -174,7 +174,6 @@ export default function Home() {
 
     const ExperienceAndEducationTab = () => (
         <>
-            {/* First 2 experiences without header */}
             <motion.div
                 className="mx-auto w-full items-center justify-center"
                 initial="hidden"
@@ -193,21 +192,6 @@ export default function Home() {
                 </div>
             </motion.div>
 
-            {/* Campus Experience header - only show if there are more than 2 experiences */}
-            {config.experience.length > 2 && (
-                <motion.div
-                    className="my-4 w-full mx-auto flex items-center"
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeInFromRightVariants}
-                >
-                    <Separator className="flex-1 mr-4"/>
-                    <h3 className="text-2xl font-bold text-gray-300 whitespace-nowrap">Campus Experience</h3>
-                    <Separator className="flex-1 ml-4"/>
-                </motion.div>
-            )}
-
-            {/* Remaining experiences under Campus Experience */}
             {config.experience.length > 2 && (
                 <motion.div
                     className="mx-auto w-full items-center justify-center"
@@ -228,7 +212,6 @@ export default function Home() {
                 </motion.div>
             )}
 
-            {/* Education section */}
             <motion.div
                 className="my-4 w-full mx-auto flex items-center"
                 initial="hidden"

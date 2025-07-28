@@ -31,7 +31,7 @@ export default {
             companyLogo: "/experience/chewy-icon.png",
             roles: [
                 {
-                    position: "Software Engineering Co-op",
+                    position: "Software Engineer Co-op",
                     location: "Boston, MA",
                     dateRange: "June - Dec 2025",
                     status: "current",
@@ -53,7 +53,7 @@ export default {
             companyLogo: "/experience/firstglance-icon.png",
             roles: [
                 {
-                    position: "Software Engineering Co-op",
+                    position: "Software Engineer Co-op",
                     location: "Boston, MA",
                     dateRange: "Sep - Dec 2024",
                     status: "done",
@@ -63,89 +63,6 @@ export default {
                         "Integrated 25+ OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
                         "Automated infrastructure deployment to AWS EC2 instances using Terraform, accelerating workflows",
                         "Leveraged pytest and bun-test to develop regression and API-level test suites, achieving 88% coverage"
-                    ]
-                }
-            ]
-        },
-        {
-            company: "Synethos, Inc.",
-            description: "Synethos offers comprehensive consulting for entrepreneurs and businesses to build the technology foundation needed for unicorn-level success.",
-            companyLogo: "/experience/nuvoma-icon.png",
-            roles: [
-                {
-                    position: "Software Engineer (Lead)",
-                    location: "Boston, MA",
-                    dateRange: "Jun 2025 - Present",
-                    status: "current",
-                    bullets: [
-                        "Commissioned by a former professional athlete to develop a platform for an elite football training business, using\n" +
-                        "Google AppScripts for registration workflows with Next.js & Tailwind CSS for SSR and mobile responsiveness",
-                        "Developed core software for a Minecraft server network featuring a matchmaking algorithm & queue system,\n" +
-                        "leveraging MariaDB and object-oriented PHP"
-                    ]
-                },
-            ]
-        },
-        {
-            company: "Code4Community",
-            description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
-            companyLogo: "/experience/c4c-icon.png",
-            roles: [
-                {
-                    position: "Software Developer (Core Infra)",
-                    location: "Boston, MA",
-                    dateRange: "May 2025 - Present",
-                    status: "current",
-                    bullets: [
-                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
-                    ]
-                }
-            ]
-        },
-        {
-            company: "Generate Product Development",
-            description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
-            companyLogo: "/experience/generate-icon.png",
-            roles: [
-                {
-                    position: "Software Engineer (Tech Lead)",
-                    location: "Boston, MA",
-                    dateRange: "Dec 2024 - Apr 2025",
-                    status: "current",
-                    bullets: [
-                        "Lead a team of 5 engineers in the development of PlateMate, a data-driven insight application for restaurants",
-                        "Manage project milestones, delegate tickets, review pull requests, and lead project architecture discussions",
-                        "Build a development environment using Nix, and develop CI workflow scripts to improve development velocity"
-                    ]
-                },
-                {
-                    position: "Software Engineer",
-                    location: "Boston, MA",
-                    dateRange: "Sep - Dec 2024",
-                    status: "done",
-                    bullets: [
-                        "Implement 20+ CRUD routes for auth, users, and venue interactions for a nightlife discovery platform",
-                        "Create mobile navigation stacks and architect auth flows leveraging JSON webtokens & Supabase PostgreSQL",
-                        "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project demonstration deadlines"
-                    ]
-                }
-            ]
-        },
-        {
-            company: "Northeastern University",
-            description: "The computer science school of Northeastern University in Boston, Massachusetts. It was the first college in the United States dedicated to the field of computer science when it was founded in 1982.",
-            companyLogo: "/experience/northeastern-icon.jpg",
-            roles: [
-                {
-                    position: "Teaching Assistant",
-                    location: "Boston, MA",
-                    dateRange: "Jan - Jul 2024",
-                    status: "done",
-                    bullets: [
-                        "CS3500: Object-Oriented Design (May - Jul) and CS2510: Fundamentals of Computer Science 2 (Jan - Apr)",
-                        "Direct 3 lab sections of 40+ students, conducting lecture-style sessions on software development best practices",
-                        "Grade 30+ assignments and lab activities weekly, collaborating with professors on grading rubrics and activities",
-                        "Hold office hours for one-on-one mentoring on software engineering, data structures, and MVC patterns"
                     ]
                 }
             ]
@@ -169,25 +86,6 @@ export default {
             githubURL: "https://github.com/GenerateNU/nightlife",
             liveURL: "/posts/gen-nightlife",
             techStack: ["Go", "React Native", "PostgreSQL"]
-        },
-        {
-            title: "Budgr",
-            description: "Finance tracking catered to college students and young adults. Manage your finances and discover methods others are using to save money. Track your spending, set budgets, and get insights on your spending habits.",
-            duration: "May 2025",
-            imageURL: "/projects/budgr/budgr-cover.png",
-            githubURL: "https://github.com",
-            liveURL: "",
-            techStack: ["Java", "React Native", "MongoDB", "Figma"]
-        },
-        {
-          title: "Constellation",
-          description: "A platform to track and manage your finances, with a focus on budgeting and expense tracking for small businesses, giving them insights and helping them make informed financial decisions.",
-            duration: "Jan 2025 - Present",
-            imageURL: "/projects/constellation/constellation-cover.png",
-            githubURL: "https://github.com/GenerateNU/constellation",
-            liveURL: "",
-            techStack: ["Java", "Spring Boot", "CockroachDB"]
-
         },
         {
             title: "Hexagonal Reversi",
