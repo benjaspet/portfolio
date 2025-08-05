@@ -181,7 +181,7 @@ export default function Home() {
                 variants={fadeInFromRightVariants}
             >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                    {config.experience.slice(0, 2).map((company, index) => (
+                    {config.experience.map((company, index) => (
                         <motion.div key={index} variants={fadeInFromRightChildVariants}>
                             <ExperienceCard
                                 logo={company.companyLogo}
@@ -191,26 +191,6 @@ export default function Home() {
                     ))}
                 </div>
             </motion.div>
-
-            {config.experience.length > 2 && (
-                <motion.div
-                    className="mx-auto w-full items-center justify-center"
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeInFromRightVariants}
-                >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {config.experience.slice(2).map((company, index) => (
-                            <motion.div key={index + 2} variants={fadeInFromRightChildVariants}>
-                                <ExperienceCard
-                                    logo={company.companyLogo}
-                                    experience={company}
-                                />
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-            )}
 
             <motion.div
                 className="my-4 w-full mx-auto flex items-center"
@@ -283,13 +263,13 @@ export default function Home() {
             >
                 {!isMobile ? (
                     <div className="flex h-screen">
-                        <div className="w-3/5 overflow-y-auto hide-scrollbar">
+                        <div className="w-1/2 overflow-y-auto hide-scrollbar">
                             <ContentLoader contentKey="content">
                                 <HomeContent/>
                             </ContentLoader>
                         </div>
 
-                        <div className="w-2/5 h-screen">
+                        <div className="w-1/2 h-screen">
                             <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]" />
                         </div>
                     </div>

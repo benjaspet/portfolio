@@ -67,6 +67,51 @@ export default {
                 }
             ]
         },
+        {
+            company: "Code4Community",
+            description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
+            companyLogo: "/experience/c4c-icon.png",
+            roles: [
+                {
+                    position: "Software Developer (Core Infra)",
+                    location: "Boston, MA",
+                    dateRange: "May 2025 - Present",
+                    status: "current",
+                    bullets: [
+                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
+                    ]
+                }
+            ]
+        },
+        {
+            company: "Generate Product Development",
+            description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
+            companyLogo: "/experience/generate-icon.png",
+            roles: [
+                {
+                    position: "Software Engineer (Tech Lead)",
+                    location: "Boston, MA",
+                    dateRange: "Dec 2024 - Apr 2025",
+                    status: "current",
+                    bullets: [
+                        "Lead a team of 5 engineers in the development of PlateMate, a data-driven insight application for restaurants",
+                        "Manage project milestones, delegate tickets, review pull requests, and lead project architecture discussions",
+                        "Build a development environment using Nix, and develop CI workflow scripts to improve development velocity"
+                    ]
+                },
+                {
+                    position: "Software Engineer",
+                    location: "Boston, MA",
+                    dateRange: "Sep - Dec 2024",
+                    status: "done",
+                    bullets: [
+                        "Implement 20+ CRUD routes for auth, users, and venue interactions for a nightlife discovery platform",
+                        "Create mobile navigation stacks and architect auth flows leveraging JSON webtokens & Supabase PostgreSQL",
+                        "Complete weekly scrum sprints with an agile team of 12 to adhere to ambitious project demonstration deadlines"
+                    ]
+                }
+            ]
+        },
     ],
     projects: [
         {
