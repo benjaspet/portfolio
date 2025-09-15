@@ -73,10 +73,19 @@ export default {
             companyLogo: "/experience/c4c-icon.png",
             roles: [
                 {
+                    position: "Software Developer (FCC)",
+                    location: "Boston, MA",
+                    dateRange: "Sep 2025 - Present",
+                    status: "current",
+                    bullets: [
+                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
+                    ]
+                },
+                {
                     position: "Software Developer (Core Infra)",
                     location: "Boston, MA",
-                    dateRange: "May 2025 - Present",
-                    status: "current",
+                    dateRange: "Jun 2025 - Aug 2025",
+                    status: "done",
                     bullets: [
                         "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
                     ]
@@ -84,14 +93,14 @@ export default {
             ]
         },
         {
-            company: "Generate Product Development",
+            company: "Generate: a Sherman Center program",
             description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
             companyLogo: "/experience/generate-icon.png",
             roles: [
                 {
                     position: "Software Engineer (Tech Lead)",
                     location: "Boston, MA",
-                    dateRange: "Dec 2024 - Apr 2025",
+                    dateRange: "Jan - Apr 2025",
                     status: "current",
                     bullets: [
                         "Lead a team of 5 engineers in the development of PlateMate, a data-driven insight application for restaurants",
@@ -124,6 +133,15 @@ export default {
             techStack: ["Go", "MongoDB", "React Native"]
         },
         {
+            title: "The LB Blueprint",
+            description: "An implementation of Orthello with a hexagonal grid using Java Swing and built using MVC design patterns. Includes AI strategies with various difficulty levels using move selection algorithms.",
+            duration: "May - Jun 2025",
+            imageURL: "/projects/tlbb/tlbb-cover.jpg",
+            githubURL: "https://github.com/benjaspet/cs3500",
+            liveURL: "",
+            techStack: ["TypeScript", "Next.js", "TailwindCSS"]
+        },
+        {
             title: "Nightlife",
             description: "A mobile application for nightlife discovery that helps users make informed decisions on where to spend their nights out, based on real, user-driven ratings that are specific to their interests.",
             duration: "Sep - Dec 2024",
@@ -131,15 +149,6 @@ export default {
             githubURL: "https://github.com/GenerateNU/nightlife",
             liveURL: "/posts/gen-nightlife",
             techStack: ["Go", "React Native", "PostgreSQL"]
-        },
-        {
-            title: "Hexagonal Reversi",
-            description: "An implementation of Orthello with a hexagonal grid using Java Swing and built using MVC design patterns. Includes AI strategies with various difficulty levels using move selection algorithms.",
-            duration: "Nov - Dec 2023",
-            imageURL: "/projects/reversi/reversi-cover.jpeg",
-            githubURL: "https://github.com/benjaspet/cs3500",
-            liveURL: "",
-            techStack: ["Java", "Swing", "JUnit 4"]
         },
         {
             title: "Elixir Music",

@@ -15,7 +15,7 @@ import CustomTimelineItem from "@/components/timeline-item";
 import {Experience, Role} from "@/app/types";
 import Image from "next/image";
 import {ScrollArea} from "@/components/ui/scroll-area";
-import {BuildingIcon, CalendarIcon} from "lucide-react";
+import {BuildingIcon} from "lucide-react";
 
 type CardProps = {
     experience: Experience;
@@ -23,6 +23,8 @@ type CardProps = {
 };
 
 const ExperienceCard = ({ experience, logo }: CardProps) => {
+    const hasMultipleRoles = experience.roles.length > 1;
+    const latestRole = experience.roles[0];
 
     return (
         <Dialog>
@@ -30,26 +32,34 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
                 <Card className="overflow-hidden border-2 hover:cursor-pointer hover:border-blue-700 transition-all duration-300 hover:shadow-md">
                     <CardContent className="p-6">
                         <div className="flex items-start gap-5">
-                            <div className="flex-shrink-0 p-0.5 rounded-md border bg-slate-700 border-slate-700">
-                                <Image
-                                    src={logo || "/placeholder.svg"}
-                                    alt={`${experience.company} logo`}
-                                    width={40}
-                                    height={40}
-                                    className="object-contain rounded-md"
-                                />
+                            <div className="flex-shrink-0">
+                                <div className="p-0.5 rounded-md border bg-slate-700 border-slate-700">
+                                    <Image
+                                        src={logo || "/placeholder.svg"}
+                                        alt={`${experience.company} logo`}
+                                        width={40}
+                                        height={40}
+                                        className="object-contain rounded-md"
+                                    />
+                                </div>
                             </div>
 
-                            <div className="space-y-0.5">
-                                <h3 className="font-semibold text-lg tracking-tight line-clamp-1">{experience.roles[0].position}</h3>
+                            <div className="flex-1 min-w-0 space-y-0.5">
+                                <div className="flex items-center gap-2">
+                                    <h3 className="font-semibold text-lg tracking-tight line-clamp-1">
+                                        {latestRole.position}
+                                    </h3>
+                                    {hasMultipleRoles && (
+                                        <span className="px-1.5 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded flex-shrink-0">
+                                            +{experience.roles.length - 1}
+                                        </span>
+                                    )}
+                                </div>
+                                
                                 <div className="space-y-1.5">
                                     <div className="flex items-center text-muted-foreground">
-                                        <BuildingIcon className="w-4 h-4 mr-2" />
-                                        <span className="font-medium line-clamp-1">{experience.company}</span>
-                                    </div>
-                                    <div className="flex items-center text-sm text-muted-foreground">
-                                        <CalendarIcon className="w-4 h-4 mr-2" />
-                                        <span className={"line-clamp-1"}>{experience.roles[0].dateRange}</span>
+                                        <BuildingIcon className="w-4 h-4 mr-2 flex-shrink-0" />
+                                        <span className="font-medium line-clamp-1">{experience.company} • {latestRole.dateRange}</span>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +71,8 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
                 <ScrollArea className="max-h-[60vh] overflow-y-auto">
                     <div className="p-6">
                         <DialogHeader>
-                            <DialogTitle className={"text-xl"}>{experience.company}</DialogTitle>
-                            <DialogDescription className={"text-md leading-5"}>
+                            <DialogTitle className="text-xl">{experience.company}</DialogTitle>
+                            <DialogDescription className="text-md leading-5">
                                 {experience.description}
                             </DialogDescription>
                         </DialogHeader>
@@ -80,14 +90,14 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
                                 ))}
                                 <TimelineItem>
                                     <TimelineHeading>Experience began.</TimelineHeading>
-                                    <TimelineDot status={"done"}/>
+                                    <TimelineDot status="done"/>
                                 </TimelineItem>
                             </Timeline>
                         </div>
                     </div>
                 </ScrollArea>
                 <DialogFooter className="md:hidden p-6 border-t">
-                    <DialogClose className={"bg-[#0b6db8] text-wc4c-logohite p-2 rounded-lg"}>
+                    <DialogClose className="bg-[#0b6db8] text-white p-2 rounded-lg">
                         Close
                     </DialogClose>
                 </DialogFooter>
@@ -97,4 +107,3 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
 };
 
 export default ExperienceCard;
-

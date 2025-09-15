@@ -9,15 +9,13 @@ import {staggerContainerVariants} from "./animations/stagger"
 import {GitHubIcon, LinkedInIcon, SlackIcon, TwitterIcon} from "@/components/icons"
 import {ProjectCard} from "@/components/project-card"
 import LeadingButton from "@/components/leading-button"
-import SocialButton from "@/components/social-button"
 import {fadeDownVariants} from "@/app/animations/fade-down"
 import Footer from "@/components/footer"
 import config from "@/app/config"
-import type {Education, PortfolioProject, Post} from "@/app/types"
+import type {Education, PortfolioProject} from "@/app/types"
 import ExperienceCard from "@/components/experience-card"
 import {Separator} from "@/components/ui/separator"
 import EducationCard from "@/components/education-card"
-import PostPreview from "@/components/post-preview"
 import PillCard from "@/components/pill-card"
 import {useLayoutSetup} from "@/hooks/useLayoutSetup"
 import {HeadshotSlideshow} from "@/components/headshot-slideshow";
@@ -33,15 +31,20 @@ const icons = {
 }
 
 const images = [
-    "/photography/escape-room.jpg",
-    "/photography/golden-gate.jpg",
+    "/photography/staircase.jpg",
     "/photography/headshot.png",
     "/photography/present.png",
 ];
 
+const LINKS = {
+    resume: "https://drive.google.com/file/d/1pOz0Op1I-F_--BS36-9hvXIz9_FkD6xL/view?usp=sharing",
+    github: "https://github.com/benjaspet",
+    linkedin: "https://www.linkedin.com/in/ben-petrillo",
+    email: "mailto:petrillo.b@northeastern.edu"
+};
+
 export default function Home() {
     const {isMobile} = useLayoutSetup()
-
     const fadeTransition = {duration: 0.3, ease: "easeInOut"}
 
     interface ContentLoaderProps {
@@ -62,124 +65,172 @@ export default function Home() {
         </AnimatePresence>
     )
 
-    const ProfileHeader = () => (
-        <div className="flex flex-col sm:flex-row items-center sm:items-start justify-between">
-            <div className="flex flex-col mb-2 sm:mb-0">
+    const SocialButtons = ({showText = true}: {showText?: boolean}) => (
+        <motion.div
+            className={`flex gap-2 ${showText ? 'mt-1' : 'mt-2'}`}
+            variants={staggerContainerVariants}
+            initial="hidden"
+            animate="visible"
+        >
+            <LeadingButton 
+                icon={icons.clipboard} 
+                text={showText ? "Resume Request" : ""} 
+                link={LINKS.resume}
+            />
+            <LeadingButton icon={icons.github} text="" link={LINKS.github}/>
+            <LeadingButton icon={icons.linkedin} text="" link={LINKS.linkedin}/>
+            <LeadingButton icon={icons.mail} text="" link={LINKS.email}/>
+        </motion.div>
+    )
 
-                <motion.div
-                    className="items-center self-center sm:hidden mb-3"
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeInFromRightVariants}
-                >
-                    <HeadshotSlideshow images={images} alt={"Headshot"} width={200} height={200} className={"rounded-full border-4 border-[#0b6db8]"} />
-                </motion.div>
+    const ProfileImage = ({size, className}: {size: number, className: string}) => (
+        <HeadshotSlideshow 
+            images={images} 
+            alt="Headshot" 
+            width={size} 
+            height={size} 
+            className={className} 
+        />
+    )
 
-                <motion.h1
-                    className="text-center sm:text-start text-4xl font-bold"
-                    variants={foldUpVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <p>Ben Petrillo</p>
-                </motion.h1>
-                <motion.h2
-                    className="text-xl md:text-2xl font-semibold text-gray-300 text-center sm:text-start mb-2"
-                    variants={foldUpVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <p>Software Engineering</p>
-                </motion.h2>
+    const ProfileText = ({isMobile}: {isMobile: boolean}) => (
+        <>
+            <motion.h1
+                className={`${isMobile ? 'text-2xl text-left' : 'hidden sm:block text-center sm:text-start mt-8 md:mt-0 text-4xl'} font-bold`}
+                variants={foldUpVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <p>Ben Petrillo</p>
+            </motion.h1>
+            <motion.h2
+                className={`${isMobile ? 'text-lg text-left mb-2' : 'hidden sm:block text-xl md:text-2xl text-center sm:text-start mb-2'} font-semibold text-gray-300`}
+                variants={foldUpVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <p>Software Engineering</p>
+            </motion.h2>
+            {!isMobile && (
                 <motion.h4
                     variants={foldUpVariants}
                     initial="hidden"
                     animate="visible"
-                    className="text-md text-gray-300 font-semibold text-center sm:text-start"
+                    className="hidden sm:block text-md text-gray-300 font-semibold text-center sm:text-start"
                 >
-          <span className="hidden sm:inline-flex gap-1 items-center mb-4">
-            Always moving fast, eager to learn, ready to build.
-          </span>
+                    <span className="hidden sm:inline-flex gap-1 items-center mb-4">
+                        Always moving fast, eager to learn, ready to build.
+                    </span>
                 </motion.h4>
+            )}
+        </>
+    )
 
-                <motion.div
-                    className="inline-flex gap-2 mt-1 self-center sm:self-start"
-                    variants={staggerContainerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <LeadingButton icon={icons.clipboard} text="Resume Request" link={"mailto:me@benpetrillo.dev"}/>
-                    <LeadingButton icon={icons.calendar} text="Calendar"
-                                   link={"https://calendar.app.google/b7nQyNqL7jHk92Lv9"}/>
-                </motion.div>
-
-                <motion.div
-                    className="inline-flex gap-2 mt-2.5 self-center sm:self-start"
-                    variants={staggerContainerVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <SocialButton icon={icons.github} link={"https://github.com/benjaspet"}/>
-                    <SocialButton icon={icons.linkedin} link={"https://www.linkedin.com/in/ben-petrillo"}/>
-                    <SocialButton icon={icons.slack} link={"https://slack.com"}/>
-                    <SocialButton icon={icons.twitter} link={"https://twitter.com/Benjaspet"}/>
-                    <SocialButton icon={icons.mail} link={"mailto:petrillo.b@northeastern.edu"}/>
-                </motion.div>
+    const MobileProfileHeader = () => (
+        <div className="flex sm:hidden items-center justify-between w-full">
+            <div className="flex-1 min-w-0">
+                <ProfileText isMobile={true} />
+                <SocialButtons showText={false} />
             </div>
+            <motion.div
+                className="flex-shrink-0 ml-4"
+                initial="hidden"
+                animate="visible"
+                variants={fadeInFromRightVariants}
+            >
+                <ProfileImage size={120} className="rounded-full border-2 border-[#0b6db8]" />
+            </motion.div>
+        </div>
+    )
 
+    const DesktopProfileHeader = () => (
+        <div className="flex flex-col sm:mb-0">
+            <motion.div
+                className="items-center sm:self-center hidden mb-3"
+                initial="hidden"
+                animate="visible"
+                variants={fadeInFromRightVariants}
+            >
+                <ProfileImage size={200} className="rounded-full border-4 border-[#0b6db8]" />
+            </motion.div>
+
+            <ProfileText isMobile={false} />
+
+            <div className="hidden md:inline-flex gap-2 self-center sm:self-start">
+                <SocialButtons showText={true} />
+            </div>
+        </div>
+    )
+
+    const ProfileHeader = () => (
+        <div className="flex flex-col sm:flex-row mx-2 md:mx-0 md:mb-8 md:items-center sm:items-start justify-between">
+            <MobileProfileHeader />
+            <DesktopProfileHeader />
+            
             <motion.div
                 className="flex-shrink-0 hidden sm:flex"
                 initial="hidden"
                 animate="visible"
                 variants={fadeInFromRightVariants}
             >
-                <HeadshotSlideshow images={images} alt={"Headshot"} width={200} height={200} className={"rounded-full border-4 border-[#0b6db8]"} />
+                <ProfileImage size={180} className="rounded-full border-4 border-[#0b6db8]" />
             </motion.div>
         </div>
     )
 
     const PostsAndSkills = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4">
-            {config.posts.slice(0, 2).map((post: Post, index: number) => (
-                <PostPreview key={index} title={post.title} link={post.link}/>
-            ))}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 col-span-1 sm:col-span-2">
                 <PillCard
-                    title={"Programming Languages"}
+                    title="Programming Languages"
                     pillItems={config.languages}
-                    pillColor={"bg-[#0b6db8]"}
+                    pillColor="bg-[#0b6db8]"
                 />
                 <PillCard
-                    title={"Other Technologies"}
+                    title="Other Technologies"
                     pillItems={config.technologies}
                 />
             </div>
         </div>
     )
 
-    const ProjectsTab = () => (
+    const AnimatedGrid = ({children, className = ""}: {children: React.ReactNode, className?: string}) => (
         <motion.div
-            className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4"
+            className={`${className}`}
             initial="hidden"
             animate="visible"
             variants={fadeInFromRightVariants}
         >
+            {children}
+        </motion.div>
+    )
+
+    const ProjectsTab = () => (
+        <AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {config.projects.map((proj: PortfolioProject, index: number) => (
                 <motion.div key={index} variants={fadeInFromRightChildVariants}>
-                    <ProjectCard key={index} project={proj}/>
+                    <ProjectCard project={proj}/>
                 </motion.div>
             ))}
+        </AnimatedGrid>
+    )
+
+    const SectionSeparator = ({title}: {title: string}) => (
+        <motion.div
+            className="my-4 w-full mx-auto flex items-center"
+            initial="hidden"
+            animate="visible"
+            variants={fadeInFromRightVariants}
+        >
+            <Separator className="flex-1 mr-4"/>
+            <h3 className="text-2xl font-bold text-gray-300 whitespace-nowrap">{title}</h3>
+            <Separator className="flex-1 ml-4"/>
         </motion.div>
     )
 
     const ExperienceAndEducationTab = () => (
         <>
-            <motion.div
-                className="mx-auto w-full items-center justify-center"
-                initial="hidden"
-                animate="visible"
-                variants={fadeInFromRightVariants}
-            >
+            <AnimatedGrid className="mx-auto w-full items-center justify-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     {config.experience.map((company, index) => (
                         <motion.div key={index} variants={fadeInFromRightChildVariants}>
@@ -190,23 +241,11 @@ export default function Home() {
                         </motion.div>
                     ))}
                 </div>
-            </motion.div>
+            </AnimatedGrid>
 
-            <motion.div
-                className="my-4 w-full mx-auto flex items-center"
-                initial="hidden"
-                animate="visible"
-                variants={fadeInFromRightVariants}
-            >
-                <Separator className="flex-1 mr-4"/>
-                <h3 className="text-2xl font-bold text-gray-300 whitespace-nowrap">Education</h3>
-                <Separator className="flex-1 ml-4"/>
-            </motion.div>
+            <SectionSeparator title="Education" />
 
-            <motion.div
-                className="grid grid-cols-1 sm:grid-cols-2 gap-2"
-                variants={fadeInFromRightVariants}
-            >
+            <AnimatedGrid className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {config.education.map((institution: Education, index: number) => (
                     <motion.div key={index} variants={fadeInFromRightChildVariants}>
                         <EducationCard
@@ -217,7 +256,7 @@ export default function Home() {
                         />
                     </motion.div>
                 ))}
-            </motion.div>
+            </AnimatedGrid>
         </>
     )
 
@@ -228,7 +267,7 @@ export default function Home() {
 
             <div className="my-4">
                 <motion.div initial="hidden" animate="visible" variants={fadeDownVariants}>
-                    <Tabs defaultValue="account" className="">
+                    <Tabs defaultValue="account">
                         <TabsList className="flex w-full">
                             <TabsTrigger value="account" className="flex-1 text-center">
                                 Experience & Education
@@ -251,6 +290,29 @@ export default function Home() {
         </div>
     )
 
+    const DesktopLayout = () => (
+        <div className="flex h-screen">
+            <div className="w-1/2 overflow-y-auto hide-scrollbar">
+                <ContentLoader contentKey="content">
+                    <HomeContent/>
+                </ContentLoader>
+            </div>
+            <div className="w-1/2 h-screen">
+                <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]" />
+            </div>
+        </div>
+    )
+
+    const MobileLayout = () => (
+        <div className="min-h-screen">
+            <div className="w-full">
+                <ContentLoader contentKey="content-mobile">
+                    <HomeContent/>
+                </ContentLoader>
+            </div>
+        </div>
+    )
+
     return (
         <AnimatePresence mode="wait">
             <motion.div
@@ -261,27 +323,7 @@ export default function Home() {
                 transition={fadeTransition}
                 className="min-h-screen"
             >
-                {!isMobile ? (
-                    <div className="flex h-screen">
-                        <div className="w-1/2 overflow-y-auto hide-scrollbar">
-                            <ContentLoader contentKey="content">
-                                <HomeContent/>
-                            </ContentLoader>
-                        </div>
-
-                        <div className="w-1/2 h-screen">
-                            <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]" />
-                        </div>
-                    </div>
-                ) : (
-                    <div className="min-h-screen">
-                        <div className="w-full">
-                            <ContentLoader contentKey="content-mobile">
-                                <HomeContent/>
-                            </ContentLoader>
-                        </div>
-                    </div>
-                )}
+                {!isMobile ? <DesktopLayout /> : <MobileLayout />}
             </motion.div>
         </AnimatePresence>
     )
