@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import {CalendarIcon, ClipboardIcon, MailIcon} from "lucide-react"
+import {ClipboardIcon, MailIcon} from "lucide-react"
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {AnimatePresence, motion} from "framer-motion"
 import {fadeInFromRightChildVariants, fadeInFromRightVariants} from "./animations/fade-in-from-right"
