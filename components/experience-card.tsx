@@ -23,7 +23,6 @@ type CardProps = {
 };
 
 const ExperienceCard = ({ experience, logo }: CardProps) => {
-    const hasMultipleRoles = experience.roles.length > 1;
     const latestRole = experience.roles[0];
 
     return (
@@ -49,11 +48,6 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
                                     <h3 className="font-semibold text-lg tracking-tight line-clamp-1">
                                         {latestRole.position}
                                     </h3>
-                                    {hasMultipleRoles && (
-                                        <span className="px-1.5 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 rounded flex-shrink-0">
-                                            +{experience.roles.length - 1}
-                                        </span>
-                                    )}
                                 </div>
                                 
                                 <div className="space-y-1.5">

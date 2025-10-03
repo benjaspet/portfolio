@@ -1,6 +1,6 @@
 "use client"
 import React from "react"
-import {CalendarIcon, ClipboardIcon, MailIcon} from "lucide-react"
+import {ClipboardIcon, MailIcon} from "lucide-react"
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs"
 import {AnimatePresence, motion} from "framer-motion"
 import {fadeInFromRightChildVariants, fadeInFromRightVariants} from "./animations/fade-in-from-right"
@@ -12,7 +12,7 @@ import LeadingButton from "@/components/leading-button"
 import {fadeDownVariants} from "@/app/animations/fade-down"
 import Footer from "@/components/footer"
 import config from "@/app/config"
-import type {Education, PortfolioProject} from "@/app/types"
+import type {Education, PortfolioProject, StudentOrganization} from "@/app/types"
 import ExperienceCard from "@/components/experience-card"
 import {Separator} from "@/components/ui/separator"
 import EducationCard from "@/components/education-card"
@@ -21,8 +21,7 @@ import {useLayoutSetup} from "@/hooks/useLayoutSetup"
 import {HeadshotSlideshow} from "@/components/headshot-slideshow";
 
 const icons = {
-    clipboard: <ClipboardIcon size={16} className="mr-1.5"/>,
-    calendar: <CalendarIcon size={16} className="mr-1.5"/>,
+    clipboard: <ClipboardIcon size={16} className="md:mr-1.5" />,
     linkedin: <LinkedInIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]"/>,
     slack: <SlackIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]"/>,
     twitter: <TwitterIcon size={16} className="transition-transform duration-500 group-hover:rotate-[25deg]"/>,
@@ -241,6 +240,24 @@ export default function Home() {
                         </motion.div>
                     ))}
                 </div>
+            </AnimatedGrid>
+
+            <SectionSeparator title="Campus Experience" />
+
+            <AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                {config.studentOrganizations.map((org: StudentOrganization, index: number) => (
+                    <motion.div key={index} variants={fadeInFromRightChildVariants}>
+                        <ExperienceCard
+                            logo={org.logo}
+                            experience={{
+                                company: org.name,
+                                description: org.description,
+                                companyLogo: org.logo,
+                                roles: org.roles
+                            }}
+                        />
+                    </motion.div>
+                ))}
             </AnimatedGrid>
 
             <SectionSeparator title="Education" />

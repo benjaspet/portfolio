@@ -39,7 +39,7 @@ export default {
                         "Containerized the Veterinarian Medical Guide (VMG) service using Docker, LocalStack, and Terraform,\n" +
                         "establishing a robust, event-driven testing framework as a core tooling repository to validate the entire data\n" +
                         "pipeline—from Kafka injection via DynamoDB processing to downstream SQS delivery",
-                        "Identified and resolved a critical bug in Chewy’s NDC Manager service that prevented the creation and updating\n" +
+                        "Identified and resolved a critical bug in Chewy's NDC Manager service that prevented the creation and updating\n" +
                         "of new externally compounded records, restoring functionality to 10,000+ daily downstream pharmacy workflows",
                         "Developed a regression testing framework leveraging builder patterns for the Lynx platform using Playwright and\n" +
                         "TypeScript, injecting into a Jenkins pipeline to speed up deployment"
@@ -48,7 +48,7 @@ export default {
             ]
         },
         {
-            company: "Stealth Startup",
+            company: "FirstGlance, Inc.",
             description: "A startup discovery platform that makes finding, evaluating, and sharing startups easier than ever before by providing personalized startup recommendations tailored to investors' preferences, allowing them to follow startups' progress, and enabling effortless sharing of startup information.",
             companyLogo: "/experience/firstglance-icon.png",
             roles: [
@@ -68,17 +68,41 @@ export default {
             ]
         },
         {
-            company: "Code4Community",
-            description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
-            companyLogo: "/experience/c4c-icon.png",
+            company: "Fenway Community Center",
+            description: "Fenway, Boston MA",
+            companyLogo: "/experience/fcc-icon.png",
             roles: [
                 {
-                    position: "Software Developer (FCC)",
+                    position: "Software Engineer",
                     location: "Boston, MA",
-                    dateRange: "Sep 2025 - Present",
-                    status: "current",
+                    dateRange: "Sep - Dec 2024",
+                    status: "done",
                     bullets: [
-                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
+                        "Engineered a traction dashboard, auth flows, and onboarding components for an internal tool using Next.js",
+                        "Created a data migration pipeline from Firebase to PostgreSQL, architecting schema design and relations",
+                        "Integrated 25+ OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
+                        "Automated infrastructure deployment to AWS EC2 instances using Terraform, accelerating workflows",
+                        "Leveraged pytest and bun-test to develop regression and API-level test suites, achieving 88% coverage"
+                    ]
+                }
+            ]
+        },
+        {
+            company: "Northeastern University",
+            description: "Fenway, Boston MA",
+            companyLogo: "/experience/northeastern-icon.jpg",
+            roles: [
+                {
+                    position: "Undergraduate Teaching Assistant",
+                    location: "Boston, MA",
+                    dateRange: "Sep - Dec 2024",
+                    status: "done",
+                    bullets: [
+                        "Engineered a traction dashboard, auth flows, and onboarding components for an internal tool using Next.js",
+                        "Created a data migration pipeline from Firebase to PostgreSQL, architecting schema design and relations",
+                        "Integrated 25+ OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
+                        "Automated infrastructure deployment to AWS EC2 instances using Terraform, accelerating workflows",
+                        "Leveraged pytest and bun-test to develop regression and API-level test suites, achieving 88% coverage"
                     ]
                 },
                 {
@@ -92,13 +116,15 @@ export default {
                 }
             ]
         },
+    ],
+    studentOrganizations: [
         {
             company: "Generate: a Sherman Center program",
             description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
             companyLogo: "/experience/generate-icon.png",
             roles: [
                 {
-                    position: "Software Engineer (Tech Lead)",
+                    position: "Software Technical Lead",
                     location: "Boston, MA",
                     dateRange: "Jan - Apr 2025",
                     status: "current",
@@ -121,6 +147,31 @@ export default {
                 }
             ]
         },
+        {
+            name: "Code4Community",
+            description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
+            logo: "/experience/c4c-icon.png",
+            roles: [
+                {
+                    position: "Software Developer",
+                    location: "Boston, MA",
+                    dateRange: "Sep 2025 - Present",
+                    status: "current",
+                    bullets: [
+                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
+                    ]
+                },
+                {
+                    position: "Software Developer (Core Infra)",
+                    location: "Boston, MA",
+                    dateRange: "Jun 2025 - Aug 2025",
+                    status: "done",
+                    bullets: [
+                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
+                    ]
+                }
+            ]
+        }
     ],
     projects: [
         {
