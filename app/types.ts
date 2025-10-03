@@ -5,6 +5,7 @@ export type Config = {
     technologies: string[];
     education: Education[];
     experience: Experience[];
+    studentOrganizations: StudentOrganization[];
     projects: PortfolioProject[];
     posts: Post[];
 }
@@ -53,4 +54,11 @@ export type Education = {
     duration: string;
     logo: string;
     background: string;
+}
+
+export type StudentOrganization = {
+    name: string;
+    description: string;
+    logo: string;
+    roles: Role[];
 }
