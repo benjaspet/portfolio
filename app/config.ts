@@ -104,15 +104,24 @@ export default {
                         "Automated infrastructure deployment to AWS EC2 instances using Terraform, accelerating workflows",
                         "Leveraged pytest and bun-test to develop regression and API-level test suites, achieving 88% coverage"
                     ]
+                },
+                {
+                    position: "Software Developer (Core Infra)",
+                    location: "Boston, MA",
+                    dateRange: "Jun 2025 - Aug 2025",
+                    status: "done",
+                    bullets: [
+                        "Recruitment tooling for the Core Infrastructure team using Nest.js, React, and AWS Cognito"
+                    ]
                 }
             ]
         },
     ],
     studentOrganizations: [
         {
-            name: "Generate",
-            description: "Generate is Northeastern's premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products.",
-            logo: "/experience/generate-icon.png",
+            company: "Generate: a Sherman Center program",
+            description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
+            companyLogo: "/experience/generate-icon.png",
             roles: [
                 {
                     position: "Software Technical Lead",
