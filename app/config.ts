@@ -119,9 +119,9 @@ export default {
     ],
     studentOrganizations: [
         {
-            company: "Generate: a Sherman Center program",
-            description: "Generate is Northeastern’s premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
-            companyLogo: "/experience/generate-icon.png",
+            name: "Generate: a Sherman Center program",
+            description: "Generate is Northeastern's premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
+            logo: "/experience/generate-icon.png",
             roles: [
                 {
                     position: "Software Technical Lead",
