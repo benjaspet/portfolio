@@ -18,7 +18,7 @@ export function HeadshotSlideshow({
                                       width,
                                       height,
                                       className = "",
-                                      interval = 15000,
+                                      interval = 20000,
                                   }: ImageFaderProps) {
     const [current, setCurrent] = useState(0)
     const [isFading, setIsFading] = useState(false)
