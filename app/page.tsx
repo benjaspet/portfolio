@@ -18,7 +18,8 @@ import {Separator} from "@/components/ui/separator"
 import EducationCard from "@/components/education-card"
 import PillCard from "@/components/pill-card"
 import {useLayoutSetup} from "@/hooks/useLayoutSetup"
-import {HeadshotSlideshow} from "@/components/headshot-slideshow";
+import {HeadshotSlideshow} from "@/components/headshot-slideshow"
+import {MobileNavbar} from "@/components/mobile-navbar"
 
 const icons = {
     clipboard: <ClipboardIcon size={16} className="md:mr-1.5" />,
@@ -30,6 +31,7 @@ const icons = {
 }
 
 const images = [
+    "/photography/headshot-chewy-front.jpg",
     "/photography/staircase.jpg",
     "/photography/headshot.png",
     "/photography/present.png",
@@ -137,7 +139,7 @@ export default function Home() {
                 animate="visible"
                 variants={fadeInFromRightVariants}
             >
-                <ProfileImage size={120} className="rounded-full border-2 border-[#0b6db8]" />
+                <ProfileImage size={120} className="rounded-3xl border-2 border-[#0b6db8]" />
             </motion.div>
         </div>
     )
@@ -150,7 +152,7 @@ export default function Home() {
                 animate="visible"
                 variants={fadeInFromRightVariants}
             >
-                <ProfileImage size={200} className="rounded-full border-4 border-[#0b6db8]" />
+                <ProfileImage size={200} className="border-4 border-[#0b6db8]" />
             </motion.div>
 
             <ProfileText isMobile={false} />
@@ -172,7 +174,7 @@ export default function Home() {
                 animate="visible"
                 variants={fadeInFromRightVariants}
             >
-                <ProfileImage size={180} className="rounded-full border-4 border-[#0b6db8]" />
+                <ProfileImage size={180} className="rounded-3xl border-4 border-[#0b6db8]" />
             </motion.div>
         </div>
     )
@@ -322,6 +324,7 @@ export default function Home() {
 
     const MobileLayout = () => (
         <div className="min-h-screen">
+            <MobileNavbar />
             <div className="w-full">
                 <ContentLoader contentKey="content-mobile">
                     <HomeContent/>

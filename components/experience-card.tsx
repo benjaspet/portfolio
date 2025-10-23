@@ -23,7 +23,6 @@ type CardProps = {
 };
 
 const ExperienceCard = ({ experience, logo }: CardProps) => {
-    const latestRole = experience.roles[0];
 
     return (
         <Dialog>
@@ -46,14 +45,14 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
                             <div className="flex-1 min-w-0 space-y-0.5">
                                 <div className="flex items-center gap-2">
                                     <h3 className="font-semibold text-lg tracking-tight line-clamp-1">
-                                        {latestRole.position}
+                                        {experience.roles[0].position}
                                     </h3>
                                 </div>
                                 
                                 <div className="space-y-1.5">
                                     <div className="flex items-center text-muted-foreground">
                                         <BuildingIcon className="w-4 h-4 mr-2 flex-shrink-0" />
-                                        <span className="font-medium line-clamp-1">{experience.company} • {latestRole.dateRange}</span>
+                                        <span className="font-medium line-clamp-1">{experience.company}</span>
                                     </div>
                                 </div>
                             </div>
