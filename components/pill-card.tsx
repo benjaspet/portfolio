@@ -11,14 +11,19 @@ type Props = {
 
 export default function PillCard({title, pillItems, pillColor = "bg-secondary"}: Props) {
     return (
-        <motion.div initial="hidden" animate="visible" variants={fadeInFromRightVariants}>
-            <Card className="border-2 duration-300 hover:border-[#0b6db8] h-full">
+        <motion.div 
+            className="h-full"
+            initial="hidden" 
+            animate="visible" 
+            variants={fadeInFromRightVariants}
+        >
+            <Card className="border-2 duration-300 hover:border-[#0b6db8] h-full flex flex-col">
                 <CardHeader>
                     <CardTitle>
                         {title}
                     </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="flex-1">
                     <motion.div
                         className="flex flex-wrap gap-1"
                         variants={staggerContainerVariants}
