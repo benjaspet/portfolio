@@ -20,7 +20,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
     "lucide-react": "^0.561.0",
-    "next": "15.0.3",
+    "next": "16.0.10",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-github-calendar": "^5.0.0",
