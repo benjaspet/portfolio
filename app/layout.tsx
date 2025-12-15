@@ -4,7 +4,7 @@ import "./globals.css";
 import React from "react";
 
 const outfit = localFont({
-    src: "./fonts/OutfitVariable.ttf",
+    src: "./fonts/Geom-Variable.ttf",
     variable: "--font-outfit",
     weight: "100 800",
 });

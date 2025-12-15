@@ -19,7 +19,8 @@ import EducationCard from "@/components/education-card"
 import PillCard from "@/components/pill-card"
 import {useLayoutSetup} from "@/hooks/useLayoutSetup"
 import {HeadshotSlideshow} from "@/components/headshot-slideshow"
-import {MobileNavbar} from "@/components/mobile-navbar"
+import GitHubContributions from "@/components/github-contributions"
+import CollapsibleSection from "@/components/collapsible-section"
 
 const icons = {
     clipboard: <ClipboardIcon size={16} className="md:mr-1.5" />,
@@ -32,9 +33,6 @@ const icons = {
 
 const images = [
     "/photography/headshot-chewy-front.jpg",
-    "/photography/staircase.jpg",
-    "/photography/headshot.png",
-    "/photography/present.png",
 ];
 
 const LINKS = {
@@ -181,16 +179,20 @@ export default function Home() {
 
     const PostsAndSkills = () => (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 col-span-1 sm:col-span-2">
-                <PillCard
-                    title="Programming Languages"
-                    pillItems={config.languages}
-                    pillColor="bg-[#0b6db8]"
-                />
-                <PillCard
-                    title="Other Technologies"
-                    pillItems={config.technologies}
-                />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 col-span-1 sm:col-span-2 sm:auto-rows-fr">
+                <CollapsibleSection title="Programming Languages" defaultOpen={false}>
+                    <PillCard
+                        title="Programming Languages"
+                        pillItems={config.languages}
+                        pillColor="bg-[#0b6db8]"
+                    />
+                </CollapsibleSection>
+                <CollapsibleSection title="Other Technologies" defaultOpen={false}>
+                    <PillCard
+                        title="Other Technologies"
+                        pillItems={config.technologies}
+                    />
+                </CollapsibleSection>
             </div>
         </div>
     )
@@ -232,7 +234,7 @@ export default function Home() {
     const ExperienceAndEducationTab = () => (
         <>
             <AnimatedGrid className="mx-auto w-full items-center justify-center">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                <div className="grid grid-cols-3 sm:flex sm:flex-wrap gap-4 justify-items-center">
                     {config.experience.map((company, index) => (
                         <motion.div key={index} variants={fadeInFromRightChildVariants}>
                             <ExperienceCard
@@ -241,25 +243,29 @@ export default function Home() {
                             />
                         </motion.div>
                     ))}
+                    {config.studentOrganizations.map((org: StudentOrganization, index: number) => (
+                        <motion.div key={`org-${index}`} variants={fadeInFromRightChildVariants}>
+                            <ExperienceCard
+                                logo={org.logo}
+                                experience={{
+                                    company: org.name,
+                                    summary: org.summary,
+                                    description: org.description,
+                                    companyLogo: org.logo,
+                                    roles: org.roles
+                                }}
+                            />
+                        </motion.div>
+                    ))}
                 </div>
             </AnimatedGrid>
 
-            <SectionSeparator title="Campus Experience" />
+            <SectionSeparator title="I've been shipping." />
 
-            <AnimatedGrid className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                {config.studentOrganizations.map((org: StudentOrganization, index: number) => (
-                    <motion.div key={index} variants={fadeInFromRightChildVariants}>
-                        <ExperienceCard
-                            logo={org.logo}
-                            experience={{
-                                company: org.name,
-                                description: org.description,
-                                companyLogo: org.logo,
-                                roles: org.roles
-                            }}
-                        />
-                    </motion.div>
-                ))}
+            <AnimatedGrid className="w-full">
+                <motion.div variants={fadeInFromRightChildVariants}>
+                    <GitHubContributions username="benjaspet" />
+                </motion.div>
             </AnimatedGrid>
 
             <SectionSeparator title="Education" />
@@ -311,20 +317,22 @@ export default function Home() {
 
     const DesktopLayout = () => (
         <div className="flex h-screen">
-            <div className="w-1/2 overflow-y-auto hide-scrollbar">
+            <div className="w-[18%] h-screen">
+                <div className="w-full h-full bg-gradient-to-br from-[#0b6db8] via-[#2ea3f5] to-[#7dd3ff]" />
+            </div>
+            <div className="w-[64%] overflow-y-auto hide-scrollbar">
                 <ContentLoader contentKey="content">
                     <HomeContent/>
                 </ContentLoader>
             </div>
-            <div className="w-1/2 h-screen">
-                <div className="w-full h-full bg-slate-200 dark:bg-[#0b6db8]" />
+            <div className="w-[18%] h-screen">
+                <div className="w-full h-full bg-gradient-to-bl from-[#0b6db8] via-[#2ea3f5] to-[#7dd3ff]" />
             </div>
         </div>
     )
 
     const MobileLayout = () => (
         <div className="min-h-screen">
-            <MobileNavbar />
             <div className="w-full">
                 <ContentLoader contentKey="content-mobile">
                     <HomeContent/>

@@ -13,6 +13,7 @@ export type Config = {
 export type Experience = {
     company: string;
     description: string;
+    summary: string;
     companyLogo: string;
     roles: Role[];
 }
@@ -58,6 +59,7 @@ export type Education = {
 
 export type StudentOrganization = {
     name: string;
+    summary: string;
     description: string;
     logo: string;
     roles: Role[];

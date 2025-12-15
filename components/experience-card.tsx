@@ -7,15 +7,17 @@ import {
     DialogFooter,
     DialogHeader,
     DialogTitle,
-    DialogTrigger,
 } from "@/components/ui/dialog"
-import { Card, CardContent } from "@/components/ui/card";
 import {Timeline, TimelineDot, TimelineHeading, TimelineItem} from "@/components/ui/timeline";
 import CustomTimelineItem from "@/components/timeline-item";
 import {Experience, Role} from "@/app/types";
 import Image from "next/image";
 import {ScrollArea} from "@/components/ui/scroll-area";
-import {BuildingIcon} from "lucide-react";
+import {
+    HoverCard,
+    HoverCardContent,
+    HoverCardTrigger,
+} from "@/components/ui/hover-card";
 
 type CardProps = {
     experience: Experience;
@@ -23,79 +25,89 @@ type CardProps = {
 };
 
 const ExperienceCard = ({ experience, logo }: CardProps) => {
+    const [dialogOpen, setDialogOpen] = React.useState(false);
 
     return (
-        <Dialog>
-            <DialogTrigger asChild>
-                <Card className="overflow-hidden border-2 hover:cursor-pointer hover:border-blue-700 transition-all duration-300 hover:shadow-md">
-                    <CardContent className="p-6">
-                        <div className="flex items-start gap-5">
-                            <div className="flex-shrink-0">
-                                <div className="p-0.5 rounded-md border bg-slate-700 border-slate-700">
-                                    <Image
-                                        src={logo || "/placeholder.svg"}
-                                        alt={`${experience.company} logo`}
-                                        width={40}
-                                        height={40}
-                                        className="object-contain rounded-md"
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="flex-1 min-w-0 space-y-0.5">
-                                <div className="flex items-center gap-2">
-                                    <h3 className="font-semibold text-lg tracking-tight line-clamp-1">
-                                        {experience.roles[0].position}
-                                    </h3>
-                                </div>
-                                
-                                <div className="space-y-1.5">
-                                    <div className="flex items-center text-muted-foreground">
-                                        <BuildingIcon className="w-4 h-4 mr-2 flex-shrink-0" />
-                                        <span className="font-medium line-clamp-1">{experience.company}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
-            </DialogTrigger>
-            <DialogContent className="rounded-lg max-w-[350px] sm:max-w-[650px] lg:max-w-[960px] p-0">
-                <ScrollArea className="max-h-[60vh] overflow-y-auto">
-                    <div className="p-6">
-                        <DialogHeader>
-                            <DialogTitle className="text-xl">{experience.company}</DialogTitle>
-                            <DialogDescription className="text-md leading-5">
-                                {experience.description}
-                            </DialogDescription>
-                        </DialogHeader>
-                        <div className="mt-4">
-                            <Timeline>
-                                {experience.roles.map((role: Role, index: number) => (
-                                    <CustomTimelineItem
-                                        status={role.status}
-                                        role={role.position}
-                                        company={experience.company}
-                                        locationAndDate={role.location + " • " + role.dateRange}
-                                        bullets={role.bullets}
-                                        key={index}
-                                    />
-                                ))}
-                                <TimelineItem>
-                                    <TimelineHeading>Experience began.</TimelineHeading>
-                                    <TimelineDot status="done"/>
-                                </TimelineItem>
-                            </Timeline>
-                        </div>
+        <>
+            <HoverCard openDelay={200} closeDelay={100}>
+                <HoverCardTrigger asChild>
+                    <div 
+                        className="p-0.5 rounded-md border border-slate-700 hover:cursor-pointer hover:border-blue-700 transition-all duration-300 hover:shadow-md w-full sm:w-fit"
+                        onClick={() => setDialogOpen(true)}
+                    >
+                        <Image
+                            src={logo || "/placeholder.svg"}
+                            alt={`${experience.company} logo`}
+                            width={128}
+                            height={128}
+                            className="object-contain rounded-md bg-slate-700 w-full h-24 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32"
+                        />
                     </div>
-                </ScrollArea>
-                <DialogFooter className="md:hidden p-6 border-t">
-                    <DialogClose className="bg-[#0b6db8] text-white p-2 rounded-lg">
-                        Close
-                    </DialogClose>
-                </DialogFooter>
-            </DialogContent>
-        </Dialog>
+                </HoverCardTrigger>
+                <HoverCardContent className="w-80" side="top" sideOffset={8}>
+                    <div className="space-y-2">
+                        <div>
+                            <h4 className="font-semibold text-base leading-none mb-2">
+                                {experience.company}
+                            </h4>
+                            <p className="text-sm font-semibold text-muted-foreground leading-snug mb-2">
+                                {experience.roles[0].position}
+                            </p>
+                            {experience.summary && (
+                                <p className="text-sm text-muted-foreground/90 leading-snug">
+                                    {experience.summary}
+                                </p>
+                            )}
+                        </div>
+                        {experience.roles[0].dateRange && (
+                            <div className="pt-1">
+                                <p className="text-xs text-muted-foreground/80">
+                                    {experience.roles[0].dateRange}
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </HoverCardContent>
+            </HoverCard>
+
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+                <DialogContent className="rounded-lg max-w-[350px] sm:max-w-[650px] lg:max-w-[960px] p-0">
+                    <ScrollArea className="max-h-[60vh] overflow-y-auto">
+                        <div className="p-6">
+                            <DialogHeader>
+                                <DialogTitle className="text-xl">{experience.company}</DialogTitle>
+                                <DialogDescription className="text-md leading-5">
+                                    {experience.description}
+                                </DialogDescription>
+                            </DialogHeader>
+                            <div className="mt-4">
+                                <Timeline>
+                                    {experience.roles.map((role: Role, index: number) => (
+                                        <CustomTimelineItem
+                                            status={role.status}
+                                            role={role.position}
+                                            company={experience.company}
+                                            locationAndDate={role.location + " • " + role.dateRange}
+                                            bullets={role.bullets}
+                                            key={index}
+                                        />
+                                    ))}
+                                    <TimelineItem>
+                                        <TimelineHeading>Experience began.</TimelineHeading>
+                                        <TimelineDot status="done"/>
+                                    </TimelineItem>
+                                </Timeline>
+                            </div>
+                        </div>
+                    </ScrollArea>
+                    <DialogFooter className="md:hidden p-6 border-t">
+                        <DialogClose className="bg-[#0b6db8] text-white p-2 rounded-lg">
+                            Close
+                        </DialogClose>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
+        </>
     );
 };
 

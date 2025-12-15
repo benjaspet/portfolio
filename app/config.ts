@@ -2,11 +2,12 @@ import {Config} from "./types";
 
 export default {
     languages: [
-        "Java", "Go", "TypeScript", "Python", "HTML/CSS", "Lisp"
+        "Java", "Go", "TypeScript", "Python", "Groovy", "HTML/CSS", "Lisp"
     ],
     technologies: [
-        "AWS (EC2, S3, Lambda, DynamoDB, SQS, EKS)", "EventBridge", "Apache Kafka", "Datadog", "PostgreSQL", "MongoDB",
-        "Nix", "Docker", "Terraform", "Spring Boot", "FastAPI", "React", "React Native", "Next.js", "Playwright", "JUnit",
+        "AWS Lambda", "S3", "ECS", "KMS", "SQS", "SNS", "EKS", "Secrets Manager", "Aurora PostgreSQL", "ECR",
+        "React", "React Native", "Next.js", "Spring Boot", "Terraform", "Jenkins", "Helm", "Kubernetes (EKS)", "PostgreSQL", "MongoDB", "Nix", "FastAPI",
+        "Playwright", "JUnit", "Jest", "Git"
     ],
     education: [
         {
@@ -28,6 +29,7 @@ export default {
         {
             company: "Chewy, Inc.",
             description: "American online retailer of pet food and other pet-related products based in Plantation, Florida.",
+            summary: "Fulfillment Execution Applications Team",
             companyLogo: "/experience/chewy-icon.png",
             roles: [
                 {
@@ -36,13 +38,12 @@ export default {
                     dateRange: "June - Dec 2025",
                     status: "current",
                     bullets: [
-                        "Containerized the Veterinarian Medical Guide (VMG) service using Docker, LocalStack, and Terraform,\n" +
-                        "establishing a robust, event-driven testing framework as a core tooling repository to validate the entire data\n" +
-                        "pipeline—from Kafka injection via DynamoDB processing to downstream SQS delivery",
-                        "Identified and resolved a critical bug in Chewy's NDC Manager service that prevented the creation and updating\n" +
-                        "of new externally compounded records, restoring functionality to 10,000+ daily downstream pharmacy workflows",
-                        "Developed a regression testing framework leveraging builder patterns for the Lynx platform using Playwright and\n" +
-                        "TypeScript, injecting into a Jenkins pipeline to speed up deployment"
+                        "Architected an extensible Playwright-based automated integration testing framework adopted across 5 enterprise production services, contributing 50+ merged pull requests across 15 repositories",
+                        "Developed Terraform modules to provision test infrastructure and automate end-to-end evidence reporting, including IAM roles, S3 buckets, and KMS policies across multi-region, multi-environment deployments",
+                        "Implemented automated Helm deployment rollback mechanisms triggered by test failures, preventing defective deployments from reaching production environments and enhancing MTTR (mean time to recovery)",
+                        "Created a comprehensive test reporting workflow with email notifications, S3-hosted screenshots, and HTML reports for deployment visibility",
+                        "Implemented AWS Secrets Manager to securely replace hardcoded credentials in Jenkins CI/CD pipelines",
+                        "Developed an event-driven AWS Lambda pipeline in Python triggered by S3 to automate wholesale pharmacy inventory workflows, enforcing SQL safety guardrails and maintaining transaction-level audit trails"
                     ]
                 },
             ]
@@ -50,6 +51,7 @@ export default {
         {
             company: "FirstGlance, Inc.",
             description: "A startup discovery platform that makes finding, evaluating, and sharing startups easier than ever before by providing personalized startup recommendations tailored to investors' preferences, allowing them to follow startups' progress, and enabling effortless sharing of startup information.",
+            summary: "Product & Platform Teams",
             companyLogo: "/experience/firstglance-icon.png",
             roles: [
                 {
@@ -68,28 +70,9 @@ export default {
             ]
         },
         {
-            company: "Fenway Community Center",
-            description: "Fenway, Boston MA",
-            companyLogo: "/experience/fcc-icon.png",
-            roles: [
-                {
-                    position: "Software Engineer",
-                    location: "Boston, MA",
-                    dateRange: "Sep - Dec 2024",
-                    status: "done",
-                    bullets: [
-                        "Engineered a traction dashboard, auth flows, and onboarding components for an internal tool using Next.js",
-                        "Created a data migration pipeline from Firebase to PostgreSQL, architecting schema design and relations",
-                        "Integrated 25+ OpenAPI-compliant REST endpoints with FastAPI, enforcing strict type validation",
-                        "Automated infrastructure deployment to AWS EC2 instances using Terraform, accelerating workflows",
-                        "Leveraged pytest and bun-test to develop regression and API-level test suites, achieving 88% coverage"
-                    ]
-                }
-            ]
-        },
-        {
             company: "Northeastern University",
             description: "Fenway, Boston MA",
+            summary: "Object-Oriented Design, Fundamentals of Computer Science 2",
             companyLogo: "/experience/northeastern-icon.jpg",
             roles: [
                 {
@@ -120,6 +103,7 @@ export default {
     studentOrganizations: [
         {
             name: "Generate: a Sherman Center program",
+            summary: "Software Consulting for Startups",
             description: "Generate is Northeastern's premiere student-led product development studio. Its team of dedicated engineers and designers work and empower real startups with our innovative products. Each semester, Generate works with Software and Hardware founders to build their product and support them on their entrepreneurial journey.",
             logo: "/experience/generate-icon.png",
             roles: [
@@ -149,6 +133,7 @@ export default {
         },
         {
             name: "Code4Community",
+            summary: "Engineering for Boston Non-profits",
             description: "Code4Community is a student-led organization that provides free software development services to non-profit organizations in the Greater Boston area.",
             logo: "/experience/c4c-icon.png",
             roles: [
@@ -185,11 +170,11 @@ export default {
         },
         {
             title: "The LB Blueprint",
-            description: "An implementation of Orthello with a hexagonal grid using Java Swing and built using MVC design patterns. Includes AI strategies with various difficulty levels using move selection algorithms.",
+            description: "Built a responsive custom landing page and registration system for The LB Blueprint, an elite linebacker training program founded by 9-year NFL veteran and Super Bowl champion Dannell Ellerbe.",
             duration: "May - Jun 2025",
             imageURL: "/projects/tlbb/tlbb-cover.jpg",
-            githubURL: "https://github.com/benjaspet/cs3500",
-            liveURL: "",
+            githubURL: "https://github.com/benjaspet/the-lb-blueprint",
+            liveURL: "https://the-lb-blueprint.vercel.app",
             techStack: ["TypeScript", "Next.js", "TailwindCSS"]
         },
         {
