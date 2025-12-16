@@ -223,6 +223,11 @@ export default function Layout({children}: Readonly<{ children: React.ReactNode;
                             </NavigationMenu>
                         </div>
                         <main>{children}</main>
+                        {images && images.length > 0 && (
+                            <div className="w-full h-full mb-4">
+                                <SlidingGallery images={images}/>
+                            </div>
+                        )}
                         <Footer/>
                     </div>
                 </div>

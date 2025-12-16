@@ -36,7 +36,7 @@ const images = [
 ];
 
 const LINKS = {
-    resume: "https://drive.google.com/file/d/1pOz0Op1I-F_--BS36-9hvXIz9_FkD6xL/view?usp=sharing",
+    resume: "https://drive.google.com/file/d/1AwhAmrqghG4e-C_ToYDGksaUq5HV3NWt/view?usp=drive_link",
     github: "https://github.com/benjaspet",
     linkedin: "https://www.linkedin.com/in/ben-petrillo",
     email: "mailto:petrillo.b@northeastern.edu"

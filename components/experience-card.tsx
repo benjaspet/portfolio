@@ -32,15 +32,15 @@ const ExperienceCard = ({ experience, logo }: CardProps) => {
             <HoverCard openDelay={200} closeDelay={100}>
                 <HoverCardTrigger asChild>
                     <div 
-                        className="p-0.5 rounded-md border border-slate-700 hover:cursor-pointer hover:border-blue-700 transition-all duration-300 hover:shadow-md w-full sm:w-fit"
+                        className="p-0.5 rounded-md border border-slate-700 hover:cursor-pointer hover:border-blue-700 transition-all duration-300 hover:shadow-md"
                         onClick={() => setDialogOpen(true)}
                     >
                         <Image
                             src={logo || "/placeholder.svg"}
                             alt={`${experience.company} logo`}
-                            width={128}
-                            height={128}
-                            className="object-contain rounded-md bg-slate-700 w-full h-24 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32"
+                            width={160}
+                            height={160}
+                            className="object-cover rounded-md w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 xl:w-40 xl:h-40"
                         />
                     </div>
                 </HoverCardTrigger>
