@@ -73,7 +73,7 @@ export default {
             company: "Northeastern University",
             description: "Fenway, Boston MA",
             summary: "Object-Oriented Design, Fundamentals of Computer Science 2",
-            companyLogo: "/experience/northeastern-icon.jpg",
+            companyLogo: "/experience/northeastern-icon.png",
             roles: [
                 {
                     position: "Undergraduate Teaching Assistant",
@@ -187,6 +187,14 @@ export default {
             techStack: ["Go", "React Native", "PostgreSQL"]
         },
         {
+            title: "Fenway Community Center",
+            description: "A redesigned public donation page with one-time and recurring contribution options, anonymity settings, and dedication messages, presented prominently on the Fenway Community Center website.",
+            duration: "Sep - Dec 2025",
+            imageURL: "/projects/fcc/fcc-cover.png",
+            githubURL: "https://github.com/Code-4-Community/fcc",
+            techStack: ["React", "TypeScript", "Nest.js", "PostgreSQL"]
+        },
+        {
             title: "Elixir Music",
             description: "A Discord music application serving over 300,000 users using the Spotify Tracks API and YouTube. Featuring custom playlist support via MongoDB and a RESTful API to motify the bot state externally.",
             duration: "May 2022 - Aug 2024",
@@ -234,7 +242,7 @@ export default {
                     src: "/projects/platemate/platemate-mockup-grid.png",
                 },
                 {
-                    src: "/projects/platemate/platemate-showcase-team.png",
+                    src: "/projects/platemate/platemate-leadership.jpg",
                     height: 340,
                 },
                 {
@@ -245,7 +253,7 @@ export default {
                     height: 340,
                 },
                 {
-                    src: "/projects/platemate/platemate-color-palette.png",
+                    src: "/projects/platemate/platemate-moodboard.jpg",
                     height: 500,
                 },
                 {
@@ -257,7 +265,7 @@ export default {
                     height: 400,
                 },
                 {
-                    src: "/projects/platemate/platemate-leadership.jpg",
+                    src: "/projects/platemate/platemate-showcase-present.jpg",
                     height: 340,
                 },
             ]

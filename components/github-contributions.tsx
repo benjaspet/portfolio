@@ -15,15 +15,17 @@ const GitHubContributions = ({ username }: GitHubContributionsProps) => {
         const updateBlockSize = () => {
             const width = window.innerWidth;
             if (width < 640) {
-                setBlockSize(10);
-            } else if (width < 768) {
                 setBlockSize(12);
+            } else if (width < 768) {
+                setBlockSize(15);
             } else if (width < 1024) {
-                setBlockSize(14);
-            } else if (width < 1280) {
-                setBlockSize(16);
-            } else {
                 setBlockSize(18);
+            } else if (width < 1280) {
+                setBlockSize(22);
+            } else if (width < 1536) {
+                setBlockSize(26);
+            } else {
+                setBlockSize(30);
             }
         };
 
