@@ -4,11 +4,11 @@ export const fadeInFromRightVariants = {
         opacity: 1,
         x: 0,
         transition: {
-            delay: 0.25,
-            delayChildren: 0.25,
+            delay: 0.05,
+            delayChildren: 0.05,
             duration: 0.25,
             ease: "easeOut",
-            staggerChildren: 0.5,
+            staggerChildren: 0.25,
         },
     },
 };

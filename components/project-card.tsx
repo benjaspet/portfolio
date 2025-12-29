@@ -44,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 </CardContent>
                 <CardFooter className="text-sm text-gray-100 gap-4 pb-3">
                     {project.githubURL && <Button className={"p-0"} variant={"linkHover2"} onClick={() => window.open(project.githubURL)}>GitHub</Button> }
-                    {project.liveURL && <Button className={"p-0"} variant={"linkHover2"} onClick={() => redirect(project.liveURL || "", RedirectType.replace)}>Learn More</Button>}
+                    {project.liveURL && <Button className={"p-0"} variant={"linkHover2"} onClick={() => window.open(project.liveURL)}>Learn More</Button>}
                     <Button className={"p-0 hover:cursor-text"} variant={"linkHover2"}>{project.duration}</Button>
                 </CardFooter>
             </Card>

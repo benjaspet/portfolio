@@ -27,7 +27,6 @@ export default function SlidingGallery({
         rightColumnImages
     } = useGalleryAnimation({ speed, images })
 
-    // Mobile horizontal scroll
     const mobileScrollRef1 = useRef<HTMLDivElement>(null);
     const mobileScrollRef2 = useRef<HTMLDivElement>(null);
 
@@ -37,42 +36,35 @@ export default function SlidingGallery({
         if (!scrollContainer1 || !scrollContainer2) return;
 
         let scrollPos1 = 0;
-        let scrollPos2 = scrollContainer2.scrollWidth / 2; // Start second row at middle
-        const scrollSpeed = 0.15;
+        let scrollPos2 = scrollContainer2.scrollWidth / 2;
+        const scrollSpeed = 0.35;
+        let frameId = 0;
 
         const animate = () => {
-            // Row 1: scroll right
             scrollPos1 += scrollSpeed;
             const maxScroll1 = scrollContainer1.scrollWidth / 2;
-            if (scrollPos1 >= maxScroll1) {
-                scrollPos1 = 0;
-            }
+            if (scrollPos1 >= maxScroll1) scrollPos1 = 0;
             scrollContainer1.scrollLeft = scrollPos1;
 
-            // Row 2: scroll left (reverse)
             scrollPos2 -= scrollSpeed;
-            if (scrollPos2 <= 0) {
-                scrollPos2 = scrollContainer2.scrollWidth / 2;
-            }
+            if (scrollPos2 <= 0) scrollPos2 = scrollContainer2.scrollWidth / 2;
             scrollContainer2.scrollLeft = scrollPos2;
 
-            requestAnimationFrame(animate);
+            frameId = requestAnimationFrame(animate);
         };
 
-        const animationId = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(animationId);
+        frameId = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(frameId);
     }, [images]);
 
-    // Split images into two rows for mobile
     const mobileRow1 = images.filter((_, i) => i % 2 === 0);
     const mobileRow2 = images.filter((_, i) => i % 2 !== 0);
 
     return (
         <>
-            {/* Mobile view - horizontal auto-scrolling gallery with 2 rows */}
             <div className="sm:hidden w-full h-full overflow-hidden relative">
                 <div className="flex flex-col h-full justify-center gap-4">
-                    <div 
+                    <div
                         ref={mobileScrollRef1}
                         className="flex gap-4 overflow-x-hidden items-center"
                         style={{ scrollBehavior: 'auto', height: `${imageHeight}px` }}
@@ -113,7 +105,6 @@ export default function SlidingGallery({
                 </div>
             </div>
 
-            {/* Desktop view - animated two-column gallery */}
             <div className="hidden sm:block w-full h-full overflow-hidden relative" aria-label="Sliding image gallery">
                 <div
                     ref={containerRef}
