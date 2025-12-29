@@ -19,6 +19,7 @@ import EducationCard from "@/components/education-card"
 import PillCard from "@/components/pill-card"
 import {useLayoutSetup} from "@/hooks/useLayoutSetup"
 import {HeadshotSlideshow} from "@/components/headshot-slideshow"
+import {Dialog, DialogContent, DialogTrigger, DialogTitle} from "@/components/ui/dialog"
 import GitHubContributions from "@/components/github-contributions"
 import CollapsibleSection from "@/components/collapsible-section"
 
@@ -82,15 +83,40 @@ export default function Home() {
         </motion.div>
     )
 
-    const ProfileImage = ({size, className}: {size: number, className: string}) => (
-        <HeadshotSlideshow 
-            images={images} 
-            alt="Headshot" 
-            width={size} 
-            height={size} 
-            className={className} 
-        />
-    )
+    const AvatarDialog = ({size, className = ""}: {size: number, className?: string}) => {
+        const expandedSize = Math.min(size * 1.8, 420)
+
+        return (
+            <Dialog>
+                <DialogTrigger asChild>
+                    <button
+                        type="button"
+                        className={`relative transition-transform duration-200 hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0b6db8] focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 ${className}`}
+                    >
+                        <HeadshotSlideshow 
+                            images={images} 
+                            alt="Headshot" 
+                            width={size} 
+                            height={size} 
+                            className="rounded-3xl"
+                        />
+                    </button>
+                </DialogTrigger>
+                <DialogContent showClose={false} className="w-auto max-w-none p-0 bg-transparent border-none shadow-none">
+                    <DialogTitle className="sr-only">Profile image</DialogTitle>
+                    <HeadshotSlideshow 
+                        images={images} 
+                        alt="Headshot expanded" 
+                        width={expandedSize} 
+                        height={expandedSize} 
+                        className="rounded-3xl border-4 border-[#0b6db8]"
+                    />
+                </DialogContent>
+            </Dialog>
+        )
+    }
+
+    const ProfileImage = AvatarDialog
 
     const ProfileText = ({isMobile}: {isMobile: boolean}) => (
         <>
